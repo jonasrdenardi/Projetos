@@ -32,6 +32,7 @@ create table if not exists venda(
 	id int auto_increment,
     id_cliente int,
 	data_venda date,
+    desconto float(15),
 	valor float(15),
 	fg_ativo boolean,
 		CONSTRAINT pk_venda_id PRIMARY KEY(id),
@@ -43,7 +44,7 @@ create table if not exists produto_venda(
 	id_venda int,
 	id_produto int,
 	qtd_produto	int,
-	valor_produto float(15),
+	preco_produto float(15),
 		CONSTRAINT pk_produto_venda_id_venda_id_produto PRIMARY KEY(id_venda,id_produto),
 		CONSTRAINT fk_produto_venda_id_venda FOREIGN KEY(id_venda)
 			REFERENCES venda(id),

@@ -187,6 +187,51 @@ public class ProdutoDAO {
         }
     }
     
+    //LISTAR TODOS OS REGISTROS ATIVOS DA TABELA
+    public List<Produto> listarAtivos(Usuario usuario){
+        try {
+            String SQL = "select * from db_controle_estoque.produto where fg_ativo = true order by id;" ;
+            
+            con = controller.Conexao.conectar(usuario);
+            cmd = con.prepareStatement(SQL);
+            
+            //retornar o resultado da consulta
+            ResultSet rs = cmd.executeQuery();
+            
+            //declarar uma lista dinamica para armazenar os resultados
+            List<Produto> resultado = new ArrayList<>();
+            
+            //percorrer os dados no resultset
+            //se rs.next() = true significa que dados foram retornados
+            while(rs.next()){
+                
+                //criar um objeto produto
+                Produto produto = new Produto();
+                produto.setId(rs.getInt("id"));
+                produto.setDescricao(rs.getString("descricao"));
+                produto.setQtd(rs.getFloat("qtd"));
+                produto.setPrecoCompra(rs.getFloat("preco_compra"));
+                produto.setPreco(rs.getFloat("preco"));
+                
+                //Valor do banco esta vindo com 1 dia a menos por conta da timezone
+                java.util.Date dataSomada = rs.getDate("vencimento");
+                dataSomada.setDate(dataSomada.getDate() + 1);
+                produto.setData(dataSomada);
+                
+                produto.setFg_ativo(rs.getBoolean("fg_ativo"));
+                //adiciona a lista
+                resultado.add(produto);
+            }       
+            return resultado;
+            
+        } catch (Exception e) {
+            System.out.println("ERRO: " + e.getMessage());
+            return null;
+        }finally{
+            Conexao.desconectar(con);
+        }
+    }
+    
     public List<Produto> pesquisarPorDescricao(Usuario usuario, String descricao){
         try {
             String SQL = "select * from db_controle_estoque.produto where descricao like ?";

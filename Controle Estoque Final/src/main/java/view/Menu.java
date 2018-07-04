@@ -55,6 +55,8 @@ public class Menu extends javax.swing.JFrame {
         jmiAlterarProduto = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jmiEstoque = new javax.swing.JMenuItem();
+        jmVenda = new javax.swing.JMenu();
+        jmiAbrirVenda = new javax.swing.JMenuItem();
         menuAdministracao = new javax.swing.JMenu();
         jmiRelEstoque = new javax.swing.JMenu();
         menuitemRelProdutos = new javax.swing.JMenuItem();
@@ -170,6 +172,18 @@ public class Menu extends javax.swing.JFrame {
 
         barraMenu.add(menuProdutos);
 
+        jmVenda.setText("Venda");
+
+        jmiAbrirVenda.setText("Abrir Venda");
+        jmiAbrirVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiAbrirVendaActionPerformed(evt);
+            }
+        });
+        jmVenda.add(jmiAbrirVenda);
+
+        barraMenu.add(jmVenda);
+
         menuAdministracao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/adm.png"))); // NOI18N
         menuAdministracao.setText("Administração");
         menuAdministracao.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
@@ -257,6 +271,10 @@ public class Menu extends javax.swing.JFrame {
         abrirFormulario(new RelatorioCliente());
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void jmiAbrirVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAbrirVendaActionPerformed
+        abrirFormulario(new VendaAbrir());
+    }//GEN-LAST:event_jmiAbrirVendaActionPerformed
+
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -303,6 +321,8 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JPopupMenu.Separator jSeparator6;
+    private javax.swing.JMenu jmVenda;
+    private javax.swing.JMenuItem jmiAbrirVenda;
     private javax.swing.JMenuItem jmiAlterarCliente;
     private javax.swing.JMenuItem jmiAlterarProduto;
     private javax.swing.JMenuItem jmiCadasrtarCliente;
