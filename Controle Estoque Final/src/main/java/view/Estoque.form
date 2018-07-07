@@ -80,22 +80,19 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="lblAlterarProduto" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="103" alignment="1" groupAlignment="3" attributes="0">
                       <Component id="rbId" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="rbDescricao" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtPesquisa" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="txtPesquisa" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jSeparator6" min="-2" pref="1" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jSeparator6" alignment="1" min="-2" pref="1" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="lblSelecione" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-              <Component id="jspResultados" pref="275" max="32767" attributes="0"/>
+              <Component id="jspResultados" pref="278" max="32767" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblAdicionar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -122,7 +119,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="5" green="5c" red="d0" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Pesquise e selecione o produto para efetuar a altera&#xe7;&#xe3;o"/>
+        <Property name="text" type="java.lang.String" value="Pesquise e clique 2x no produto para efetuar a altera&#xe7;&#xe3;o"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblAlterarProduto">
@@ -234,12 +231,12 @@
     </Container>
     <Component class="javax.swing.JLabel" name="lblAdicionar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Adicionar"/>
+        <Property name="text" type="java.lang.String" value="ADICIONAR"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblSubtrair">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Subtrair"/>
+        <Property name="text" type="java.lang.String" value="SUBTRAIR"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JSpinner" name="spAdicionar">

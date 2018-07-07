@@ -148,9 +148,9 @@ public class ClienteDAO {
         }
     }
     
-    public List<Cliente> pesquisarPorDescricao(Usuario usuario, String descricao){
+    public List<Cliente> pesquisarPorNome(Usuario usuario, String descricao){
         try {
-            String SQL = "select * from db_controle_estoque.produto where descricao like ?";
+            String SQL = "select * from db_controle_estoque.cliente where nome like ?";
             
             con = controller.Conexao.conectar(usuario);
             cmd = con.prepareStatement(SQL);

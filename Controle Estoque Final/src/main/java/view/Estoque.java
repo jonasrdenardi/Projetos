@@ -52,7 +52,7 @@ public class Estoque extends javax.swing.JInternalFrame {
 
         lblSelecione.setFont(new java.awt.Font("Constantia", 0, 13)); // NOI18N
         lblSelecione.setForeground(new java.awt.Color(208, 92, 5));
-        lblSelecione.setText("Pesquise e selecione o produto para efetuar a alteração");
+        lblSelecione.setText("Pesquise e clique 2x no produto para efetuar a alteração");
 
         lblAlterarProduto.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
         lblAlterarProduto.setForeground(new java.awt.Color(208, 92, 5));
@@ -101,9 +101,9 @@ public class Estoque extends javax.swing.JInternalFrame {
         });
         jspResultados.setViewportView(tabResultados);
 
-        lblAdicionar.setText("Adicionar");
+        lblAdicionar.setText("ADICIONAR");
 
-        lblSubtrair.setText("Subtrair");
+        lblSubtrair.setText("SUBTRAIR");
 
         spAdicionar.setModel(new javax.swing.SpinnerNumberModel(Float.valueOf(0.0f), Float.valueOf(0.0f), Float.valueOf(999999.0f), Float.valueOf(1.0f)));
         JSpinner.NumberEditor jsEditor = (JSpinner.NumberEditor)spAdicionar.getEditor();
@@ -175,19 +175,17 @@ public class Estoque extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblAlterarProduto)
-                .addGap(30, 30, 30)
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(rbId)
-                        .addComponent(rbDescricao))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(rbDescricao)
+                        .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblSelecione)
                 .addGap(11, 11, 11)
-                .addComponent(jspResultados, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
+                .addComponent(jspResultados, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAdicionar)

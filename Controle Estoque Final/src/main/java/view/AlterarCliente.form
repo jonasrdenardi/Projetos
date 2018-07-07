@@ -25,13 +25,10 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="lblAlterarCliente" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="lblAlterarCliente" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                       <Component id="rbId" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="rbDescricao" min="-2" max="-2" attributes="0"/>
@@ -42,20 +39,15 @@
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblSelecione" alignment="1" max="32767" attributes="0"/>
-                          <Component id="jspResultados" alignment="0" pref="516" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
+                  <Component id="lblSelecione" alignment="1" max="32767" attributes="0"/>
+                  <Component id="jspResultados" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="0" pref="187" max="32767" attributes="0"/>
               <Component id="jpFormulario" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="187" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -64,22 +56,19 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Component id="lblAlterarCliente" min="-2" pref="32" max="-2" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="103" alignment="1" groupAlignment="3" attributes="0">
                       <Component id="rbId" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="rbDescricao" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtPesquisa" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="txtPesquisa" min="-2" pref="32" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jSeparator6" min="-2" pref="1" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jSeparator6" alignment="1" min="-2" pref="1" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="lblSelecione" min="-2" pref="17" max="-2" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="jspResultados" pref="119" max="32767" attributes="0"/>
+              <Component id="jspResultados" pref="121" max="32767" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Component id="jpFormulario" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
@@ -96,7 +85,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="5" green="5c" red="d0" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Pesquise e selecione o produto para efetuar a altera&#xe7;&#xe3;o"/>
+        <Property name="text" type="java.lang.String" value="Pesquise e clique 2x no Cliente para efetuar a altera&#xe7;&#xe3;o"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JPanel" name="jpFormulario">

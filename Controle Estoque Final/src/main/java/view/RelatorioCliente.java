@@ -154,7 +154,7 @@ public class RelatorioCliente extends javax.swing.JInternalFrame {
             if(rbId.isSelected()){
                 preencherTabela(new ClienteDAO().pesquisarPorId(Menu.getUsuario(), Integer.parseInt(chave)));
             }else if(rbDescricao.isSelected()){
-                preencherTabela(new ClienteDAO().pesquisarPorDescricao(Menu.getUsuario(), chave));
+                preencherTabela(new ClienteDAO().pesquisarPorNome(Menu.getUsuario(), chave));
             }
         }
     }//GEN-LAST:event_txtPesquisaKeyReleased

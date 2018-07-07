@@ -172,8 +172,10 @@ public class Menu extends javax.swing.JFrame {
 
         barraMenu.add(menuProdutos);
 
+        jmVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/venda.png"))); // NOI18N
         jmVenda.setText("Venda");
 
+        jmiAbrirVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/abrir_venda.png"))); // NOI18N
         jmiAbrirVenda.setText("Abrir Venda");
         jmiAbrirVenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

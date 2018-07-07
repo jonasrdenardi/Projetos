@@ -48,7 +48,7 @@ public class AlterarProduto extends javax.swing.JInternalFrame {
         lblDescricao = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         txtDescricao = new javax.swing.JTextField();
-        lblIdade = new javax.swing.JLabel();
+        lblqtd = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         cbAtivo = new javax.swing.JComboBox<>();
         lblPreco1 = new javax.swing.JLabel();
@@ -69,7 +69,7 @@ public class AlterarProduto extends javax.swing.JInternalFrame {
 
         lblSelecione.setFont(new java.awt.Font("Constantia", 0, 13)); // NOI18N
         lblSelecione.setForeground(new java.awt.Color(208, 92, 5));
-        lblSelecione.setText("Pesquise e selecione o produto para efetuar a alteração");
+        lblSelecione.setText("Pesquise e clique 2x no produto para efetuar a alteração");
 
         txtQtd.setBackground(new java.awt.Color(214, 217, 223));
         txtQtd.setFont(new java.awt.Font("sansserif", 0, 15)); // NOI18N
@@ -129,10 +129,10 @@ public class AlterarProduto extends javax.swing.JInternalFrame {
         txtDescricao.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtDescricao.setBorder(null);
 
-        lblIdade.setFont(new java.awt.Font("Constantia", 0, 15)); // NOI18N
-        lblIdade.setForeground(new java.awt.Color(208, 92, 5));
-        lblIdade.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblIdade.setText("Quantidade");
+        lblqtd.setFont(new java.awt.Font("Constantia", 0, 15)); // NOI18N
+        lblqtd.setForeground(new java.awt.Color(208, 92, 5));
+        lblqtd.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblqtd.setText("Quantidade");
 
         jSeparator3.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -203,7 +203,7 @@ public class AlterarProduto extends javax.swing.JInternalFrame {
                                                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGroup(jpFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(txtDescricao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(lblIdade, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(lblqtd, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addComponent(txtQtd, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                     .addComponent(jSeparator5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtPrecoCompra, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -229,12 +229,12 @@ public class AlterarProduto extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblIdade)
+                .addComponent(lblqtd)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtQtd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblPrecoCompra)
                 .addGap(3, 3, 3)
                 .addComponent(txtPrecoCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -332,30 +332,28 @@ public class AlterarProduto extends javax.swing.JInternalFrame {
                             .addComponent(jspResultados))))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(73, 73, 73)
+                .addGap(137, 137, 137)
                 .addComponent(jpFormulario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(137, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblAlterarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(rbId)
-                        .addComponent(rbDescricao))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(rbDescricao)
+                        .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblSelecione, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jspResultados, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jspResultados, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jpFormulario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jpFormulario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -456,12 +454,12 @@ public class AlterarProduto extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblAlterarProduto;
     private javax.swing.JLabel lblDescricao;
     private javax.swing.JLabel lblId;
-    private javax.swing.JLabel lblIdade;
     private javax.swing.JLabel lblPreco;
     private javax.swing.JLabel lblPreco1;
     private javax.swing.JLabel lblPrecoCompra;
     private javax.swing.JLabel lblSelecione;
     private javax.swing.JLabel lblVencimento;
+    private javax.swing.JLabel lblqtd;
     private javax.swing.JRadioButton rbDescricao;
     private javax.swing.JRadioButton rbId;
     private javax.swing.JTable tabResultados;
@@ -586,6 +584,9 @@ public class AlterarProduto extends javax.swing.JInternalFrame {
             jSeparator2.setVisible(false);
             lblDescricao.setVisible(false);
             txtDescricao.setVisible(false);
+            jSeparator3.setVisible(false);
+            lblqtd.setVisible(false);
+            txtQtd.setVisible(false);
         }
             
     }
