@@ -15,6 +15,7 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import model.ApenasNumeros;
+import model.Cliente;
 import model.Produto;
 import model.ProdutoVenda;
 import model.Venda;
@@ -22,11 +23,16 @@ import model.Venda;
 public class VendaAbrir extends javax.swing.JInternalFrame {
 
     DecimalFormat dm = new DecimalFormat("0.00");
+    float descontoFinal = 0;
+    Cliente cliente = new Cliente();
 
-    public VendaAbrir() {
+    public VendaAbrir(Cliente cliente) {
         initComponents();
         configurarFormulario();
 
+        this.cliente = cliente;
+        txtCliente.setText(cliente.getNome());
+        txtCliente.setEditable(false);
         txtDesconto.setDocument(new ApenasNumeros());
         preencherTabelaProduto(new ProdutoDAO().listarAtivos(Menu.getUsuario()));
 
@@ -62,6 +68,11 @@ public class VendaAbrir extends javax.swing.JInternalFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator7 = new javax.swing.JSeparator();
         txtDesconto = new javax.swing.JTextField();
+        rdbDescValor = new javax.swing.JRadioButton();
+        rdbDescPorcentagem = new javax.swing.JRadioButton();
+        txtCliente = new javax.swing.JTextField();
+        jSeparator8 = new javax.swing.JSeparator();
+        lblProdutosDisponiveis1 = new javax.swing.JLabel();
 
         setIconifiable(true);
         setResizable(true);
@@ -168,9 +179,9 @@ public class VendaAbrir extends javax.swing.JInternalFrame {
         txtPesquisa.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtPesquisa.setText("Digite sua pesquisa aqui!");
         txtPesquisa.setBorder(null);
-        txtPesquisa.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtPesquisaFocusGained(evt);
+        txtPesquisa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                txtPesquisaMousePressed(evt);
             }
         });
         txtPesquisa.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -199,6 +210,22 @@ public class VendaAbrir extends javax.swing.JInternalFrame {
             }
         });
 
+        rdbDescValor.setText("Valor");
+
+        rdbDescPorcentagem.setText("Porcentagem");
+
+        txtCliente.setBackground(new java.awt.Color(214, 217, 223));
+        txtCliente.setFont(new java.awt.Font("sansserif", 0, 15)); // NOI18N
+        txtCliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtCliente.setBorder(null);
+
+        jSeparator8.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        lblProdutosDisponiveis1.setFont(new java.awt.Font("Constantia", 0, 13)); // NOI18N
+        lblProdutosDisponiveis1.setForeground(new java.awt.Color(208, 92, 5));
+        lblProdutosDisponiveis1.setText("Cliente:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -215,12 +242,19 @@ public class VendaAbrir extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtPesquisa)
                             .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblProdutosDisponiveis1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtCliente)
+                            .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jSeparator1)
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 806, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -235,6 +269,10 @@ public class VendaAbrir extends javax.swing.JInternalFrame {
                         .addComponent(btnExcluirItem)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(rdbDescValor, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(rdbDescPorcentagem))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblTotalVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -254,28 +292,35 @@ public class VendaAbrir extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 806, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(lblData, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jdcData, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblData, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(jdcData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addComponent(lblSelecione)
                             .addComponent(lblProdutosDisponiveis, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblAlterarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(rdbPorId)
-                        .addComponent(rdbPorDescricao))
-                    .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblAlterarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(rdbPorId)
+                                .addComponent(rdbPorDescricao))
+                            .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblProdutosDisponiveis1)))
+                    .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblSelecione, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addComponent(lblProdutosDisponiveis)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -316,10 +361,16 @@ public class VendaAbrir extends javax.swing.JInternalFrame {
                                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnExcluirItem)
-                                .addGap(0, 40, Short.MAX_VALUE))
+                                .addGap(0, 42, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btnGerarVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnGerarVenda, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(rdbDescValor)
+                                            .addComponent(rdbDescPorcentagem))
+                                        .addGap(46, 46, 46)))))
                         .addContainerGap())))
         );
 
@@ -381,19 +432,12 @@ public class VendaAbrir extends javax.swing.JInternalFrame {
             int count;
             // Conta quantos itens serao adicionados
             count = tblProdutoVenda.getRowCount();
-            String DescontoString = txtDesconto.getText(); // pega o valor do item e tranforma numa string
 
             Venda v = new Venda();
-            v.setIdCliente(1);
+            v.setIdCliente(cliente.getId());
             v.setDataVenda(jdcData.getDate());
 
-            if ((DescontoString.isEmpty()) || DescontoString.equals(",")) {
-                v.setDesconto(0);
-            } else {
-                String descontoString = txtDesconto.getText(); // pega o valor do desconto
-                descontoString = descontoString.replaceAll("\\,", "."); // substitui virgula por ponto
-                v.setDesconto(Float.valueOf(descontoString)); // acrescenta o valor em float                
-            }
+            v.setDesconto(descontoFinal); // acrescenta o valor em float  
 
             String TotalString = lblVlTotalVenda.getText(); // pega o valor do total do pedido
             TotalString = TotalString.replaceAll("\\,", "."); // substitui virgula por ponto
@@ -465,24 +509,21 @@ public class VendaAbrir extends javax.swing.JInternalFrame {
 
         if (chave.isEmpty()) {
             preencherTabela(new ProdutoDAO().listar(Menu.getUsuario()));
-        } else {
-            if(rdbPorId.isSelected()){
-                preencherTabela(new ProdutoDAO().pesquisarPorId(Menu.getUsuario(), Integer.parseInt(chave)));
-            }else if(rdbPorDescricao.isSelected()){
-                preencherTabela(new ProdutoDAO().pesquisarPorDescricao(Menu.getUsuario(), chave));
-            }
+        } else if (rdbPorId.isSelected()) {
+            preencherTabela(new ProdutoDAO().pesquisarPorId(Menu.getUsuario(), Integer.parseInt(chave)));
+        } else if (rdbPorDescricao.isSelected()) {
+            preencherTabela(new ProdutoDAO().pesquisarPorDescricao(Menu.getUsuario(), chave));
         }
     }//GEN-LAST:event_txtPesquisaKeyReleased
-
-    private void txtPesquisaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPesquisaFocusGained
-
-        txtPesquisa.setText("");
-        txtPesquisa.setForeground(java.awt.Color.BLACK);
-    }//GEN-LAST:event_txtPesquisaFocusGained
 
     private void txtDescontoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescontoKeyReleased
         setTotalVenda();
     }//GEN-LAST:event_txtDescontoKeyReleased
+
+    private void txtPesquisaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPesquisaMousePressed
+        txtPesquisa.setText("");
+        txtPesquisa.setForeground(java.awt.Color.BLACK);
+    }//GEN-LAST:event_txtPesquisaMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -495,6 +536,7 @@ public class VendaAbrir extends javax.swing.JInternalFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
     private com.toedter.calendar.JDateChooser jdcData;
     private javax.swing.JLabel lblAlterarCliente;
     private javax.swing.JLabel lblData;
@@ -502,14 +544,18 @@ public class VendaAbrir extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblPesquisarPRoduto1;
     private javax.swing.JLabel lblPordutosIncVenda;
     private javax.swing.JLabel lblProdutosDisponiveis;
+    private javax.swing.JLabel lblProdutosDisponiveis1;
     private javax.swing.JLabel lblSelecione;
     private javax.swing.JLabel lblTotalVenda;
     private javax.swing.JLabel lblVlTotalVenda;
+    private javax.swing.JRadioButton rdbDescPorcentagem;
+    private javax.swing.JRadioButton rdbDescValor;
     private javax.swing.JRadioButton rdbPorDescricao;
     private javax.swing.JRadioButton rdbPorId;
     private javax.swing.JSpinner spQtd;
     private javax.swing.JTable tblProduto;
     private javax.swing.JTable tblProdutoVenda;
+    private javax.swing.JTextField txtCliente;
     private javax.swing.JTextField txtDesconto;
     private javax.swing.JTextField txtPesquisa;
     // End of variables declaration//GEN-END:variables
@@ -519,12 +565,17 @@ public class VendaAbrir extends javax.swing.JInternalFrame {
         this.setResizable(false);
         this.setClosable(true);
         this.setIconifiable(true);
-        
+
         ButtonGroup bg = new ButtonGroup();
         bg.add(rdbPorId);
         bg.add(rdbPorDescricao);
         rdbPorDescricao.setSelected(true);
-        
+
+        ButtonGroup bg2 = new ButtonGroup();
+        bg2.add(rdbDescValor);
+        bg2.add(rdbDescPorcentagem);
+        rdbDescValor.setSelected(true);
+
         configurarTabela();
     }
 
@@ -587,20 +638,16 @@ public class VendaAbrir extends javax.swing.JInternalFrame {
     public void setTotalVenda() {
         int count = tblProdutoVenda.getRowCount();
         float totalVenda = 0;
-
         String DescontoString = txtDesconto.getText(); // pega o valor do item e tranforma numa string
-
         for (int x = 0; x < count; x++) {
             String valorTotalvenda = (String) tblProdutoVenda.getValueAt(x, 4); // pega o valor do item e tranforma numa string
             valorTotalvenda = valorTotalvenda.replaceAll("\\,", "."); // substitui virgula por ponto
-            totalVenda += Float.valueOf(valorTotalvenda); // acrescenta o valor em float            
+            totalVenda += Float.valueOf(valorTotalvenda); // acrescenta o valor em float    
         }
 
         if ((DescontoString.isEmpty()) || DescontoString.equals(",")) {
             lblVlTotalVenda.setText(dm.format(totalVenda));
-
-        } else {
-
+        } else if (rdbDescValor.isSelected()) {
             DescontoString = DescontoString.replaceAll("\\,", "."); // substitui virgula por ponto
             float valorDescontoFloat = Float.valueOf(DescontoString); // acrescenta o valor em float   
 
@@ -608,6 +655,19 @@ public class VendaAbrir extends javax.swing.JInternalFrame {
                 lblVlTotalVenda.setText(dm.format(totalVenda));
             } else {
                 totalVenda -= valorDescontoFloat;
+                lblVlTotalVenda.setText(dm.format(totalVenda));
+                descontoFinal = valorDescontoFloat;
+            }
+        } else {
+            DescontoString = DescontoString.replaceAll("\\,", "."); // substitui virgula por ponto
+            float valorDescontoFloat = Float.valueOf(DescontoString); // acrescenta o valor em float   
+
+            if (valorDescontoFloat < 0 || valorDescontoFloat > 100) {
+                JOptionPane.showMessageDialog(null, "Valor de porcentagem não permitida !");
+                txtDesconto.setText("");
+            } else {
+                descontoFinal = (totalVenda / 100) * valorDescontoFloat;
+                totalVenda -= descontoFinal;
                 lblVlTotalVenda.setText(dm.format(totalVenda));
             }
         }
@@ -654,7 +714,7 @@ public class VendaAbrir extends javax.swing.JInternalFrame {
         Dimension d = this.getDesktopPane().getSize();
         this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
     }
-    
+
     private void configurarTabela() {
         DefaultTableModel m = new DefaultTableModel() {
             @Override
@@ -668,10 +728,10 @@ public class VendaAbrir extends javax.swing.JInternalFrame {
         m.addColumn("Preço");
 
         tblProduto.setModel(m);
-        
+
         tblProduto.getColumnModel().getColumn(0).setPreferredWidth(15);
         tblProduto.getColumnModel().getColumn(1).setPreferredWidth(165);
-        tblProduto.getColumnModel().getColumn(2).setPreferredWidth(15); 
+        tblProduto.getColumnModel().getColumn(2).setPreferredWidth(15);
         tblProduto.getColumnModel().getColumn(3).setPreferredWidth(15);
         DefaultTableCellRenderer esquerda = new DefaultTableCellRenderer();
         DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
@@ -682,18 +742,17 @@ public class VendaAbrir extends javax.swing.JInternalFrame {
         tblProduto.getColumnModel().getColumn(2).setCellRenderer(direita);
         tblProduto.getColumnModel().getColumn(3).setCellRenderer(direita);
     }
-    
+
     private void preencherTabela(List<Produto> lista) {
         configurarTabela();
         if (lista.size() > 0) {
             DefaultTableModel m = (DefaultTableModel) tblProduto.getModel();
             for (Produto p : lista) {
                 m.addRow(new Object[]{
-                    p.getId(), 
+                    p.getId(),
                     p.getDescricao(),
                     dm.format(p.getQtd()),
-                    dm.format(p.getPreco()),
-                });
+                    dm.format(p.getPreco()),});
             }
             tblProduto.setModel(m);
         }

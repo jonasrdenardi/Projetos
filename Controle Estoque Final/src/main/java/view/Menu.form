@@ -276,6 +276,7 @@
     <Container class="javax.swing.JDesktopPane" name="areaTrabalho">
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new util.JDesktopPanePersonalizado(&quot;fundo.png&quot;)"/>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
       </AuxValues>
 
       <Layout>

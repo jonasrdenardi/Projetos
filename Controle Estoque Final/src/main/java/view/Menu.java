@@ -274,7 +274,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jmiAbrirVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAbrirVendaActionPerformed
-        abrirFormulario(new VendaAbrir());
+        abrirFormulario(new VendaAbrirSelecCliente());
     }//GEN-LAST:event_jmiAbrirVendaActionPerformed
 
 
@@ -315,7 +315,7 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane areaTrabalho;
+    public static javax.swing.JDesktopPane areaTrabalho;
     private javax.swing.JMenuBar barraMenu;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
