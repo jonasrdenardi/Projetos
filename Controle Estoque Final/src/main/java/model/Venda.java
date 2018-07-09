@@ -58,4 +58,5 @@ public class Venda {
     public void setDesconto(float desconto) {
         this.desconto = desconto;
     }
+    
 }

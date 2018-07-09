@@ -5,7 +5,10 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
+import model.Cliente;
 import model.Usuario;
 import model.Venda;
 
@@ -51,6 +54,163 @@ public class VendaDAO {
 
         } finally {
             controller.Conexao.desconectar(con);
+        }
+    }
+    
+    //LISTAR TODOS OS REGISTROS DA TABELA
+    public List<Venda> listar(Usuario usuario){
+        try {
+            String SQL = "select * from db_controle_estoque.venda order by id";
+            
+            con = controller.Conexao.conectar(usuario);
+            cmd = con.prepareStatement(SQL);
+            
+            //retornar o resultado da consulta
+            ResultSet rs = cmd.executeQuery();
+            
+            //declarar uma lista dinamica para armazenar os resultados
+            List<Venda> resultado = new ArrayList<>();
+            
+            //percorrer os dados no resultset
+            //se rs.next() = true significa que dados foram retornados
+            while(rs.next()){
+                
+                //criar um objeto venda
+                Venda venda = new Venda();
+                venda.setId(rs.getInt("id"));
+                venda.setIdCliente(rs.getInt("id_cliente"));
+                venda.setDataVenda(rs.getDate("data_venda"));
+                venda.setDesconto(rs.getFloat("desconto"));
+                venda.setValor(rs.getFloat("valor"));
+                venda.setFg_ativo(rs.getBoolean("fg_ativo"));
+                
+                //adiciona a lista
+                resultado.add(venda);
+            }       
+            return resultado;
+            
+        } catch (Exception e) {
+            System.out.println("ERRO: " + e.getMessage());
+            return null;
+        }finally{
+            Conexao.desconectar(con);
+        }
+    }
+    
+    public List<Venda> pesquisarPorData(Usuario usuario, String data){
+        try {
+            String SQL = "select * from db_controle_estoque.venda where data_venda like ?";
+            
+            con = controller.Conexao.conectar(usuario);
+            cmd = con.prepareStatement(SQL);
+            cmd.setString(1, "%" + data + "%");
+            
+            //retornar o resultado da consulta
+            ResultSet rs = cmd.executeQuery();
+            
+            //declarar uma lista dinamica para armazenar os resultados
+            List<Venda> resultado = new ArrayList<>();
+            
+            //percorrer os dados no resultset
+            //se rs.next() = true significa que dados foram retornados
+            while(rs.next()){
+                
+                //criar um objeto venda
+                Venda venda = new Venda();
+                venda.setId(rs.getInt("id"));
+                venda.setIdCliente(rs.getInt("id_cliente"));
+                venda.setDataVenda(rs.getDate("data_venda"));
+                venda.setDesconto(rs.getFloat("desconto"));
+                venda.setValor(rs.getFloat("valor"));
+                venda.setFg_ativo(rs.getBoolean("fg_ativo"));
+                
+                //adiciona a lista
+                resultado.add(venda);
+            }       
+            return resultado;
+            
+        } catch (Exception e) {
+            System.out.println("ERRO: " + e.getMessage());
+            return null;
+        }finally{
+            Conexao.desconectar(con);
+        }
+    }
+    
+    public List<Venda> pesquisarPorId(Usuario usuario, int id){
+        try {
+            String SQL = "select * from db_controle_estoque.venda where id=?";
+            
+            con = controller.Conexao.conectar(usuario);
+            cmd = con.prepareStatement(SQL);
+            cmd.setInt(1, id);
+            
+            //retornar o resultado da consulta
+            ResultSet rs = cmd.executeQuery();
+            
+            //declarar uma lista dinamica para armazenar os resultados
+            List<Venda> resultado = new ArrayList<>();
+            
+            //percorrer os dados no resultset
+            //se rs.next() = true significa que dados foram retornados
+            while(rs.next()){
+                
+                //criar um objeto venda
+                Venda venda = new Venda();
+                venda.setId(rs.getInt("id"));
+                venda.setIdCliente(rs.getInt("id_cliente"));
+                venda.setDataVenda(rs.getDate("data_venda"));
+                venda.setDesconto(rs.getFloat("desconto"));
+                venda.setValor(rs.getFloat("valor"));
+                venda.setFg_ativo(rs.getBoolean("fg_ativo"));
+                
+                //adiciona a lista
+                resultado.add(venda);
+            }       
+            return resultado;
+            
+        } catch (Exception e) {
+            System.out.println("ERRO: " + e.getMessage());
+            return null;
+        }finally{
+            Conexao.desconectar(con);
+        }
+    }
+    
+    public Venda get(Usuario usuario, String id){
+        try {
+            String SQL = "select * from db_controle_estoque.venda where id=?";
+            
+            con = controller.Conexao.conectar(usuario);
+            cmd = con.prepareStatement(SQL);
+            cmd.setString(1, id);
+            
+            //retornar o resultado da consulta
+            ResultSet rs = cmd.executeQuery();
+            
+            //percorrer os dados no resultset
+            //se rs.next() = true significa que dados foram retornados
+            while(rs.next()){
+                
+                //criar um objeto venda
+                Venda venda = new Venda();
+                venda.setId(rs.getInt("id"));
+                venda.setIdCliente(rs.getInt("id_cliente"));
+                venda.setDataVenda(rs.getDate("data_venda"));
+                venda.setDesconto(rs.getFloat("desconto"));
+                venda.setValor(rs.getFloat("valor"));
+                venda.setFg_ativo(rs.getBoolean("fg_ativo"));
+                
+                //adiciona a lista
+                return venda;
+            }       
+            return null;
+            
+        } catch (Exception e) {
+            System.out.println("ERRO: " + e.getMessage());
+            return null;
+        }finally{
+            Conexao.desconectar(con);
         }
     }
 }

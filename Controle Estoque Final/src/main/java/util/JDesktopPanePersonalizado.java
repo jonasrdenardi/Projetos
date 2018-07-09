@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package util;
 
 import java.awt.Graphics;
@@ -11,10 +6,6 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.JDesktopPane;
 
-/**
- *
- * @author Rodrigo O Plotze
- */
 public class JDesktopPanePersonalizado extends JDesktopPane {
 
     private Image img;

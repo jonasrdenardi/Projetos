@@ -26,7 +26,7 @@ public class Menu extends javax.swing.JFrame {
         
         setVisible(true);
         // Se o usuário for root ou o diego mostra o menu administração
-        if (usuario.getNome().equals("pamela") || usuario.getNome().equals("root")) {
+        if (usuario.getNome().equals("cassia") || usuario.getNome().equals("root")) {
             menuAdministracao.setVisible(true);
         }
         
@@ -62,6 +62,8 @@ public class Menu extends javax.swing.JFrame {
         menuitemRelProdutos = new javax.swing.JMenuItem();
         jSeparator4 = new javax.swing.JPopupMenu.Separator();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jSeparator5 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -111,6 +113,7 @@ public class Menu extends javax.swing.JFrame {
         menuClientes.setText("Clientes");
         menuClientes.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
 
+        jmiCadasrtarCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK));
         jmiCadasrtarCliente.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         jmiCadasrtarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/cadastro_cliente.png"))); // NOI18N
         jmiCadasrtarCliente.setText("Cadastrar Cliente");
@@ -138,6 +141,7 @@ public class Menu extends javax.swing.JFrame {
         menuProdutos.setText("Produtos");
         menuProdutos.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
 
+        jmiCadastrarProduto.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_MASK));
         jmiCadastrarProduto.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         jmiCadastrarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/produto_cadastro.png"))); // NOI18N
         jmiCadastrarProduto.setText("Cadastrar Produto");
@@ -160,6 +164,7 @@ public class Menu extends javax.swing.JFrame {
         menuProdutos.add(jmiAlterarProduto);
         menuProdutos.add(jSeparator1);
 
+        jmiEstoque.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.ALT_MASK));
         jmiEstoque.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         jmiEstoque.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/cadastro_alterar_cliente_pet.png"))); // NOI18N
         jmiEstoque.setText("Estoque");
@@ -174,7 +179,10 @@ public class Menu extends javax.swing.JFrame {
 
         jmVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/venda.png"))); // NOI18N
         jmVenda.setText("Venda");
+        jmVenda.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
 
+        jmiAbrirVenda.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.ALT_MASK));
+        jmiAbrirVenda.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         jmiAbrirVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/abrir_venda.png"))); // NOI18N
         jmiAbrirVenda.setText("Abrir Venda");
         jmiAbrirVenda.addActionListener(new java.awt.event.ActionListener() {
@@ -214,6 +222,17 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         jmiRelEstoque.add(jMenuItem1);
+        jmiRelEstoque.add(jSeparator5);
+
+        jMenuItem2.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/adm_relatorio_vendas.png"))); // NOI18N
+        jMenuItem2.setText("Vendas");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jmiRelEstoque.add(jMenuItem2);
 
         menuAdministracao.add(jmiRelEstoque);
 
@@ -277,6 +296,10 @@ public class Menu extends javax.swing.JFrame {
         abrirFormulario(new VendaAbrirSelecCliente());
     }//GEN-LAST:event_jmiAbrirVendaActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        abrirFormulario(new RelatorioVenda());
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -318,10 +341,12 @@ public class Menu extends javax.swing.JFrame {
     public static javax.swing.JDesktopPane areaTrabalho;
     private javax.swing.JMenuBar barraMenu;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;
+    private javax.swing.JPopupMenu.Separator jSeparator5;
     private javax.swing.JPopupMenu.Separator jSeparator6;
     private javax.swing.JMenu jmVenda;
     private javax.swing.JMenuItem jmiAbrirVenda;
@@ -341,7 +366,7 @@ public class Menu extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void configurarFormulario(){
-        this.setTitle("Menu");
+        this.setTitle("Prilly Store");
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
     

@@ -36,6 +36,8 @@ public class RelatorioCliente extends javax.swing.JInternalFrame {
         lblRelatorioClientes = new javax.swing.JLabel();
         btnImprimir = new javax.swing.JButton();
 
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icone.png"))); // NOI18N
+
         tabResultados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
