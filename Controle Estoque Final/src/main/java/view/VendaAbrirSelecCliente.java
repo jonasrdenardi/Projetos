@@ -38,6 +38,10 @@ public class VendaAbrirSelecCliente extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabCliente = new javax.swing.JTable();
 
+        setIconifiable(true);
+        setResizable(true);
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icone.png"))); // NOI18N
+
         txtPesquisa.setBackground(new java.awt.Color(214, 217, 223));
         txtPesquisa.setFont(new java.awt.Font("sansserif", 0, 15)); // NOI18N
         txtPesquisa.setForeground(new java.awt.Color(153, 153, 153));
