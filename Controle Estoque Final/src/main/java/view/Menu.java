@@ -125,6 +125,7 @@ public class Menu extends javax.swing.JFrame {
         menuClientes.add(jmiCadasrtarCliente);
         menuClientes.add(jSeparator3);
 
+        jmiAlterarCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         jmiAlterarCliente.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         jmiAlterarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/cadastro.png"))); // NOI18N
         jmiAlterarCliente.setText("Alterar Cliente");
@@ -153,6 +154,7 @@ public class Menu extends javax.swing.JFrame {
         menuProdutos.add(jmiCadastrarProduto);
         menuProdutos.add(jSeparator6);
 
+        jmiAlterarProduto.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         jmiAlterarProduto.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         jmiAlterarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/produto_cadastro_alterar.png"))); // NOI18N
         jmiAlterarProduto.setText("Alterar Produto");
@@ -366,7 +368,7 @@ public class Menu extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void configurarFormulario(){
-        this.setTitle("Prilly Store");
+        this.setTitle("Home");
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
     

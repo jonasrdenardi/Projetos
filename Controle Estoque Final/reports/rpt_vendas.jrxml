@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rpt_vendas" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="602057c6-8dd1-4fef-ac10-9ba1d850fcd9">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="189"/>
+	<property name="ireport.y" value="48"/>
 	<queryString>
 		<![CDATA[SELECT
 c.id as 'id_cliente', c.nome, v.id, v.data_venda, v.desconto, v.valor, v.fg_ativo
@@ -46,7 +46,7 @@ ORDER BY v.id;]]>
 	<pageHeader>
 		<band height="50" splitType="Stretch">
 			<staticText>
-				<reportElement mode="Opaque" x="0" y="0" width="555" height="50" backcolor="#FDEAD3" uuid="44316ce2-2baa-4a84-9cf8-fae7f63b233b"/>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="50" backcolor="#E6E7EB" uuid="44316ce2-2baa-4a84-9cf8-fae7f63b233b"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="16" isBold="true"/>
 				</textElement>

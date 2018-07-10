@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rpt_produtos" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f32e84ff-9b7b-4377-a0da-d31edf341d49">
 	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="13"/>
-	<property name="ireport.y" value="240"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="210"/>
 	<queryString>
 		<![CDATA[SELECT * FROM db_controle_estoque.produto;]]>
 	</queryString>
@@ -41,7 +41,7 @@
 	<pageHeader>
 		<band height="50" splitType="Stretch">
 			<staticText>
-				<reportElement mode="Opaque" x="0" y="0" width="555" height="50" backcolor="#FDEAD3" uuid="72ebc148-aa57-4147-9167-13e401003bf9"/>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="50" backcolor="#E6E7EB" uuid="72ebc148-aa57-4147-9167-13e401003bf9"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="16" isBold="true"/>
 				</textElement>

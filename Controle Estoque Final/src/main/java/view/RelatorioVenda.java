@@ -35,8 +35,9 @@ public class RelatorioVenda extends javax.swing.JInternalFrame {
         jSeparator6 = new javax.swing.JSeparator();
         rbDescricao = new javax.swing.JRadioButton();
         rbId = new javax.swing.JRadioButton();
-        lblRelatorioClientes = new javax.swing.JLabel();
+        lblRelatorioVenda = new javax.swing.JLabel();
         btnImprimir = new javax.swing.JButton();
+        btnDetalhes = new javax.swing.JButton();
 
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icone.png"))); // NOI18N
 
@@ -77,10 +78,10 @@ public class RelatorioVenda extends javax.swing.JInternalFrame {
 
         rbId.setText("ID");
 
-        lblRelatorioClientes.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
-        lblRelatorioClientes.setForeground(new java.awt.Color(208, 92, 5));
-        lblRelatorioClientes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblRelatorioClientes.setText("RELATÓRIO VENDA");
+        lblRelatorioVenda.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
+        lblRelatorioVenda.setForeground(new java.awt.Color(208, 92, 5));
+        lblRelatorioVenda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblRelatorioVenda.setText("RELATÓRIO DE VENDAS");
 
         btnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imprimir1.png"))); // NOI18N
         btnImprimir.setBorder(null);
@@ -92,6 +93,19 @@ public class RelatorioVenda extends javax.swing.JInternalFrame {
         btnImprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnImprimirActionPerformed(evt);
+            }
+        });
+
+        btnDetalhes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/detalhes1.png"))); // NOI18N
+        btnDetalhes.setBorder(null);
+        btnDetalhes.setBorderPainted(false);
+        btnDetalhes.setContentAreaFilled(false);
+        btnDetalhes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDetalhes.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/detalhes2.png"))); // NOI18N
+        btnDetalhes.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/detalhes2.png"))); // NOI18N
+        btnDetalhes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDetalhesActionPerformed(evt);
             }
         });
 
@@ -110,19 +124,22 @@ public class RelatorioVenda extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtPesquisa)
                             .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(171, 171, 171))
+                        .addGap(171, 327, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblRelatorioClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblRelatorioVenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jspResultados, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addContainerGap())))
-            .addComponent(btnImprimir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(btnDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnImprimir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblRelatorioClientes)
+                .addComponent(lblRelatorioVenda)
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -135,8 +152,10 @@ public class RelatorioVenda extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jspResultados, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
@@ -173,12 +192,19 @@ public class RelatorioVenda extends javax.swing.JInternalFrame {
         ).show();
     }//GEN-LAST:event_btnImprimirActionPerformed
 
+    private void btnDetalhesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetalhesActionPerformed
+        
+        
+        
+    }//GEN-LAST:event_btnDetalhesActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDetalhes;
     private javax.swing.JButton btnImprimir;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JScrollPane jspResultados;
-    private javax.swing.JLabel lblRelatorioClientes;
+    private javax.swing.JLabel lblRelatorioVenda;
     private javax.swing.JRadioButton rbDescricao;
     private javax.swing.JRadioButton rbId;
     private javax.swing.JTable tabResultados;
