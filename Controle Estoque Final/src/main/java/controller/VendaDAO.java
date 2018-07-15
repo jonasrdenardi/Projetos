@@ -178,18 +178,19 @@ public class VendaDAO {
         }
     }
     
-    public List<Retorno> pesquisarClienteVendaPorData(Usuario usuario, java.util.Date data) {
+    public List<Retorno> pesquisarClienteVendaPorData(Usuario usuario, java.util.Date dataInicio, java.util.Date dataFim) {
         try {
             String SQL = "SELECT v.id as 'id_venda', c.nome, v.data_venda, v.desconto, v.valor\n"
                        + "FROM venda as v\n"
                        + "INNER JOIN cliente as c ON (v.id_cliente = c.id)\n"
-                       + "WHERE data_venda = ?\n"
+                       + "WHERE data_venda BETWEEN ? AND ?\n"
                        + "ORDER BY v.data_venda desc";
 
             con = controller.Conexao.conectar(usuario);
             cmd = con.prepareStatement(SQL);
 
-            cmd.setDate(1,  new Date(data.getTime()));
+            cmd.setDate(1,  new Date(dataInicio.getTime()));
+            cmd.setDate(2,  new Date(dataFim.getTime()));
             //retornar o resultado da consulta
             ResultSet rs = cmd.executeQuery();
 

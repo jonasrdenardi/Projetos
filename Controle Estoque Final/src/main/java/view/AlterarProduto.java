@@ -1,6 +1,7 @@
 package view;
 
 import controller.ProdutoDAO;
+import java.beans.PropertyVetoException;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;

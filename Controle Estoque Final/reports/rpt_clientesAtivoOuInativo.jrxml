@@ -7,10 +7,11 @@
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[SELECT *
+		<![CDATA[SELECT id,nome,telefone,cpf, if(fg_ativo = true,'Sim','Não') as 'fg_ativo'
 FROM db_controle_estoque.cliente
 WHERE fg_ativo = $P!{PARAM}
-ORDER BY nome;]]>
+ORDER BY nome;
+]]>
 	</queryString>
 	<field name="id" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -24,7 +25,7 @@ ORDER BY nome;]]>
 	<field name="cpf" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="fg_ativo" class="java.lang.Boolean">
+	<field name="fg_ativo" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<background>

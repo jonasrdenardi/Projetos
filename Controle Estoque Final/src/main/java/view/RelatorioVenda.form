@@ -73,7 +73,6 @@
                   </Group>
                   <Component id="jpData" alignment="0" min="-2" pref="64" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jspResultados" pref="390" max="32767" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -118,7 +117,7 @@
         <Property name="text" type="java.lang.String" value="Data"/>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="rbDataMouseClicked"/>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="rbDataMousePressed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="rbId">
@@ -129,7 +128,7 @@
         <Property name="text" type="java.lang.String" value="ID Venda"/>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="rbIdMouseClicked"/>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="rbIdMousePressed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblRelatorioVenda">
@@ -200,7 +199,7 @@
         <Property name="text" type="java.lang.String" value="Nome"/>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="rbNomeMouseClicked"/>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="rbNomeMousePressed"/>
       </Events>
     </Component>
     <Container class="javax.swing.JPanel" name="jpPesquisa">

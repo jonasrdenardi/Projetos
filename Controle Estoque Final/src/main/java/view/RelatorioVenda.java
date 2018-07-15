@@ -75,16 +75,16 @@ public class RelatorioVenda extends javax.swing.JInternalFrame {
         rbData.setForeground(new java.awt.Color(101, 96, 168));
         rbData.setText("Data");
         rbData.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                rbDataMouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                rbDataMousePressed(evt);
             }
         });
 
         rbId.setForeground(new java.awt.Color(101, 96, 168));
         rbId.setText("ID Venda");
         rbId.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                rbIdMouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                rbIdMousePressed(evt);
             }
         });
 
@@ -122,8 +122,8 @@ public class RelatorioVenda extends javax.swing.JInternalFrame {
         rbNome.setForeground(new java.awt.Color(101, 96, 168));
         rbNome.setText("Nome");
         rbNome.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                rbNomeMouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                rbNomeMousePressed(evt);
             }
         });
 
@@ -260,7 +260,6 @@ public class RelatorioVenda extends javax.swing.JInternalFrame {
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(2, 2, 2))
                     .addComponent(jpData, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
                 .addComponent(jspResultados, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -298,30 +297,53 @@ public class RelatorioVenda extends javax.swing.JInternalFrame {
         HashMap param = new HashMap();
         String nomeRelatorio = "";
 
-        /*if (txtPesquisa.getText().isEmpty() || txtPesquisa.getText().equalsIgnoreCase("Digite sua pesquisa aqui!")) {
-            new Relatorio(
-                    "rpt_vendas", //todas as vendas
-                    Conexao.conectar(Menu.getUsuario()), //conexão com o sgbd
-                    null //parâmetros
-            ).show();
-        } else {*/
-            if (rbId.isSelected()) {
+        if (rbId.isSelected()) {
+            if (txtPesquisa.getText().isEmpty() || txtPesquisa.getText().equalsIgnoreCase("Digite sua pesquisa aqui!")) {
+                new Relatorio(
+                        "rpt_vendas", //todas as vendas
+                        Conexao.conectar(Menu.getUsuario()), //conexão com o sgbd
+                        null //parâmetros
+                ).show();
+            } else {
                 param.put("PARAM", Integer.valueOf(txtPesquisa.getText()));
                 nomeRelatorio = "rpt_vendasPesquisaPorIdVenda";
-            } else if (rbData.isSelected()) {
+                new Relatorio(
+                        nomeRelatorio, //nome do relatório
+                        Conexao.conectar(Menu.getUsuario()), //conexão com o sgbd
+                        param //parâmetros
+                ).show();
+            }
+        } else if (rbData.isSelected()) {
+            if (jdcData1.getDate() == null || jdcData2.getDate() == null) {
+                JOptionPane.showMessageDialog(null, "Preencha as datas corretamente!", "Erro", JOptionPane.WARNING_MESSAGE);
+            } else {
                 param.put("PARAM", new Date(jdcData1.getDate().getTime()));
                 param.put("PARAM2", new Date(jdcData2.getDate().getTime()));
-                nomeRelatorio = "rpt_vendasPesquisaPorDuasDatas";
-            } else if (rbNome.isSelected()) {
+                nomeRelatorio = "rpt_vendasPesquisaPorData";
+                new Relatorio(
+                        nomeRelatorio, //nome do relatório
+                        Conexao.conectar(Menu.getUsuario()), //conexão com o sgbd
+                        param //parâmetros
+                ).show();
+            }
+        } else if (rbNome.isSelected()) {
+            if (txtPesquisa.getText().isEmpty() || txtPesquisa.getText().equalsIgnoreCase("Digite sua pesquisa aqui!")) {
+                new Relatorio(
+                        "rpt_vendas", //todas as vendas
+                        Conexao.conectar(Menu.getUsuario()), //conexão com o sgbd
+                        null //parâmetros
+                ).show();
+            } else {
                 param.put("PARAM", txtPesquisa.getText());
                 nomeRelatorio = "rpt_vendasPesquisaPorNome";
+                new Relatorio(
+                        nomeRelatorio, //nome do relatório
+                        Conexao.conectar(Menu.getUsuario()), //conexão com o sgbd
+                        param //parâmetros
+                ).show();
             }
-            new Relatorio(
-                    nomeRelatorio, //nome do relatório
-                    Conexao.conectar(Menu.getUsuario()), //conexão com o sgbd
-                    param //parâmetros
-            ).show();
-        //}
+        }
+
     }//GEN-LAST:event_btnImprimirActionPerformed
 
     private void btnDetalhesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetalhesActionPerformed
@@ -343,29 +365,42 @@ public class RelatorioVenda extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_btnDetalhesActionPerformed
 
-    private void rbNomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbNomeMouseClicked
-        jpData.setVisible(false);
-        jpPesquisa.setVisible(true);
-    }//GEN-LAST:event_rbNomeMouseClicked
-
-    private void rbDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbDataMouseClicked
-        jpData.setVisible(true);
-        jpPesquisa.setVisible(false);
-    }//GEN-LAST:event_rbDataMouseClicked
-
-    private void rbIdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbIdMouseClicked
-        jpData.setVisible(false);
-        jpPesquisa.setVisible(true);
-    }//GEN-LAST:event_rbIdMouseClicked
-
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
-        if (jdcData1.getDate() == null) {
-            JOptionPane.showMessageDialog(null, "Preencha a data corretamente!", "Erro", JOptionPane.WARNING_MESSAGE);
+        if (jdcData1.getDate() == null || jdcData2.getDate() == null) {
+            JOptionPane.showMessageDialog(null, "Preencha as datas corretamente!", "Erro", JOptionPane.WARNING_MESSAGE);
         } else {
-            retornos = new VendaDAO().pesquisarClienteVendaPorData(Menu.getUsuario(), jdcData1.getDate());
+            retornos = new VendaDAO().pesquisarClienteVendaPorData(Menu.getUsuario(), jdcData1.getDate(), jdcData2.getDate());
             preencherTabela();
         }
     }//GEN-LAST:event_btnOkActionPerformed
+
+    private void rbNomeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbNomeMousePressed
+        jpData.setVisible(false);
+        jpPesquisa.setVisible(true);
+        txtPesquisa.setText("Digite sua pesquisa aqui!");
+        txtPesquisa.setForeground(new java.awt.Color(153, 153, 153));
+        retornos = new VendaDAO().listarClienteVenda(Menu.getUsuario());
+        preencherTabela();
+
+    }//GEN-LAST:event_rbNomeMousePressed
+
+    private void rbDataMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbDataMousePressed
+        jpData.setVisible(true);
+        jpPesquisa.setVisible(false);
+        jdcData1.setDate(null);
+        jdcData2.setDate(null);
+        retornos = new VendaDAO().listarClienteVenda(Menu.getUsuario());
+        preencherTabela();
+    }//GEN-LAST:event_rbDataMousePressed
+
+    private void rbIdMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbIdMousePressed
+        jpData.setVisible(false);
+        jpPesquisa.setVisible(true);
+        txtPesquisa.setText("Digite sua pesquisa aqui!");
+        txtPesquisa.setForeground(new java.awt.Color(153, 153, 153));
+        retornos = new VendaDAO().listarClienteVenda(Menu.getUsuario());
+        preencherTabela();
+    }//GEN-LAST:event_rbIdMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -7,7 +7,7 @@
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[SELECT *
+		<![CDATA[SELECT id,descricao,qtd,preco_compra,preco,vencimento,if(fg_ativo = true,'Sim','Não') as 'fg_ativo'
 FROM db_controle_estoque.produto
 WHERE fg_ativo = $P!{PARAM}
 ORDER BY descricao;]]>
@@ -30,7 +30,7 @@ ORDER BY descricao;]]>
 	<field name="vencimento" class="java.sql.Date">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="fg_ativo" class="java.lang.Boolean">
+	<field name="fg_ativo" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<variable name="TotalEstoque" class="java.lang.Double" calculation="Sum">
