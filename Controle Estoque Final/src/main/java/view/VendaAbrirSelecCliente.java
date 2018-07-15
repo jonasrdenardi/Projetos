@@ -30,7 +30,6 @@ public class VendaAbrirSelecCliente extends javax.swing.JInternalFrame {
 
         txtPesquisa = new javax.swing.JTextField();
         lblSelecione = new javax.swing.JLabel();
-        btnConfirmar = new javax.swing.JButton();
         rdbPorId = new javax.swing.JRadioButton();
         rdbPorDescricao = new javax.swing.JRadioButton();
         lblAlterarCliente = new javax.swing.JLabel();
@@ -60,22 +59,17 @@ public class VendaAbrirSelecCliente extends javax.swing.JInternalFrame {
         });
 
         lblSelecione.setFont(new java.awt.Font("Constantia", 0, 13)); // NOI18N
-        lblSelecione.setForeground(new java.awt.Color(208, 92, 5));
+        lblSelecione.setForeground(new java.awt.Color(101, 96, 168));
         lblSelecione.setText("Pesquise o Cliente e clique 2x para iniciar um Venda");
 
-        btnConfirmar.setText("Confirmar");
-        btnConfirmar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConfirmarActionPerformed(evt);
-            }
-        });
-
+        rdbPorId.setForeground(new java.awt.Color(101, 96, 168));
         rdbPorId.setText("ID");
 
+        rdbPorDescricao.setForeground(new java.awt.Color(101, 96, 168));
         rdbPorDescricao.setText("Descrição");
 
         lblAlterarCliente.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
-        lblAlterarCliente.setForeground(new java.awt.Color(208, 92, 5));
+        lblAlterarCliente.setForeground(new java.awt.Color(101, 96, 168));
         lblAlterarCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAlterarCliente.setText("SELECIONAR CLIENTE");
 
@@ -93,6 +87,11 @@ public class VendaAbrirSelecCliente extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tabCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabClienteMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabCliente);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -117,10 +116,6 @@ public class VendaAbrirSelecCliente extends javax.swing.JInternalFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 730, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(330, 330, 330)
-                .addComponent(btnConfirmar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,9 +133,7 @@ public class VendaAbrirSelecCliente extends javax.swing.JInternalFrame {
                 .addComponent(lblSelecione, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnConfirmar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
@@ -159,34 +152,35 @@ public class VendaAbrirSelecCliente extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_txtPesquisaKeyReleased
 
-    private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
-        // Pega o indice da linha selecionada
-        int indiceLinha = tabCliente.getSelectedRow();
-        Cliente cliente = new Cliente();
-
-        if (indiceLinha != -1) {
-            cliente.setId((int) tabCliente.getValueAt(indiceLinha, 0));
-            cliente.setNome((String) tabCliente.getValueAt(indiceLinha, 1));
-
-            VendaAbrir jiVendaAbrir = new VendaAbrir(cliente);
-            Menu.areaTrabalho.add(jiVendaAbrir);
-            jiVendaAbrir.setVisible(true);
-            jiVendaAbrir.setPosicao();  // Centraliza a Tela Interna
-            this.dispose();
-        } else {
-            JOptionPane.showMessageDialog(null, "Selecione um cliente!");
-        }
-
-    }//GEN-LAST:event_btnConfirmarActionPerformed
-
     private void txtPesquisaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPesquisaMousePressed
         txtPesquisa.setText("");
         txtPesquisa.setForeground(java.awt.Color.BLACK);
     }//GEN-LAST:event_txtPesquisaMousePressed
 
+    private void tabClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabClienteMouseClicked
+
+        if (evt.getClickCount() == 2) {
+            int indiceLinha = tabCliente.getSelectedRow();
+            Cliente cliente = new Cliente();
+
+            if (indiceLinha != -1) {
+                cliente.setId((int) tabCliente.getValueAt(indiceLinha, 0));
+                cliente.setNome((String) tabCliente.getValueAt(indiceLinha, 1));
+
+                VendaAbrir jiVendaAbrir = new VendaAbrir(cliente);
+                Menu.areaTrabalho.add(jiVendaAbrir);
+                jiVendaAbrir.setVisible(true);
+                jiVendaAbrir.setPosicao();  // Centraliza a Tela Interna
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Selecione um cliente!");
+            }
+        }
+
+    }//GEN-LAST:event_tabClienteMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnConfirmar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JLabel lblAlterarCliente;
@@ -221,14 +215,12 @@ public class VendaAbrirSelecCliente extends javax.swing.JInternalFrame {
         m.addColumn("Nome");
         m.addColumn("Telefone");
         m.addColumn("CPF");
-        m.addColumn("Ativo");
         tabCliente.setModel(m);
 
         tabCliente.getColumnModel().getColumn(0).setPreferredWidth(15);
         tabCliente.getColumnModel().getColumn(1).setPreferredWidth(165);
         tabCliente.getColumnModel().getColumn(2).setPreferredWidth(50);
         tabCliente.getColumnModel().getColumn(3).setPreferredWidth(50);
-        tabCliente.getColumnModel().getColumn(4).setPreferredWidth(15);
         DefaultTableCellRenderer esquerda = new DefaultTableCellRenderer();
         DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
         DefaultTableCellRenderer direita = new DefaultTableCellRenderer();
@@ -237,7 +229,6 @@ public class VendaAbrirSelecCliente extends javax.swing.JInternalFrame {
         direita.setHorizontalAlignment(SwingConstants.RIGHT);
         tabCliente.getColumnModel().getColumn(2).setCellRenderer(esquerda);
         tabCliente.getColumnModel().getColumn(3).setCellRenderer(esquerda);
-        tabCliente.getColumnModel().getColumn(4).setCellRenderer(centralizado);
     }
 
     private void preencherTabela(List<Cliente> lista) {
@@ -245,13 +236,14 @@ public class VendaAbrirSelecCliente extends javax.swing.JInternalFrame {
         if (lista.size() > 0) {
             DefaultTableModel m = (DefaultTableModel) tabCliente.getModel();
             for (Cliente c : lista) {
-                m.addRow(new Object[]{
-                    c.getId(),
-                    c.getNome(),
-                    c.getTelefone(),
-                    c.getCpf(),
-                    (c.getFg_ativo() == true) ? "Sim" : "Não"
-                });
+                if (c.getFg_ativo() == true) {
+                    m.addRow(new Object[]{
+                        c.getId(),
+                        c.getNome(),
+                        c.getTelefone(),
+                        c.getCpf()
+                    });
+                }
             }
             tabCliente.setModel(m);
         }

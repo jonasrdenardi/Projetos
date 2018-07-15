@@ -2,24 +2,22 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rpt_vendas" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="602057c6-8dd1-4fef-ac10-9ba1d850fcd9">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="48"/>
+	<property name="ireport.y" value="93"/>
 	<queryString>
 		<![CDATA[SELECT
-c.id as 'id_cliente', c.nome, v.id, v.data_venda, v.desconto, v.valor, v.fg_ativo
+c.id as 'id_cliente', c.nome, v.id as 'id_venda', v.data_venda, v.desconto, v.valor, v.fg_ativo
 
 FROM
 	venda as v
 INNER JOIN
-	cliente as c ON v.id_cliente = c.id
-ORDER BY v.id;]]>
+	cliente as c ON c.id = v.id_cliente
+ORDER BY c.nome;]]>
 	</queryString>
 	<field name="id_cliente" class="java.lang.Integer"/>
 	<field name="nome" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="id" class="java.lang.Integer">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
+	<field name="id_venda" class="java.lang.Integer"/>
 	<field name="data_venda" class="java.sql.Date">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
@@ -78,13 +76,6 @@ ORDER BY v.id;]]>
 				<text><![CDATA[DATA DA VENDA]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="219" y="18" width="52" height="20" uuid="8c9abe9e-8cb9-413a-9d3f-fe64f42258ee"/>
-				<textElement textAlignment="Center">
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[ID VENDA]]></text>
-			</staticText>
-			<staticText>
 				<reportElement x="380" y="18" width="67" height="20" uuid="fa757582-197c-4d6f-9b7d-9afd01ff22d8"/>
 				<textElement textAlignment="Center">
 					<font isBold="true"/>
@@ -97,6 +88,13 @@ ORDER BY v.id;]]>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[VALOR DA VENDA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="220" y="18" width="52" height="20" uuid="6f517073-b3b0-4fa1-a179-249861a9538d"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID VENDA]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -112,12 +110,7 @@ ORDER BY v.id;]]>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="219" y="10" width="52" height="20" uuid="de6943dd-22db-4cfb-952f-7964c609e005"/>
-				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
-			</textField>
-			<textField>
+			<textField pattern="dd/MM/yyyy">
 				<reportElement x="282" y="10" width="88" height="20" uuid="4dab5f4c-e8cf-4758-a117-d2d24529a5a5"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{data_venda}]]></textFieldExpression>
@@ -131,6 +124,11 @@ ORDER BY v.id;]]>
 				<reportElement x="459" y="10" width="96" height="20" uuid="c30c9957-d399-40c1-b54b-27da0473e2c8"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{valor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="220" y="10" width="52" height="20" uuid="c4e6c78f-33f0-43ab-80a0-d958b7aa2bb7"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{id_venda}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

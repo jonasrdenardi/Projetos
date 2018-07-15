@@ -112,7 +112,7 @@ public class ClienteDAO {
     //LISTAR TODOS OS REGISTROS DA TABELA
     public List<Cliente> listar(Usuario usuario){
         try {
-            String SQL = "select * from db_controle_estoque.cliente order by id";
+            String SQL = "select * from db_controle_estoque.cliente order by nome";
             
             con = controller.Conexao.conectar(usuario);
             cmd = con.prepareStatement(SQL);
@@ -150,7 +150,7 @@ public class ClienteDAO {
     
     public List<Cliente> pesquisarPorNome(Usuario usuario, String descricao){
         try {
-            String SQL = "select * from db_controle_estoque.cliente where nome like ?";
+            String SQL = "select * from db_controle_estoque.cliente where nome like ? order by nome";
             
             con = controller.Conexao.conectar(usuario);
             cmd = con.prepareStatement(SQL);
@@ -189,7 +189,7 @@ public class ClienteDAO {
     
     public List<Cliente> pesquisarPorId(Usuario usuario, int id){
         try {
-            String SQL = "select * from db_controle_estoque.cliente where id=?";
+            String SQL = "select * from db_controle_estoque.cliente where id=? order by nome";
             
             con = controller.Conexao.conectar(usuario);
             cmd = con.prepareStatement(SQL);
@@ -228,7 +228,7 @@ public class ClienteDAO {
     
     public Cliente get(Usuario usuario, String id){
         try {
-            String SQL = "select * from db_controle_estoque.cliente where id=?";
+            String SQL = "select * from db_controle_estoque.cliente where id=? order by nome";
             
             con = controller.Conexao.conectar(usuario);
             cmd = con.prepareStatement(SQL);

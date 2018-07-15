@@ -24,14 +24,19 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="0" pref="199" max="32767" attributes="0"/>
+              <Component id="jpFormulario" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="213" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <Component id="lblAlterarProduto" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="lblAlterarProduto" max="32767" attributes="0"/>
-                  </Group>
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                       <Component id="rbId" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="rbDescricao" min="-2" max="-2" attributes="0"/>
@@ -42,20 +47,18 @@
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
+                  <Component id="jspResultados" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="lblSelecione" min="-2" pref="315" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="rbTodos" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblSelecione" max="32767" attributes="0"/>
-                          <Component id="jspResultados" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="rbAtivos" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="rbInativos" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="137" max="-2" attributes="0"/>
-              <Component id="jpFormulario" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="137" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -64,7 +67,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Component id="lblAlterarProduto" min="-2" pref="32" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="103" alignment="1" groupAlignment="3" attributes="0">
                       <Component id="rbId" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -73,10 +76,15 @@
                   </Group>
                   <Component id="jSeparator6" alignment="1" min="-2" pref="1" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="lblSelecione" min="-2" pref="17" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblSelecione" alignment="3" min="-2" pref="17" max="-2" attributes="0"/>
+                  <Component id="rbTodos" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="rbAtivos" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="rbInativos" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jspResultados" pref="47" max="32767" attributes="0"/>
+              <Component id="jspResultados" pref="51" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jpFormulario" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -91,7 +99,7 @@
           <Font name="Constantia" size="13" style="0"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="5" green="5c" red="d0" type="rgb"/>
+          <Color blue="a8" green="60" red="65" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Pesquise e clique 2x no produto para efetuar a altera&#xe7;&#xe3;o"/>
       </Properties>
@@ -242,7 +250,7 @@
               <Font name="Constantia" size="15" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="5" green="5c" red="d0" type="rgb"/>
+              <Color blue="a8" green="60" red="65" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Pre&#xe7;o"/>
@@ -343,7 +351,7 @@
               <Font name="Constantia" size="15" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="5" green="5c" red="d0" type="rgb"/>
+              <Color blue="a8" green="60" red="65" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Descri&#xe7;&#xe3;o"/>
@@ -381,7 +389,7 @@
               <Font name="Constantia" size="15" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="5" green="5c" red="d0" type="rgb"/>
+              <Color blue="a8" green="60" red="65" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Quantidade"/>
@@ -415,7 +423,7 @@
               <Font name="Constantia" size="15" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="5" green="5c" red="d0" type="rgb"/>
+              <Color blue="a8" green="60" red="65" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Cadastro Ativo?"/>
@@ -427,7 +435,7 @@
               <Font name="Constantia" size="15" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="5" green="5c" red="d0" type="rgb"/>
+              <Color blue="a8" green="60" red="65" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Vencimento"/>
@@ -441,7 +449,7 @@
               <Font name="Constantia" size="15" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="5" green="5c" red="d0" type="rgb"/>
+              <Color blue="a8" green="60" red="65" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Pre&#xe7;o Compra"/>
@@ -481,7 +489,7 @@
           <Font name="Yu Gothic UI Semibold" size="24" style="0"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="5" green="5c" red="d0" type="rgb"/>
+          <Color blue="a8" green="60" red="65" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="ALTERAR PRODUTO"/>
@@ -489,11 +497,17 @@
     </Component>
     <Component class="javax.swing.JRadioButton" name="rbId">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="a8" green="60" red="65" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="ID"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JRadioButton" name="rbDescricao">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="a8" green="60" red="65" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Descri&#xe7;&#xe3;o"/>
       </Properties>
     </Component>
@@ -588,5 +602,35 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JRadioButton" name="rbTodos">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="a8" green="60" red="65" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Todos"/>
+      </Properties>
+      <Events>
+        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="rbTodosStateChanged"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="rbAtivos">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="a8" green="60" red="65" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Ativos"/>
+      </Properties>
+      <Events>
+        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="rbAtivosStateChanged"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="rbInativos">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="a8" green="60" red="65" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Inativos"/>
+      </Properties>
+    </Component>
   </SubComponents>
 </Form>

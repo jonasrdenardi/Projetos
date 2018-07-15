@@ -169,7 +169,7 @@ public class Menu extends javax.swing.JFrame {
         jmiEstoque.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.ALT_MASK));
         jmiEstoque.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         jmiEstoque.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/cadastro_alterar_cliente_pet.png"))); // NOI18N
-        jmiEstoque.setText("Estoque");
+        jmiEstoque.setText("Alterar Estoque");
         jmiEstoque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmiEstoqueActionPerformed(evt);
@@ -275,11 +275,11 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiAlterarProdutoActionPerformed
 
     private void menuitemRelProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuitemRelProdutosActionPerformed
-        abrirFormulario(new RelatorioProduto());
+        abrirFormulario(new RelatorioEstoque());
     }//GEN-LAST:event_menuitemRelProdutosActionPerformed
 
     private void jmiEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiEstoqueActionPerformed
-        abrirFormulario(new Estoque());
+        abrirFormulario(new AlterarEstoque());
     }//GEN-LAST:event_jmiEstoqueActionPerformed
 
     private void jmiCadasrtarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCadasrtarClienteActionPerformed

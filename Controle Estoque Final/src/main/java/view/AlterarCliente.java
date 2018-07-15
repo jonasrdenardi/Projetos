@@ -19,7 +19,7 @@ public class AlterarCliente extends javax.swing.JInternalFrame {
     public AlterarCliente() {
         initComponents();
         configurarFormulario();
-        
+
         preencherTabela(new ClienteDAO().listar(Menu.getUsuario()));
     }
 
@@ -51,11 +51,14 @@ public class AlterarCliente extends javax.swing.JInternalFrame {
         txtPesquisa = new javax.swing.JTextField();
         jspResultados = new javax.swing.JScrollPane();
         tabResultadosAlt = new javax.swing.JTable();
+        rbAtivos = new javax.swing.JRadioButton();
+        rbInativos = new javax.swing.JRadioButton();
+        rbTodos = new javax.swing.JRadioButton();
 
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icone.png"))); // NOI18N
 
         lblSelecione.setFont(new java.awt.Font("Constantia", 0, 13)); // NOI18N
-        lblSelecione.setForeground(new java.awt.Color(208, 92, 5));
+        lblSelecione.setForeground(new java.awt.Color(101, 96, 168));
         lblSelecione.setText("Pesquise e clique 2x no Cliente para efetuar a alteração");
 
         txtTelefone.setBackground(new java.awt.Color(214, 217, 223));
@@ -64,7 +67,7 @@ public class AlterarCliente extends javax.swing.JInternalFrame {
         txtTelefone.setBorder(null);
 
         lblCPF.setFont(new java.awt.Font("Constantia", 0, 15)); // NOI18N
-        lblCPF.setForeground(new java.awt.Color(208, 92, 5));
+        lblCPF.setForeground(new java.awt.Color(101, 96, 168));
         lblCPF.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblCPF.setText("CPF");
 
@@ -104,7 +107,7 @@ public class AlterarCliente extends javax.swing.JInternalFrame {
         jSeparator4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         lblNome.setFont(new java.awt.Font("Constantia", 0, 15)); // NOI18N
-        lblNome.setForeground(new java.awt.Color(208, 92, 5));
+        lblNome.setForeground(new java.awt.Color(101, 96, 168));
         lblNome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNome.setText("Nome");
 
@@ -117,7 +120,7 @@ public class AlterarCliente extends javax.swing.JInternalFrame {
         txtNome.setBorder(null);
 
         lbTelefone.setFont(new java.awt.Font("Constantia", 0, 15)); // NOI18N
-        lbTelefone.setForeground(new java.awt.Color(208, 92, 5));
+        lbTelefone.setForeground(new java.awt.Color(101, 96, 168));
         lbTelefone.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbTelefone.setText("Telefone");
 
@@ -125,7 +128,7 @@ public class AlterarCliente extends javax.swing.JInternalFrame {
         jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         lblPreco1.setFont(new java.awt.Font("Constantia", 0, 15)); // NOI18N
-        lblPreco1.setForeground(new java.awt.Color(208, 92, 5));
+        lblPreco1.setForeground(new java.awt.Color(101, 96, 168));
         lblPreco1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPreco1.setText("Cadastro Ativo?");
 
@@ -201,12 +204,14 @@ public class AlterarCliente extends javax.swing.JInternalFrame {
         );
 
         lblAlterarCliente.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
-        lblAlterarCliente.setForeground(new java.awt.Color(208, 92, 5));
+        lblAlterarCliente.setForeground(new java.awt.Color(101, 96, 168));
         lblAlterarCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAlterarCliente.setText("ALTERAR CLIENTE");
 
+        rbId.setForeground(new java.awt.Color(101, 96, 168));
         rbId.setText("ID");
 
+        rbDescricao.setForeground(new java.awt.Color(101, 96, 168));
         rbDescricao.setText("Descrição");
 
         jSeparator6.setBackground(new java.awt.Color(0, 0, 0));
@@ -255,14 +260,38 @@ public class AlterarCliente extends javax.swing.JInternalFrame {
         });
         jspResultados.setViewportView(tabResultadosAlt);
 
+        rbAtivos.setForeground(new java.awt.Color(101, 96, 168));
+        rbAtivos.setText("Ativos");
+        rbAtivos.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                rbAtivosStateChanged(evt);
+            }
+        });
+
+        rbInativos.setForeground(new java.awt.Color(101, 96, 168));
+        rbInativos.setText("Inativos");
+
+        rbTodos.setForeground(new java.awt.Color(101, 96, 168));
+        rbTodos.setText("Todos");
+        rbTodos.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                rbTodosStateChanged(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 187, Short.MAX_VALUE)
+                .addComponent(jpFormulario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(187, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblAlterarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jspResultados)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(rbId)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -272,13 +301,15 @@ public class AlterarCliente extends javax.swing.JInternalFrame {
                             .addComponent(txtPesquisa)
                             .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(lblSelecione, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jspResultados))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblSelecione, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(rbTodos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rbAtivos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rbInativos)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 187, Short.MAX_VALUE)
-                .addComponent(jpFormulario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(187, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -293,9 +324,13 @@ public class AlterarCliente extends javax.swing.JInternalFrame {
                         .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblSelecione, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSelecione, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rbTodos)
+                    .addComponent(rbAtivos)
+                    .addComponent(rbInativos))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jspResultados, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                .addComponent(jspResultados, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jpFormulario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14))
@@ -305,34 +340,34 @@ public class AlterarCliente extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        
+
         Cliente cliente = new Cliente();
 
         cliente.setNome(txtNome.getText());
         cliente.setTelefone(txtTelefone.getText());
         cliente.setCpf(txtCpf.getText());
-        cliente.setFg_ativo((cbAtivo.getSelectedItem() == "Sim")? true : false);
-        
+        cliente.setFg_ativo((cbAtivo.getSelectedItem() == "Sim") ? true : false);
+
         int res = -1;
-       
-        if(! txtId.getText().isEmpty()){
-                cliente.setId(Integer.parseInt(txtId.getText()));
-                res = new ClienteDAO().atualizar(Menu.getUsuario(), cliente);
+
+        if (!txtId.getText().isEmpty()) {
+            cliente.setId(Integer.parseInt(txtId.getText()));
+            res = new ClienteDAO().atualizar(Menu.getUsuario(), cliente);
         }
-            
-        if(res != -1){
+
+        if (res != -1) {
             txtId.setText(Integer.toString(res));
             JOptionPane.showMessageDialog(null, "Operação realizada com sucesso!.", "Controle Estoque", JOptionPane.INFORMATION_MESSAGE);
             preencherTabela(new ClienteDAO().listar(Menu.getUsuario()));
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Ocorreu um erro durante a operação", "Controle Estoque", JOptionPane.ERROR_MESSAGE);
         }
-            
+
         txtId.setText("");
         txtNome.setText("");
         txtTelefone.setText("");
         txtCpf.setText("");
-        
+
         jpFormulario.setVisible(false);
 
     }//GEN-LAST:event_btnAlterarActionPerformed
@@ -350,29 +385,35 @@ public class AlterarCliente extends javax.swing.JInternalFrame {
 
         if (chave.isEmpty()) {
             preencherTabela(new ClienteDAO().listar(Menu.getUsuario()));
-        } else {
-            if(rbId.isSelected()){
-                preencherTabela(new ClienteDAO().pesquisarPorId(Menu.getUsuario(), Integer.parseInt(chave)));
-            }else if(rbDescricao.isSelected()){
-                preencherTabela(new ClienteDAO().pesquisarPorNome(Menu.getUsuario(), chave));
-            }
+        } else if (rbId.isSelected()) {
+            preencherTabela(new ClienteDAO().pesquisarPorId(Menu.getUsuario(), Integer.parseInt(chave)));
+        } else if (rbDescricao.isSelected()) {
+            preencherTabela(new ClienteDAO().pesquisarPorNome(Menu.getUsuario(), chave));
         }
 
     }//GEN-LAST:event_txtPesquisaKeyReleased
 
     private void tabResultadosAltMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabResultadosAltMouseClicked
 
-        if(evt.getClickCount() == 2){
+        if (evt.getClickCount() == 2) {
 
             int linha = tabResultadosAlt.getSelectedRow();
             String id = tabResultadosAlt.getValueAt(linha, 0).toString();
 
             alterarCliente(id);
-            
+
             jpFormulario.setVisible(true);
         }
 
     }//GEN-LAST:event_tabResultadosAltMouseClicked
+
+    private void rbAtivosStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_rbAtivosStateChanged
+        preencherTabela(new ClienteDAO().listar(Menu.getUsuario()));
+    }//GEN-LAST:event_rbAtivosStateChanged
+
+    private void rbTodosStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_rbTodosStateChanged
+        preencherTabela(new ClienteDAO().listar(Menu.getUsuario()));
+    }//GEN-LAST:event_rbTodosStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -392,8 +433,11 @@ public class AlterarCliente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblPreco1;
     private javax.swing.JLabel lblSelecione;
+    private javax.swing.JRadioButton rbAtivos;
     private javax.swing.JRadioButton rbDescricao;
     private javax.swing.JRadioButton rbId;
+    private javax.swing.JRadioButton rbInativos;
+    private javax.swing.JRadioButton rbTodos;
     private javax.swing.JTable tabResultadosAlt;
     private javax.swing.JTextField txtCpf;
     private javax.swing.JTextField txtId;
@@ -402,30 +446,35 @@ public class AlterarCliente extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtTelefone;
     // End of variables declaration//GEN-END:variables
 
-    private void configurarFormulario(){
+    private void configurarFormulario() {
         this.setTitle("Alterar Cliente");
         this.setResizable(false);
         this.setMaximizable(false);
         this.setIconifiable(false);
         this.setClosable(true);
-        
+
         txtId.setEditable(false);
-        
+
         ButtonGroup bg = new ButtonGroup();
         bg.add(rbId);
         bg.add(rbDescricao);
         rbDescricao.setSelected(true);
-        
+
+        ButtonGroup bg2 = new ButtonGroup();
+        bg2.add(rbTodos);
+        bg2.add(rbAtivos);
+        bg2.add(rbInativos);
+        rbTodos.setSelected(true);
+
         configurarTabela();
-        
+
         //preencherTabela(new LivroDAO().listar());
         liberarFormulario();
-        
+
         getRootPane().setDefaultButton(btnAlterar);
-        
-        
+
     }
-    
+
     private void configurarTabela() {
         DefaultTableModel m = new DefaultTableModel() {
             @Override
@@ -439,12 +488,12 @@ public class AlterarCliente extends javax.swing.JInternalFrame {
         m.addColumn("CPF");
         m.addColumn("Ativo");
         tabResultadosAlt.setModel(m);
-        
+
         tabResultadosAlt.getColumnModel().getColumn(0).setPreferredWidth(15);
         tabResultadosAlt.getColumnModel().getColumn(1).setPreferredWidth(165);
-        tabResultadosAlt.getColumnModel().getColumn(2).setPreferredWidth(50); 
+        tabResultadosAlt.getColumnModel().getColumn(2).setPreferredWidth(50);
         tabResultadosAlt.getColumnModel().getColumn(3).setPreferredWidth(50);
-        tabResultadosAlt.getColumnModel().getColumn(4).setPreferredWidth(15); 
+        tabResultadosAlt.getColumnModel().getColumn(4).setPreferredWidth(15);
         DefaultTableCellRenderer esquerda = new DefaultTableCellRenderer();
         DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
         DefaultTableCellRenderer direita = new DefaultTableCellRenderer();
@@ -455,50 +504,70 @@ public class AlterarCliente extends javax.swing.JInternalFrame {
         tabResultadosAlt.getColumnModel().getColumn(3).setCellRenderer(esquerda);
         tabResultadosAlt.getColumnModel().getColumn(4).setCellRenderer(centralizado);
     }
-    
-    private boolean liberarFormulario(){
-        
+
+    private boolean liberarFormulario() {
+
         jpFormulario.setVisible(false);
-        
+
         return false;
     }
-    
+
     private void preencherTabela(List<Cliente> lista) {
         configurarTabela();
         if (lista.size() > 0) {
             DefaultTableModel m = (DefaultTableModel) tabResultadosAlt.getModel();
             for (Cliente c : lista) {
-                m.addRow(new Object[]{
-                    c.getId(), 
-                    c.getNome(),
-                    c.getTelefone(),
-                    c.getCpf(),
-                    (c.getFg_ativo() == true)? "Sim" : "Não"
-                });
+                if (rbTodos.isSelected()) {
+                    m.addRow(new Object[]{
+                        c.getId(),
+                        c.getNome(),
+                        c.getTelefone(),
+                        c.getCpf(),
+                        (c.getFg_ativo() == true) ? "Sim" : "Não"
+                    });
+                } else if (rbAtivos.isSelected()) {
+                    if (c.getFg_ativo() == true) {
+                        m.addRow(new Object[]{
+                            c.getId(),
+                            c.getNome(),
+                            c.getTelefone(),
+                            c.getCpf(),
+                            "Sim"
+                        });
+                    }
+                } else if (c.getFg_ativo() == false) {
+                    m.addRow(new Object[]{
+                        c.getId(),
+                        c.getNome(),
+                        c.getTelefone(),
+                        c.getCpf(),
+                        "Não"
+                    });
+                }
             }
             tabResultadosAlt.setModel(m);
         }
     }
-    
-    private void alterarCliente(String id){
-        
+
+    private void alterarCliente(String id) {
+
         //pesquisar cliente
         Cliente cliente = new ClienteDAO().get(Menu.getUsuario(), id);
-        if(cliente != null){
+        if (cliente != null) {
             txtId.setText(Integer.toString(cliente.getId()));
             txtNome.setText(cliente.getNome());
             txtTelefone.setText(cliente.getTelefone());
             txtCpf.setText(cliente.getCpf());
-            
+
             cbAtivo.removeAllItems();
-            if(cliente.getFg_ativo() == true){
+            if (cliente.getFg_ativo() == true) {
                 cbAtivo.addItem("Sim");
                 cbAtivo.addItem("Não");
-            }else{
+            } else {
                 cbAtivo.addItem("Não");
                 cbAtivo.addItem("Sim");
             }
-            
+
             lblId.setVisible(false);
             txtId.setVisible(false);
             jSeparator1.setVisible(false);
@@ -506,6 +575,6 @@ public class AlterarCliente extends javax.swing.JInternalFrame {
             lblNome.setVisible(false);
             txtNome.setVisible(false);
         }
-            
+
     }
 }

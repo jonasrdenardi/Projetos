@@ -57,7 +57,7 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
         jSeparator4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         lblNome.setFont(new java.awt.Font("Constantia", 0, 15)); // NOI18N
-        lblNome.setForeground(new java.awt.Color(208, 92, 5));
+        lblNome.setForeground(new java.awt.Color(101, 96, 168));
         lblNome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNome.setText("Nome");
 
@@ -70,7 +70,7 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
         jSeparator2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         lblCPF.setFont(new java.awt.Font("Constantia", 0, 15)); // NOI18N
-        lblCPF.setForeground(new java.awt.Color(208, 92, 5));
+        lblCPF.setForeground(new java.awt.Color(101, 96, 168));
         lblCPF.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblCPF.setText("CPF");
 
@@ -90,7 +90,7 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
         txtCPF.setBorder(null);
 
         lblTelefone.setFont(new java.awt.Font("Constantia", 0, 15)); // NOI18N
-        lblTelefone.setForeground(new java.awt.Color(208, 92, 5));
+        lblTelefone.setForeground(new java.awt.Color(101, 96, 168));
         lblTelefone.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTelefone.setText("Telefone");
 
@@ -103,7 +103,7 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
         jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         lblCadastroCliente.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
-        lblCadastroCliente.setForeground(new java.awt.Color(208, 92, 5));
+        lblCadastroCliente.setForeground(new java.awt.Color(101, 96, 168));
         lblCadastroCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblCadastroCliente.setText("CADASTRAR CLIENTE");
 

@@ -2,13 +2,13 @@ package view;
 
 import controller.ClienteDAO;
 import controller.Conexao;
+import java.util.HashMap;
 import java.util.List;
 import javax.swing.ButtonGroup;
 import javax.swing.table.DefaultTableModel;
 import model.Cliente;
 import model.Usuario;
 import reports.Relatorio;
-
 
 /**
  *
@@ -19,7 +19,7 @@ public class RelatorioCliente extends javax.swing.JInternalFrame {
     public RelatorioCliente() {
         initComponents();
         configurarFormulario();
-        
+
         preencherTabela(new ClienteDAO().listar(Menu.getUsuario()));
     }
 
@@ -35,6 +35,9 @@ public class RelatorioCliente extends javax.swing.JInternalFrame {
         rbId = new javax.swing.JRadioButton();
         lblRelatorioClientes = new javax.swing.JLabel();
         btnImprimir = new javax.swing.JButton();
+        rbAtivos = new javax.swing.JRadioButton();
+        rbInativos = new javax.swing.JRadioButton();
+        rbTodos = new javax.swing.JRadioButton();
 
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icone.png"))); // NOI18N
 
@@ -71,12 +74,14 @@ public class RelatorioCliente extends javax.swing.JInternalFrame {
         jSeparator6.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        rbDescricao.setText("Descrição");
+        rbDescricao.setForeground(new java.awt.Color(101, 96, 168));
+        rbDescricao.setText("Nome");
 
+        rbId.setForeground(new java.awt.Color(101, 96, 168));
         rbId.setText("ID");
 
         lblRelatorioClientes.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
-        lblRelatorioClientes.setForeground(new java.awt.Color(208, 92, 5));
+        lblRelatorioClientes.setForeground(new java.awt.Color(101, 96, 168));
         lblRelatorioClientes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblRelatorioClientes.setText("RELATÓRIO CLIENTES");
 
@@ -93,13 +98,35 @@ public class RelatorioCliente extends javax.swing.JInternalFrame {
             }
         });
 
+        rbAtivos.setForeground(new java.awt.Color(101, 96, 168));
+        rbAtivos.setText("Ativos");
+        rbAtivos.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                rbAtivosStateChanged(evt);
+            }
+        });
+
+        rbInativos.setForeground(new java.awt.Color(101, 96, 168));
+        rbInativos.setText("Inativos");
+
+        rbTodos.setForeground(new java.awt.Color(101, 96, 168));
+        rbTodos.setText("Todos");
+        rbTodos.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                rbTodosStateChanged(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnImprimir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblRelatorioClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jspResultados, javax.swing.GroupLayout.DEFAULT_SIZE, 786, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(rbId)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -108,33 +135,41 @@ public class RelatorioCliente extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtPesquisa)
                             .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(171, 171, 171))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblRelatorioClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jspResultados, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addContainerGap())))
-            .addComponent(btnImprimir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(rbTodos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rbAtivos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rbInativos)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblRelatorioClientes)
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(rbId)
-                        .addComponent(rbDescricao))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(rbId)
+                                .addComponent(rbDescricao))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(rbTodos)
+                            .addComponent(rbAtivos)
+                            .addComponent(rbInativos))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jspResultados, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
@@ -152,24 +187,46 @@ public class RelatorioCliente extends javax.swing.JInternalFrame {
 
         if (chave.isEmpty()) {
             preencherTabela(new ClienteDAO().listar(Menu.getUsuario()));
-        } else {
-            if(rbId.isSelected()){
-                preencherTabela(new ClienteDAO().pesquisarPorId(Menu.getUsuario(), Integer.parseInt(chave)));
-            }else if(rbDescricao.isSelected()){
-                preencherTabela(new ClienteDAO().pesquisarPorNome(Menu.getUsuario(), chave));
-            }
+        } else if (rbId.isSelected()) {
+            preencherTabela(new ClienteDAO().pesquisarPorId(Menu.getUsuario(), Integer.parseInt(chave)));
+        } else if (rbDescricao.isSelected()) {
+            preencherTabela(new ClienteDAO().pesquisarPorNome(Menu.getUsuario(), chave));
         }
     }//GEN-LAST:event_txtPesquisaKeyReleased
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
         Usuario u = new Usuario();
+        HashMap param = new HashMap();
 
-        new Relatorio(
-            "rpt_clientes", //nome do relatório
-            Conexao.conectar(u), //conexão com o sgbd
-            null //parâmetros
-        ).show();
+        if (rbAtivos.isSelected()) {
+            param.put("PARAM", "1");
+        } else if (rbInativos.isSelected()) {
+            param.put("PARAM", "0");
+        }
+
+        if (rbTodos.isSelected()) {
+            new Relatorio(
+                    "rpt_clientes", //nome do relatório
+                    Conexao.conectar(u), //conexão com o sgbd
+                    null //parâmetros
+            ).show();
+        } else {
+            new Relatorio(
+                    "rpt_clientesAtivoOuInativo", //nome do relatório
+                    Conexao.conectar(u), //conexão com o sgbd
+                    param //parâmetros
+            ).show();
+        }
+
     }//GEN-LAST:event_btnImprimirActionPerformed
+
+    private void rbAtivosStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_rbAtivosStateChanged
+        preencherTabela(new ClienteDAO().listar(Menu.getUsuario()));
+    }//GEN-LAST:event_rbAtivosStateChanged
+
+    private void rbTodosStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_rbTodosStateChanged
+        preencherTabela(new ClienteDAO().listar(Menu.getUsuario()));
+    }//GEN-LAST:event_rbTodosStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -177,8 +234,11 @@ public class RelatorioCliente extends javax.swing.JInternalFrame {
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JScrollPane jspResultados;
     private javax.swing.JLabel lblRelatorioClientes;
+    private javax.swing.JRadioButton rbAtivos;
     private javax.swing.JRadioButton rbDescricao;
     private javax.swing.JRadioButton rbId;
+    private javax.swing.JRadioButton rbInativos;
+    private javax.swing.JRadioButton rbTodos;
     private javax.swing.JTable tabResultados;
     private javax.swing.JTextField txtPesquisa;
     // End of variables declaration//GEN-END:variables
@@ -194,6 +254,12 @@ public class RelatorioCliente extends javax.swing.JInternalFrame {
         bg.add(rbId);
         bg.add(rbDescricao);
         rbDescricao.setSelected(true);
+
+        ButtonGroup bg2 = new ButtonGroup();
+        bg2.add(rbTodos);
+        bg2.add(rbAtivos);
+        bg2.add(rbInativos);
+        rbTodos.setSelected(true);
 
         configurarTabela();
 
@@ -217,7 +283,7 @@ public class RelatorioCliente extends javax.swing.JInternalFrame {
         tabResultados.getColumnModel().getColumn(1).setPreferredWidth(150);
         tabResultados.getColumnModel().getColumn(2).setPreferredWidth(60);
         tabResultados.getColumnModel().getColumn(3).setPreferredWidth(60);
-        tabResultados.getColumnModel().getColumn(4).setPreferredWidth(20);
+        tabResultados.getColumnModel().getColumn(4).setPreferredWidth(30);
 
     }
 
@@ -226,13 +292,33 @@ public class RelatorioCliente extends javax.swing.JInternalFrame {
         if (lista.size() > 0) {
             DefaultTableModel m = (DefaultTableModel) tabResultados.getModel();
             for (Cliente c : lista) {
-                m.addRow(new Object[]{
-                    c.getId(),
-                    c.getNome(),
-                    c.getTelefone(),
-                    c.getCpf(),
-                    (c.getFg_ativo() == true) ? "Sim" : "Não"
-                });
+                if (rbTodos.isSelected()) {
+                    m.addRow(new Object[]{
+                        c.getId(),
+                        c.getNome(),
+                        c.getTelefone(),
+                        c.getCpf(),
+                        (c.getFg_ativo() == true) ? "Sim" : "Não"
+                    });
+                } else if (rbAtivos.isSelected()) {
+                    if (c.getFg_ativo() == true) {
+                        m.addRow(new Object[]{
+                            c.getId(),
+                            c.getNome(),
+                            c.getTelefone(),
+                            c.getCpf(),
+                            "Sim"
+                        });
+                    }
+                } else if (c.getFg_ativo() == false) {
+                    m.addRow(new Object[]{
+                        c.getId(),
+                        c.getNome(),
+                        c.getTelefone(),
+                        c.getCpf(),
+                        "Não"
+                    });
+                }
             }
             tabResultados.setModel(m);
         }

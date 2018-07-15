@@ -145,7 +145,7 @@ public class ProdutoDAO {
     //LISTAR TODOS OS REGISTROS DA TABELA
     public List<Produto> listar(Usuario usuario){
         try {
-            String SQL = "select * from db_controle_estoque.produto order by id";
+            String SQL = "select * from db_controle_estoque.produto order by descricao";
             
             con = controller.Conexao.conectar(usuario);
             cmd = con.prepareStatement(SQL);
@@ -170,7 +170,7 @@ public class ProdutoDAO {
                 
                 //Valor do banco esta vindo com 1 dia a menos por conta da timezone
                 java.util.Date dataSomada = rs.getDate("vencimento");
-                dataSomada.setDate(dataSomada.getDate() + 1);
+                dataSomada.setDate(dataSomada.getDate());
                 produto.setData(dataSomada);
                 
                 produto.setFg_ativo(rs.getBoolean("fg_ativo"));
@@ -190,7 +190,7 @@ public class ProdutoDAO {
     //LISTAR TODOS OS REGISTROS ATIVOS DA TABELA
     public List<Produto> listarAtivos(Usuario usuario){
         try {
-            String SQL = "select * from db_controle_estoque.produto where fg_ativo = true order by id;" ;
+            String SQL = "select * from db_controle_estoque.produto where fg_ativo = true order by descricao;" ;
             
             con = controller.Conexao.conectar(usuario);
             cmd = con.prepareStatement(SQL);
@@ -234,7 +234,7 @@ public class ProdutoDAO {
     
     public List<Produto> pesquisarPorDescricao(Usuario usuario, String descricao){
         try {
-            String SQL = "select * from db_controle_estoque.produto where descricao like ?";
+            String SQL = "select * from db_controle_estoque.produto where descricao like ? order by descricao";
             
             con = controller.Conexao.conectar(usuario);
             cmd = con.prepareStatement(SQL);
@@ -280,7 +280,7 @@ public class ProdutoDAO {
     
     public List<Produto> pesquisarPorId(Usuario usuario, int id){
         try {
-            String SQL = "select * from db_controle_estoque.produto where id=?";
+            String SQL = "select * from db_controle_estoque.produto where id=? order by descricao";
             
             con = controller.Conexao.conectar(usuario);
             cmd = con.prepareStatement(SQL);

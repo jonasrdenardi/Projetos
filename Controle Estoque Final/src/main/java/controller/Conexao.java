@@ -15,7 +15,7 @@ public class Conexao {
     //PARÂMETROS DE CONEXÃO
     private static final String HOST = "127.0.0.1:3306";
     private static final String DATABASE = "db_controle_estoque";
-    private static final String URL = "jdbc:mysql://" + HOST + "/" + DATABASE + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false";
+    private static final String URL = "jdbc:mysql://" + HOST + "/" + DATABASE  + "?useTimezone=true&serverTimezone=Brazil/East";
     private static final String USR = "root";
     private static final String PWD = "senha123";
 

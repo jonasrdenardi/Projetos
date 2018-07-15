@@ -18,7 +18,7 @@ import model.Usuario;
  * @author diego
  */
 public class AlterarProduto extends javax.swing.JInternalFrame {
-    
+
     DecimalFormat dm = new DecimalFormat("0.00");
     SimpleDateFormat sdfNormal = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -27,7 +27,7 @@ public class AlterarProduto extends javax.swing.JInternalFrame {
         configurarFormulario();
         txtPreco.setDocument(new ApenasNumeros());
         txtQtd.setDocument(new ApenasNumeros());
-        
+
         preencherTabela(new ProdutoDAO().listar(Menu.getUsuario()));
     }
 
@@ -64,11 +64,14 @@ public class AlterarProduto extends javax.swing.JInternalFrame {
         txtPesquisa = new javax.swing.JTextField();
         jspResultados = new javax.swing.JScrollPane();
         tabResultados = new javax.swing.JTable();
+        rbTodos = new javax.swing.JRadioButton();
+        rbAtivos = new javax.swing.JRadioButton();
+        rbInativos = new javax.swing.JRadioButton();
 
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icone.png"))); // NOI18N
 
         lblSelecione.setFont(new java.awt.Font("Constantia", 0, 13)); // NOI18N
-        lblSelecione.setForeground(new java.awt.Color(208, 92, 5));
+        lblSelecione.setForeground(new java.awt.Color(101, 96, 168));
         lblSelecione.setText("Pesquise e clique 2x no produto para efetuar a alteração");
 
         txtQtd.setBackground(new java.awt.Color(214, 217, 223));
@@ -77,7 +80,7 @@ public class AlterarProduto extends javax.swing.JInternalFrame {
         txtQtd.setBorder(null);
 
         lblPreco.setFont(new java.awt.Font("Constantia", 0, 15)); // NOI18N
-        lblPreco.setForeground(new java.awt.Color(208, 92, 5));
+        lblPreco.setForeground(new java.awt.Color(101, 96, 168));
         lblPreco.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPreco.setText("Preço");
 
@@ -117,7 +120,7 @@ public class AlterarProduto extends javax.swing.JInternalFrame {
         jSeparator4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         lblDescricao.setFont(new java.awt.Font("Constantia", 0, 15)); // NOI18N
-        lblDescricao.setForeground(new java.awt.Color(208, 92, 5));
+        lblDescricao.setForeground(new java.awt.Color(101, 96, 168));
         lblDescricao.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDescricao.setText("Descrição");
 
@@ -130,7 +133,7 @@ public class AlterarProduto extends javax.swing.JInternalFrame {
         txtDescricao.setBorder(null);
 
         lblqtd.setFont(new java.awt.Font("Constantia", 0, 15)); // NOI18N
-        lblqtd.setForeground(new java.awt.Color(208, 92, 5));
+        lblqtd.setForeground(new java.awt.Color(101, 96, 168));
         lblqtd.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblqtd.setText("Quantidade");
 
@@ -138,17 +141,17 @@ public class AlterarProduto extends javax.swing.JInternalFrame {
         jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         lblPreco1.setFont(new java.awt.Font("Constantia", 0, 15)); // NOI18N
-        lblPreco1.setForeground(new java.awt.Color(208, 92, 5));
+        lblPreco1.setForeground(new java.awt.Color(101, 96, 168));
         lblPreco1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPreco1.setText("Cadastro Ativo?");
 
         lblVencimento.setFont(new java.awt.Font("Constantia", 0, 15)); // NOI18N
-        lblVencimento.setForeground(new java.awt.Color(208, 92, 5));
+        lblVencimento.setForeground(new java.awt.Color(101, 96, 168));
         lblVencimento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblVencimento.setText("Vencimento");
 
         lblPrecoCompra.setFont(new java.awt.Font("Constantia", 0, 15)); // NOI18N
-        lblPrecoCompra.setForeground(new java.awt.Color(208, 92, 5));
+        lblPrecoCompra.setForeground(new java.awt.Color(101, 96, 168));
         lblPrecoCompra.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPrecoCompra.setText("Preço Compra");
 
@@ -260,12 +263,14 @@ public class AlterarProduto extends javax.swing.JInternalFrame {
         );
 
         lblAlterarProduto.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
-        lblAlterarProduto.setForeground(new java.awt.Color(208, 92, 5));
+        lblAlterarProduto.setForeground(new java.awt.Color(101, 96, 168));
         lblAlterarProduto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAlterarProduto.setText("ALTERAR PRODUTO");
 
+        rbId.setForeground(new java.awt.Color(101, 96, 168));
         rbId.setText("ID");
 
+        rbDescricao.setForeground(new java.awt.Color(101, 96, 168));
         rbDescricao.setText("Descrição");
 
         jSeparator6.setBackground(new java.awt.Color(0, 0, 0));
@@ -306,17 +311,40 @@ public class AlterarProduto extends javax.swing.JInternalFrame {
         });
         jspResultados.setViewportView(tabResultados);
 
+        rbTodos.setForeground(new java.awt.Color(101, 96, 168));
+        rbTodos.setText("Todos");
+        rbTodos.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                rbTodosStateChanged(evt);
+            }
+        });
+
+        rbAtivos.setForeground(new java.awt.Color(101, 96, 168));
+        rbAtivos.setText("Ativos");
+        rbAtivos.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                rbAtivosStateChanged(evt);
+            }
+        });
+
+        rbInativos.setForeground(new java.awt.Color(101, 96, 168));
+        rbInativos.setText("Inativos");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 199, Short.MAX_VALUE)
+                .addComponent(jpFormulario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(213, 213, 213))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(lblAlterarProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblAlterarProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
                         .addComponent(rbId)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(rbDescricao)
@@ -325,33 +353,37 @@ public class AlterarProduto extends javax.swing.JInternalFrame {
                             .addComponent(txtPesquisa)
                             .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jspResultados)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblSelecione, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jspResultados))))
+                        .addComponent(lblSelecione, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(rbTodos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rbAtivos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rbInativos)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(137, 137, 137)
-                .addComponent(jpFormulario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(137, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblAlterarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(rbId)
                         .addComponent(rbDescricao)
                         .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(4, 4, 4)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSelecione, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rbTodos)
+                    .addComponent(rbAtivos)
+                    .addComponent(rbInativos))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblSelecione, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jspResultados, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+                .addComponent(jspResultados, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jpFormulario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -361,42 +393,42 @@ public class AlterarProduto extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        
+
         Produto produto = new Produto();
 
         produto.setDescricao(txtDescricao.getText());
         produto.setQtd(Float.parseFloat(txtQtd.getText().replaceAll("\\,", ".")));
         produto.setPrecoCompra(Float.parseFloat(txtPrecoCompra.getText().replaceAll("\\,", ".")));
         produto.setPreco(Float.parseFloat(txtPreco.getText().replaceAll("\\,", ".")));
-        
+
         //Por conta dos problemas com time zone tenho q subtrair 1
         java.util.Date dataSubtraida = jdcVencimento.getDate();
         dataSubtraida.setDate(dataSubtraida.getDate() - 1);
         produto.setData(dataSubtraida);
-        
-        produto.setFg_ativo((cbAtivo.getSelectedItem() == "Sim")? true : false);
-        
+
+        produto.setFg_ativo((cbAtivo.getSelectedItem() == "Sim") ? true : false);
+
         int res = -1;
-       
-        if(! txtId.getText().isEmpty()){
-                produto.setId(Integer.parseInt(txtId.getText()));
-                res = new ProdutoDAO().atualizar(Menu.getUsuario(), produto);
+
+        if (!txtId.getText().isEmpty()) {
+            produto.setId(Integer.parseInt(txtId.getText()));
+            res = new ProdutoDAO().atualizar(Menu.getUsuario(), produto);
         }
-            
-        if(res != -1){
+
+        if (res != -1) {
             txtId.setText(Integer.toString(res));
             JOptionPane.showMessageDialog(null, "Operação realizada com sucesso!.", "Controle Estoque", JOptionPane.INFORMATION_MESSAGE);
             preencherTabela(new ProdutoDAO().listar(Menu.getUsuario()));
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Ocorreu um erro durante a operação", "Controle Estoque", JOptionPane.ERROR_MESSAGE);
         }
-            
+
         txtId.setText("");
         txtDescricao.setText("");
         txtQtd.setText("");
         txtPrecoCompra.setText("");
         txtPreco.setText("");
-        
+
         jpFormulario.setVisible(false);
 
     }//GEN-LAST:event_btnAlterarActionPerformed
@@ -414,29 +446,35 @@ public class AlterarProduto extends javax.swing.JInternalFrame {
 
         if (chave.isEmpty()) {
             preencherTabela(new ProdutoDAO().listar(Menu.getUsuario()));
-        } else {
-            if(rbId.isSelected()){
-                preencherTabela(new ProdutoDAO().pesquisarPorId(Menu.getUsuario(), Integer.parseInt(chave)));
-            }else if(rbDescricao.isSelected()){
-                preencherTabela(new ProdutoDAO().pesquisarPorDescricao(Menu.getUsuario(), chave));
-            }
+        } else if (rbId.isSelected()) {
+            preencherTabela(new ProdutoDAO().pesquisarPorId(Menu.getUsuario(), Integer.parseInt(chave)));
+        } else if (rbDescricao.isSelected()) {
+            preencherTabela(new ProdutoDAO().pesquisarPorDescricao(Menu.getUsuario(), chave));
         }
 
     }//GEN-LAST:event_txtPesquisaKeyReleased
 
     private void tabResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabResultadosMouseClicked
 
-        if(evt.getClickCount() == 2){
+        if (evt.getClickCount() == 2) {
 
             int linha = tabResultados.getSelectedRow();
             String id = tabResultados.getValueAt(linha, 0).toString();
 
             alterarProduto(id);
-            
+
             jpFormulario.setVisible(true);
         }
 
     }//GEN-LAST:event_tabResultadosMouseClicked
+
+    private void rbTodosStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_rbTodosStateChanged
+        preencherTabela(new ProdutoDAO().listar(Menu.getUsuario()));
+    }//GEN-LAST:event_rbTodosStateChanged
+
+    private void rbAtivosStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_rbAtivosStateChanged
+        preencherTabela(new ProdutoDAO().listar(Menu.getUsuario()));
+    }//GEN-LAST:event_rbAtivosStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -460,8 +498,11 @@ public class AlterarProduto extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblSelecione;
     private javax.swing.JLabel lblVencimento;
     private javax.swing.JLabel lblqtd;
+    private javax.swing.JRadioButton rbAtivos;
     private javax.swing.JRadioButton rbDescricao;
     private javax.swing.JRadioButton rbId;
+    private javax.swing.JRadioButton rbInativos;
+    private javax.swing.JRadioButton rbTodos;
     private javax.swing.JTable tabResultados;
     private javax.swing.JTextField txtDescricao;
     private javax.swing.JTextField txtId;
@@ -471,30 +512,35 @@ public class AlterarProduto extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtQtd;
     // End of variables declaration//GEN-END:variables
 
-    private void configurarFormulario(){
+    private void configurarFormulario() {
         this.setTitle("Alterar Produto");
         this.setResizable(false);
         this.setMaximizable(false);
         this.setIconifiable(false);
         this.setClosable(true);
-        
+
         txtId.setEditable(false);
-        
+
         ButtonGroup bg = new ButtonGroup();
         bg.add(rbId);
         bg.add(rbDescricao);
         rbDescricao.setSelected(true);
-        
+
+        ButtonGroup bg2 = new ButtonGroup();
+        bg2.add(rbTodos);
+        bg2.add(rbAtivos);
+        bg2.add(rbInativos);
+        rbTodos.setSelected(true);
+
         configurarTabela();
-        
+
         //preencherTabela(new LivroDAO().listar());
         liberarFormulario();
-        
+
         getRootPane().setDefaultButton(btnAlterar);
-        
-        
+
     }
-    
+
     private void configurarTabela() {
         DefaultTableModel m = new DefaultTableModel() {
             @Override
@@ -510,10 +556,10 @@ public class AlterarProduto extends javax.swing.JInternalFrame {
         m.addColumn("Vencimento");
         m.addColumn("Ativo");
         tabResultados.setModel(m);
-        
+
         tabResultados.getColumnModel().getColumn(0).setPreferredWidth(15);
         tabResultados.getColumnModel().getColumn(1).setPreferredWidth(165);
-        tabResultados.getColumnModel().getColumn(2).setPreferredWidth(15); 
+        tabResultados.getColumnModel().getColumn(2).setPreferredWidth(15);
         tabResultados.getColumnModel().getColumn(3).setPreferredWidth(15);
         tabResultados.getColumnModel().getColumn(4).setPreferredWidth(15);
         tabResultados.getColumnModel().getColumn(5).setPreferredWidth(40);
@@ -530,54 +576,78 @@ public class AlterarProduto extends javax.swing.JInternalFrame {
         tabResultados.getColumnModel().getColumn(5).setCellRenderer(centralizado);
         tabResultados.getColumnModel().getColumn(6).setCellRenderer(centralizado);
     }
-    
-    private boolean liberarFormulario(){
-        
+
+    private boolean liberarFormulario() {
+
         jpFormulario.setVisible(false);
-        
+
         return false;
     }
-    
+
     private void preencherTabela(List<Produto> lista) {
         configurarTabela();
         if (lista.size() > 0) {
             DefaultTableModel m = (DefaultTableModel) tabResultados.getModel();
             for (Produto p : lista) {
-                m.addRow(new Object[]{
-                    p.getId(), 
-                    p.getDescricao(),
-                    dm.format(p.getQtd()),
-                    dm.format(p.getPrecoCompra()),
-                    dm.format(p.getPreco()),
-                    sdfNormal.format(p.getData()),
-                    (p.getFg_ativo() == true)? "Sim" : "Não"
-                });
+                if (rbTodos.isSelected()) {
+                    m.addRow(new Object[]{
+                        p.getId(),
+                        p.getDescricao(),
+                        dm.format(p.getQtd()),
+                        dm.format(p.getPrecoCompra()),
+                        dm.format(p.getPreco()),
+                        sdfNormal.format(p.getData()),
+                        (p.getFg_ativo() == true) ? "Sim" : "Não"
+                    });
+                } else if (rbAtivos.isSelected()) {
+                    if (p.getFg_ativo() == true) {
+                        m.addRow(new Object[]{
+                            p.getId(),
+                            p.getDescricao(),
+                            dm.format(p.getQtd()),
+                            dm.format(p.getPrecoCompra()),
+                            dm.format(p.getPreco()),
+                            sdfNormal.format(p.getData()),
+                            "Sim"
+                        });
+                    }
+                } else if (p.getFg_ativo() == false) {
+                    m.addRow(new Object[]{
+                        p.getId(),
+                        p.getDescricao(),
+                        dm.format(p.getQtd()),
+                        dm.format(p.getPrecoCompra()),
+                        dm.format(p.getPreco()),
+                        sdfNormal.format(p.getData()),
+                        "Não"
+                    });
+                }
             }
             tabResultados.setModel(m);
         }
     }
-    
-    private void alterarProduto(String id){
-        
+
+    private void alterarProduto(String id) {
+
         //pesquisar produto
         Produto produto = new ProdutoDAO().get(Menu.getUsuario(), id);
-        if(produto != null){
+        if (produto != null) {
             txtId.setText(Integer.toString(produto.getId()));
             txtDescricao.setText(produto.getDescricao());
             txtQtd.setText(Float.toString(produto.getQtd()).replaceAll("\\.", ","));
             txtPrecoCompra.setText(Float.toString(produto.getPrecoCompra()).replaceAll("\\.", ","));
             txtPreco.setText(Float.toString(produto.getPreco()).replaceAll("\\.", ","));
             jdcVencimento.setDate(produto.getData());
-            
+
             cbAtivo.removeAllItems();
-            if(produto.getFg_ativo() == true){
+            if (produto.getFg_ativo() == true) {
                 cbAtivo.addItem("Sim");
                 cbAtivo.addItem("Não");
-            }else{
+            } else {
                 cbAtivo.addItem("Não");
                 cbAtivo.addItem("Sim");
             }
-            
+
             lblId.setVisible(false);
             txtId.setVisible(false);
             jSeparator1.setVisible(false);
@@ -588,6 +658,6 @@ public class AlterarProduto extends javax.swing.JInternalFrame {
             lblqtd.setVisible(false);
             txtQtd.setVisible(false);
         }
-            
+
     }
 }

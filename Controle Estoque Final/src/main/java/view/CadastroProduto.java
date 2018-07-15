@@ -69,7 +69,7 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
         jSeparator4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         lblDescricao.setFont(new java.awt.Font("Constantia", 0, 15)); // NOI18N
-        lblDescricao.setForeground(new java.awt.Color(208, 92, 5));
+        lblDescricao.setForeground(new java.awt.Color(101, 96, 168));
         lblDescricao.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDescricao.setText("Descrição");
 
@@ -82,7 +82,7 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
         jSeparator2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         lblPreco.setFont(new java.awt.Font("Constantia", 0, 15)); // NOI18N
-        lblPreco.setForeground(new java.awt.Color(208, 92, 5));
+        lblPreco.setForeground(new java.awt.Color(101, 96, 168));
         lblPreco.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPreco.setText("Preço");
 
@@ -102,7 +102,7 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
         txtPreco.setBorder(null);
 
         lblQtd.setFont(new java.awt.Font("Constantia", 0, 15)); // NOI18N
-        lblQtd.setForeground(new java.awt.Color(208, 92, 5));
+        lblQtd.setForeground(new java.awt.Color(101, 96, 168));
         lblQtd.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblQtd.setText("Quantidade");
 
@@ -115,12 +115,12 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
         jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         lblCadastroPet.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
-        lblCadastroPet.setForeground(new java.awt.Color(208, 92, 5));
+        lblCadastroPet.setForeground(new java.awt.Color(101, 96, 168));
         lblCadastroPet.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblCadastroPet.setText("CADASTRAR PRODUTO");
 
         lblVencimento.setFont(new java.awt.Font("Constantia", 0, 15)); // NOI18N
-        lblVencimento.setForeground(new java.awt.Color(208, 92, 5));
+        lblVencimento.setForeground(new java.awt.Color(101, 96, 168));
         lblVencimento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblVencimento.setText("Vencimento");
 
@@ -136,7 +136,7 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
         jSeparator6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         lblPrecoCompra.setFont(new java.awt.Font("Constantia", 0, 15)); // NOI18N
-        lblPrecoCompra.setForeground(new java.awt.Color(208, 92, 5));
+        lblPrecoCompra.setForeground(new java.awt.Color(101, 96, 168));
         lblPrecoCompra.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPrecoCompra.setText("Preço Compra");
 
