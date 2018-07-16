@@ -155,6 +155,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Nome"/>
       </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="rbDescricaoMousePressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="rbId">
       <Properties>
@@ -163,6 +166,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="ID"/>
       </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="rbIdMousePressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblRelatorioClientes">
       <Properties>

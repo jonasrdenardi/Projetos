@@ -26,6 +26,8 @@ public class AlterarProduto extends javax.swing.JInternalFrame {
     public AlterarProduto() {
         initComponents();
         configurarFormulario();
+        
+        txtPrecoCompra.setDocument(new ApenasNumeros());
         txtPreco.setDocument(new ApenasNumeros());
         txtQtd.setDocument(new ApenasNumeros());
 

@@ -2,10 +2,14 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rpt_produtos" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f32e84ff-9b7b-4377-a0da-d31edf341d49">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="147"/>
+	<parameter name="PARAM" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT id,descricao,qtd,preco_compra,preco,vencimento,if(fg_ativo = true,'Sim','Não') as 'fg_ativo'
 FROM produto
+$P!{PARAM}
 ORDER BY descricao;]]>
 	</queryString>
 	<field name="id" class="java.lang.Integer">
@@ -139,7 +143,7 @@ ORDER BY descricao;]]>
 				<textElement textAlignment="Center" markup="none"/>
 				<textFieldExpression><![CDATA[$F{qtd}*$F{preco}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="dd/MM/yyyy">
 				<reportElement x="302" y="13" width="100" height="20" uuid="8e427ec1-ce03-44a6-8ecb-6ce075ca800c"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{vencimento}]]></textFieldExpression>
@@ -157,7 +161,7 @@ ORDER BY descricao;]]>
 			<textField pattern="¤ #,##0.00">
 				<reportElement x="413" y="14" width="142" height="24" uuid="34de4f29-d391-4fad-833d-8b606140e6ac"/>
 				<textElement textAlignment="Center">
-					<font size="16"/>
+					<font size="16" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{TotalEstoque}]]></textFieldExpression>
 			</textField>

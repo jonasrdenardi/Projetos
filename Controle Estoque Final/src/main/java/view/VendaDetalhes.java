@@ -3,10 +3,13 @@ package view;
 import controller.Conexao;
 import controller.ProdutoVendaDAO;
 import java.awt.Dimension;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import model.Retorno;
 import model.Venda;
@@ -17,6 +20,7 @@ public class VendaDetalhes extends javax.swing.JInternalFrame {
     List<Retorno> retornos = new ArrayList<Retorno>();
     int idVenda;
     
+    DecimalFormat dm = new DecimalFormat("0.00");
     SimpleDateFormat sdfNormal = new SimpleDateFormat("dd/MM/yyyy");
 
     public VendaDetalhes(int idVenda) {
@@ -28,9 +32,8 @@ public class VendaDetalhes extends javax.swing.JInternalFrame {
         txtIdVenda.setText(String.valueOf(idVenda));
         txtDataVenda.setText(sdfNormal.format(retornos.get(0).venda.getDataVenda()));
         txtCliente.setText(retornos.get(0).cliente.getNome());
-        txtCliente.setText(retornos.get(0).cliente.getNome());
-        txtDesconto.setText(String.valueOf(retornos.get(0).venda.getDesconto()));
-        txtTotal.setText(String.valueOf(retornos.get(0).venda.getValor()));
+        txtDesconto.setText(String.valueOf(dm.format(retornos.get(0).venda.getDesconto())));
+        txtTotal.setText(String.valueOf(dm.format(retornos.get(0).venda.getValor())));
 
         preencherTabela();
     }
@@ -324,6 +327,15 @@ public class VendaDetalhes extends javax.swing.JInternalFrame {
         tabResultados.getColumnModel().getColumn(2).setPreferredWidth(10);
         tabResultados.getColumnModel().getColumn(3).setPreferredWidth(20);
         tabResultados.getColumnModel().getColumn(4).setPreferredWidth(20);
+        DefaultTableCellRenderer esquerda = new DefaultTableCellRenderer();
+        DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
+        DefaultTableCellRenderer direita = new DefaultTableCellRenderer();
+        esquerda.setHorizontalAlignment(SwingConstants.LEFT);
+        centralizado.setHorizontalAlignment(SwingConstants.CENTER);
+        direita.setHorizontalAlignment(SwingConstants.RIGHT);
+        tabResultados.getColumnModel().getColumn(2).setCellRenderer(direita);
+        tabResultados.getColumnModel().getColumn(3).setCellRenderer(direita);
+        tabResultados.getColumnModel().getColumn(4).setCellRenderer(direita);
     }
 
     private void preencherTabela() {
@@ -334,9 +346,9 @@ public class VendaDetalhes extends javax.swing.JInternalFrame {
                 m.addRow(new Object[]{
                     r.produto.getId(),
                     r.produto.getDescricao(),
-                    r.produtoVenda.getQtdProduto(),
-                    r.produtoVenda.getValorProduto(),
-                    r.produtoVenda.getQtdProduto() * r.produtoVenda.getValorProduto()
+                    dm.format(r.produtoVenda.getQtdProduto()),
+                    dm.format(r.produtoVenda.getValorProduto()),
+                    dm.format(r.produtoVenda.getQtdProduto() * r.produtoVenda.getValorProduto())
                 });
             }
             tabResultados.setModel(m);

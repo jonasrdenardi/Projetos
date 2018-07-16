@@ -17,6 +17,7 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
     public CadastroProduto() {
         initComponents();
         configurarFormulario();
+        txtPrecoCompra.setDocument(new ApenasNumeros());
         txtPreco.setDocument(new ApenasNumeros());
         txtQtd.setDocument(new ApenasNumeros());
     }

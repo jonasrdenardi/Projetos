@@ -6,10 +6,13 @@ import controller.VendaDAO;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.sql.Date;
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.List;
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import model.Cliente;
 import model.Retorno;
@@ -21,7 +24,8 @@ import static view.VendaAbrirSelecCliente.tabCliente;
 public class RelatorioVenda extends javax.swing.JInternalFrame {
 
     List<Retorno> retornos = new ArrayList<Retorno>();
-
+    
+    DecimalFormat dm = new DecimalFormat("0.00");
     SimpleDateFormat sdfNormal = new SimpleDateFormat("dd/MM/yyyy");
 
     public RelatorioVenda() {
@@ -296,7 +300,7 @@ public class RelatorioVenda extends javax.swing.JInternalFrame {
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
         HashMap param = new HashMap();
         String nomeRelatorio = "";
-
+        
         if (rbId.isSelected()) {
             if (txtPesquisa.getText().isEmpty() || txtPesquisa.getText().equalsIgnoreCase("Digite sua pesquisa aqui!")) {
                 new Relatorio(
@@ -457,7 +461,16 @@ public class RelatorioVenda extends javax.swing.JInternalFrame {
         tabResultados.getColumnModel().getColumn(0).setPreferredWidth(8);
         tabResultados.getColumnModel().getColumn(1).setPreferredWidth(60);
         tabResultados.getColumnModel().getColumn(2).setPreferredWidth(60);
-        tabResultados.getColumnModel().getColumn(3).setPreferredWidth(60);
+        tabResultados.getColumnModel().getColumn(3).setPreferredWidth(30);
+        tabResultados.getColumnModel().getColumn(4).setPreferredWidth(30);
+        DefaultTableCellRenderer esquerda = new DefaultTableCellRenderer();
+        DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
+        DefaultTableCellRenderer direita = new DefaultTableCellRenderer();
+        esquerda.setHorizontalAlignment(SwingConstants.LEFT);
+        centralizado.setHorizontalAlignment(SwingConstants.CENTER);
+        direita.setHorizontalAlignment(SwingConstants.RIGHT);
+        tabResultados.getColumnModel().getColumn(3).setCellRenderer(direita);
+        tabResultados.getColumnModel().getColumn(4).setCellRenderer(direita);
 
     }
 
@@ -470,8 +483,8 @@ public class RelatorioVenda extends javax.swing.JInternalFrame {
                     retorno.venda.getId(),
                     retorno.cliente.getNome(),
                     sdfNormal.format(retorno.venda.getDataVenda()),
-                    retorno.venda.getDesconto(),
-                    retorno.venda.getValor()
+                    dm.format(retorno.venda.getDesconto()),
+                    dm.format(retorno.venda.getValor())
                 });
             }
             tabResultados.setModel(m);

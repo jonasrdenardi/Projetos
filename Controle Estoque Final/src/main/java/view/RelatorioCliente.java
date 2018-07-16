@@ -76,9 +76,19 @@ public class RelatorioCliente extends javax.swing.JInternalFrame {
 
         rbDescricao.setForeground(new java.awt.Color(101, 96, 168));
         rbDescricao.setText("Nome");
+        rbDescricao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                rbDescricaoMousePressed(evt);
+            }
+        });
 
         rbId.setForeground(new java.awt.Color(101, 96, 168));
         rbId.setText("ID");
+        rbId.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                rbIdMousePressed(evt);
+            }
+        });
 
         lblRelatorioClientes.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
         lblRelatorioClientes.setForeground(new java.awt.Color(101, 96, 168));
@@ -195,25 +205,59 @@ public class RelatorioCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtPesquisaKeyReleased
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
-        Usuario u = new Usuario();
         HashMap param = new HashMap();
 
-        if (rbAtivos.isSelected()) {
-            param.put("PARAM", "1");
-        } else if (rbInativos.isSelected()) {
-            param.put("PARAM", "0");
+        if (txtPesquisa.getText().isEmpty() || txtPesquisa.getText().equalsIgnoreCase("Digite sua pesquisa aqui!")) {
+            if (rbAtivos.isSelected()) {
+                param.put("PARAM", "WHERE fg_ativo = 1");
+            } else if (rbInativos.isSelected()) {
+                param.put("PARAM", "WHERE fg_ativo = 0");
+            }
+        } else {
+            if (rbId.isSelected()) {
+                if (rbAtivos.isSelected()) {
+                    param.put("PARAM", "WHERE fg_ativo = 1 AND id = " + txtPesquisa.getText());
+                } else if (rbInativos.isSelected()) {
+                    param.put("PARAM", "WHERE fg_ativo = 0 AND id = " + txtPesquisa.getText());
+                }
+            } else if (rbDescricao.isSelected()) {
+                if (rbAtivos.isSelected()) {
+                    param.put("PARAM", "WHERE fg_ativo = 1 AND nome like " + "'%" + txtPesquisa.getText() + "%'");
+                } else if (rbInativos.isSelected()) {
+                    param.put("PARAM", "WHERE fg_ativo = 0 AND nome like " + "'%" + txtPesquisa.getText() + "%'");
+                }
+            }
         }
 
         if (rbTodos.isSelected()) {
-            new Relatorio(
+            if (txtPesquisa.getText().isEmpty() || txtPesquisa.getText().equalsIgnoreCase("Digite sua pesquisa aqui!")) {
+                param.put("PARAM", "");
+                new Relatorio(
                     "rpt_clientes", //nome do relatório
-                    Conexao.conectar(u), //conexão com o sgbd
-                    null //parâmetros
-            ).show();
+                    Conexao.conectar(Menu.getUsuario()), //conexão com o sgbd
+                    param //parâmetros
+                ).show();
+            } else{
+                if (rbId.isSelected()) {
+                    param.put("PARAM", "WHERE id = " + txtPesquisa.getText());
+                    new Relatorio(
+                        "rpt_clientes", //nome do relatório
+                        Conexao.conectar(Menu.getUsuario()), //conexão com o sgbd
+                        param //parâmetros
+                    ).show();
+                } else if (rbDescricao.isSelected()) {
+                    param.put("PARAM", "WHERE nome like " + "'%" + txtPesquisa.getText() + "%'");
+                    new Relatorio(
+                        "rpt_clientes", //nome do relatório
+                        Conexao.conectar(Menu.getUsuario()), //conexão com o sgbd
+                        param //parâmetros
+                    ).show();
+                }
+            }     
         } else {
             new Relatorio(
-                    "rpt_clientesAtivoOuInativo", //nome do relatório
-                    Conexao.conectar(u), //conexão com o sgbd
+                    "rpt_clientes", //nome do relatório
+                    Conexao.conectar(Menu.getUsuario()), //conexão com o sgbd
                     param //parâmetros
             ).show();
         }
@@ -227,6 +271,16 @@ public class RelatorioCliente extends javax.swing.JInternalFrame {
     private void rbTodosStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_rbTodosStateChanged
         preencherTabela(new ClienteDAO().listar(Menu.getUsuario()));
     }//GEN-LAST:event_rbTodosStateChanged
+
+    private void rbDescricaoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbDescricaoMousePressed
+        preencherTabela(new ClienteDAO().listar(Menu.getUsuario()));
+        txtPesquisa.setText("");
+    }//GEN-LAST:event_rbDescricaoMousePressed
+
+    private void rbIdMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbIdMousePressed
+        preencherTabela(new ClienteDAO().listar(Menu.getUsuario()));
+        txtPesquisa.setText("");
+    }//GEN-LAST:event_rbIdMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

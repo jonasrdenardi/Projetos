@@ -31,10 +31,10 @@ public class VendaAbrir extends javax.swing.JInternalFrame {
         configurarFormulario();
 
         this.cliente = cliente;
-        spQtd.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
         txtCliente.setText(cliente.getNome());
         txtCliente.setEditable(false);
         txtDesconto.setDocument(new ApenasNumeros());
+        txtQtd.setDocument(new ApenasNumeros());
         preencherTabelaProduto(new ProdutoDAO().listarAtivos(Menu.getUsuario()));
 
     }
@@ -50,7 +50,6 @@ public class VendaAbrir extends javax.swing.JInternalFrame {
         rdbPorId = new javax.swing.JRadioButton();
         rdbPorDescricao = new javax.swing.JRadioButton();
         lblPesquisarPRoduto1 = new javax.swing.JLabel();
-        spQtd = new javax.swing.JSpinner();
         btnAdicionar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblProdutoVenda = new javax.swing.JTable();
@@ -75,6 +74,7 @@ public class VendaAbrir extends javax.swing.JInternalFrame {
         lblTotalVenda = new javax.swing.JLabel();
         rdbDescPorcentagem = new javax.swing.JRadioButton();
         lblVlTotalVenda = new javax.swing.JLabel();
+        txtQtd = new javax.swing.JTextField();
 
         setIconifiable(true);
         setResizable(true);
@@ -111,8 +111,6 @@ public class VendaAbrir extends javax.swing.JInternalFrame {
         lblPesquisarPRoduto1.setFont(new java.awt.Font("Constantia", 0, 13)); // NOI18N
         lblPesquisarPRoduto1.setForeground(new java.awt.Color(101, 96, 168));
         lblPesquisarPRoduto1.setText("Quantidade:");
-
-        spQtd.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
 
         btnAdicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/adc1.png"))); // NOI18N
         btnAdicionar.setBorder(null);
@@ -292,6 +290,8 @@ public class VendaAbrir extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        txtQtd.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -310,25 +310,21 @@ public class VendaAbrir extends javax.swing.JInternalFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(lblPesquisarPRoduto1)
-                                            .addComponent(spQtd, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(txtQtd, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(0, 0, Short.MAX_VALUE))))
                             .addComponent(jSeparator1)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblPordutosIncVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblSelecione)
-                                    .addComponent(lblProdutosDisponiveis, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 806, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 806, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnExcluirItem, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(10, 10, 10)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnGerarVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(lblData)
-                                            .addComponent(jdcData, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(0, 13, Short.MAX_VALUE))))
+                                            .addComponent(jdcData, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(0, 0, Short.MAX_VALUE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(rdbPorId)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -342,12 +338,16 @@ public class VendaAbrir extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtCliente)
-                                    .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnExcluirItem, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(381, 381, 381)))
+                                    .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblPordutosIncVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblSelecione)
+                                    .addComponent(lblProdutosDisponiveis, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(387, 387, 387)
+                                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -373,33 +373,32 @@ public class VendaAbrir extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblPesquisarPRoduto1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(spQtd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtQtd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(58, 58, 58)
                         .addComponent(btnAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblPordutosIncVenda)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(3, 3, 3)
                                 .addComponent(lblData)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jdcData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jdcData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(54, 54, 54)
                                 .addComponent(btnGerarVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnExcluirItem, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(80, 80, 80))
+                        .addComponent(btnExcluirItem, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 97, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
 
         pack();
@@ -415,7 +414,7 @@ public class VendaAbrir extends javax.swing.JInternalFrame {
                 qtdString = qtdString.replaceAll("\\,", "."); // substitui virgula por ponto
                 float qtdFloat = Float.valueOf(qtdString); // acrescenta o valor em float
 
-                if (((int) spQtd.getValue()) > 0 && ((int) spQtd.getValue()) <= qtdFloat) {
+                if (Float.parseFloat(txtQtd.getText().replaceAll("\\,", ".")) > 0 && (Float.parseFloat(txtQtd.getText().replaceAll("\\,", "."))) <= qtdFloat) {
                     Produto p = new Produto();
                     // Obtem os valores do item selecionado
                     p.setId((int) tblProduto.getValueAt(indiceLinha, 0));
@@ -430,20 +429,25 @@ public class VendaAbrir extends javax.swing.JInternalFrame {
                     p.setQtd(Float.valueOf(Qtdproduto)); // acrescenta o valor em float
 
                     ProdutoVenda pv = new ProdutoVenda();
-                    pv.setQtdProduto(Float.parseFloat(spQtd.getValue().toString()));
+                    String qtd = txtQtd.getText().replaceAll("\\,", ".");
+                    float qtd2 = Float.valueOf(qtd);
+                    pv.setQtdProduto(qtd2);
 
                     preencherTabelaProdutoVenda(p, pv);
 
                     setTotalVenda();
                 } else {
-                    JOptionPane.showMessageDialog(null, "Quantidade não pode ser 0!");
+                    JOptionPane.showMessageDialog(null, "Quantidade não permitida!");
+                    txtQtd.setText("1");
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Item já incluido!");
+                txtQtd.setText("1");
             }
 
         } else {
             JOptionPane.showMessageDialog(null, "Selecione um item!");
+            txtQtd.setText("1");
         }
     }//GEN-LAST:event_btnAdicionarActionPerformed
 
@@ -527,7 +531,7 @@ public class VendaAbrir extends javax.swing.JInternalFrame {
                         preencherTabelaProduto(new ProdutoDAO().listarAtivos(Menu.getUsuario()));
                         txtDesconto.setText("");
                         lblVlTotalVenda.setText("0,00");
-                        spQtd.setValue(1);
+                        txtQtd.setText("1");
                         jdcData.setDate(null);
                     }
                 }
@@ -564,15 +568,16 @@ public class VendaAbrir extends javax.swing.JInternalFrame {
 
     private void tblProdutoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProdutoMousePressed
         int indiceLinha = tblProduto.getSelectedRow();
+        txtQtd.setText("1");
 
         if (indiceLinha != -1) {
             String qtdString = (String) tblProduto.getValueAt(indiceLinha, 2); // pega o valor do item e tranforma numa string
             qtdString = qtdString.replaceAll("\\,", "."); // substitui virgula por ponto
             float qtdFloat = Float.valueOf(qtdString); // acrescenta o valor em float
             if (qtdFloat != 0) {
-                spQtd.setModel(new javax.swing.SpinnerNumberModel(1, 1, (int) qtdFloat, 1));
+                //txtQtd.setModel(new javax.swing.SpinnerNumberModel(1, 1, (int) qtdFloat, 1));
             } else {
-                spQtd.setModel(new javax.swing.SpinnerNumberModel(0, 0, 0, 0));
+                //txtQtd.setModel(new javax.swing.SpinnerNumberModel(0, 0, 0, 0));
             }
         }
 
@@ -606,12 +611,12 @@ public class VendaAbrir extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton rdbDescValor;
     private javax.swing.JRadioButton rdbPorDescricao;
     private javax.swing.JRadioButton rdbPorId;
-    private javax.swing.JSpinner spQtd;
     private javax.swing.JTable tblProduto;
     private javax.swing.JTable tblProdutoVenda;
     private javax.swing.JTextField txtCliente;
     private javax.swing.JTextField txtDesconto;
     private javax.swing.JTextField txtPesquisa;
+    private javax.swing.JTextField txtQtd;
     // End of variables declaration//GEN-END:variables
 
     private void configurarFormulario() {
@@ -682,10 +687,16 @@ public class VendaAbrir extends javax.swing.JInternalFrame {
             configurarTabelaItemPedido();
             DefaultTableModel m = (DefaultTableModel) tblProdutoVenda.getModel();
 
-            m.addRow(new Object[]{p.getId(), p.getDescricao(), dm.format(p.getQtd()), dm.format(pv.getQtdProduto()), dm.format(p.getPreco()), dm.format(pv.getQtdProduto() * p.getPreco())});
+            m.addRow(new Object[]{
+                p.getId(), 
+                p.getDescricao(), 
+                dm.format(p.getQtd()), 
+                dm.format(pv.getQtdProduto()), 
+                dm.format(p.getPreco()), 
+                dm.format(pv.getQtdProduto() * p.getPreco())
+            });
 
             tblProdutoVenda.setModel(m);
-
         }
     }
 
