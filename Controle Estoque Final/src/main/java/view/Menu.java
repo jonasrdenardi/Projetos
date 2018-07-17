@@ -25,8 +25,8 @@ public class Menu extends javax.swing.JFrame {
         menuAdministracao.setVisible(false);
         
         setVisible(true);
-        // Se o usuário for root ou o diego mostra o menu administração
-        if (usuario.getNome().equals("pamela") || usuario.getNome().equals("root")) {
+        // Se o usuário for root ou o/a "..." mostra o menu administração
+        if (usuario.getNome().equals("cassia") || usuario.getNome().equals("root")) {
             menuAdministracao.setVisible(true);
         }
         

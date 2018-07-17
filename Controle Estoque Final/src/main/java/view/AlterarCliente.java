@@ -9,6 +9,8 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import model.Cliente;
+import model.FormatoCpf;
+import model.FormatoTelefone;
 
 /**
  *
@@ -19,6 +21,8 @@ public class AlterarCliente extends javax.swing.JInternalFrame {
     public AlterarCliente() {
         initComponents();
         configurarFormulario();
+        txtTelefone.setDocument(new FormatoTelefone());
+        txtCpf.setDocument(new FormatoCpf());
 
         preencherTabela(new ClienteDAO().listar(Menu.getUsuario()));
     }
