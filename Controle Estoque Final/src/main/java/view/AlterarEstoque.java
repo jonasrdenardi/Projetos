@@ -1,6 +1,7 @@
 package view;
 
 import controller.ProdutoDAO;
+import java.awt.Font;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -12,6 +13,7 @@ import javax.swing.text.DefaultFormatter;
 import javax.swing.JSpinner;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
+import model.ApenasNumeros;
 
 /**
  *
@@ -19,12 +21,15 @@ import javax.swing.table.DefaultTableCellRenderer;
  */
 public class AlterarEstoque extends javax.swing.JInternalFrame {
 
-    DecimalFormat dm = new DecimalFormat("0.00");
+    DecimalFormat dm = new DecimalFormat("###,###,###,###,##0.00");
     SimpleDateFormat sdfNormal = new SimpleDateFormat("dd/MM/yyyy");
 
     public AlterarEstoque() {
         initComponents();
         configurarFormulario();
+        
+        txtAdicionar.setDocument(new ApenasNumeros());
+        txtSubtrair.setDocument(new ApenasNumeros());
 
         preencherTabela(new ProdutoDAO().listar(Menu.getUsuario()));
     }
@@ -43,10 +48,10 @@ public class AlterarEstoque extends javax.swing.JInternalFrame {
         tabResultados = new javax.swing.JTable();
         lblAdicionar = new javax.swing.JLabel();
         lblSubtrair = new javax.swing.JLabel();
-        spAdicionar = new javax.swing.JSpinner();
-        spSubtrair = new javax.swing.JSpinner();
         btnOkAdicionar = new javax.swing.JButton();
         btnOkSubtrair = new javax.swing.JButton();
+        txtAdicionar = new javax.swing.JTextField();
+        txtSubtrair = new javax.swing.JTextField();
 
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icone.png"))); // NOI18N
 
@@ -109,16 +114,6 @@ public class AlterarEstoque extends javax.swing.JInternalFrame {
         lblSubtrair.setForeground(new java.awt.Color(101, 96, 168));
         lblSubtrair.setText("SUBTRAIR:");
 
-        spAdicionar.setModel(new javax.swing.SpinnerNumberModel(Float.valueOf(0.0f), Float.valueOf(0.0f), Float.valueOf(999999.0f), Float.valueOf(1.0f)));
-        JSpinner.NumberEditor jsEditor = (JSpinner.NumberEditor)spAdicionar.getEditor();
-        DefaultFormatter formatter = (DefaultFormatter) jsEditor.getTextField().getFormatter();
-        formatter.setAllowsInvalid(false);
-
-        spSubtrair.setModel(new javax.swing.SpinnerNumberModel(Float.valueOf(0.0f), Float.valueOf(0.0f), Float.valueOf(999999.0f), Float.valueOf(1.0f)));
-        JSpinner.NumberEditor jsEditorSub = (JSpinner.NumberEditor)spSubtrair.getEditor();
-        DefaultFormatter formatterSub = (DefaultFormatter) jsEditorSub.getTextField().getFormatter();
-        formatterSub.setAllowsInvalid(false);
-
         btnOkAdicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add1.png"))); // NOI18N
         btnOkAdicionar.setBorder(null);
         btnOkAdicionar.setBorderPainted(false);
@@ -152,24 +147,8 @@ public class AlterarEstoque extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblAlterarProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jspResultados, javax.swing.GroupLayout.DEFAULT_SIZE, 835, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblSubtrair)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(spSubtrair, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblAdicionar)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(spAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnOkAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnOkSubtrair, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(rbId)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -177,10 +156,26 @@ public class AlterarEstoque extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtPesquisa)
-                                    .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(lblSelecione, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblSubtrair)
+                            .addComponent(lblAdicionar))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtAdicionar, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
+                            .addComponent(txtSubtrair))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnOkAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnOkSubtrair, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(709, 709, 709))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblAlterarProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addComponent(jspResultados)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,31 +187,33 @@ public class AlterarEstoque extends javax.swing.JInternalFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(rbId)
                         .addComponent(rbDescricao)
-                        .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblSelecione)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jspResultados, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jspResultados, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblAdicionar)
-                            .addComponent(spAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(24, 24, 24)
+                        .addComponent(lblAdicionar)
+                        .addGap(46, 46, 46)
+                        .addComponent(lblSubtrair))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(btnOkAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnOkSubtrair, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblSubtrair)
-                            .addComponent(spSubtrair, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(33, 33, 33))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnOkAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(txtAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(28, 28, 28)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(txtSubtrair, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(8, 8, 8))
+                            .addComponent(btnOkSubtrair, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(25, 25, 25))
         );
 
         pack();
@@ -259,8 +256,8 @@ public class AlterarEstoque extends javax.swing.JInternalFrame {
 
         if (linha != -1) {
 
-            float valorTabela = Float.valueOf(tabResultados.getValueAt(linha, 2).toString().replaceAll("\\,", "."));
-            float valorAdc = (float) spAdicionar.getValue();
+            float valorTabela = Float.valueOf(tabResultados.getValueAt(linha, 2).toString().replaceAll("\\.", "").replaceAll("\\,", "."));
+            float valorAdc = Float.parseFloat(txtAdicionar.getText().replaceAll("\\.", "").replaceAll("\\,", "."));
             p.setId((int) tabResultados.getValueAt(linha, 0));
             p.setQtd(valorTabela + valorAdc);
 
@@ -274,8 +271,7 @@ public class AlterarEstoque extends javax.swing.JInternalFrame {
             } else {
                 JOptionPane.showMessageDialog(null, "Ocorreu um erro durante a operação", "Controle Estoque", JOptionPane.ERROR_MESSAGE);
             }
-
-            spAdicionar.setValue(0);
+            txtAdicionar.setText("");
         } else {
             JOptionPane.showMessageDialog(null, "Selecione um produto !");
         }
@@ -288,8 +284,8 @@ public class AlterarEstoque extends javax.swing.JInternalFrame {
 
         if (linha != -1) {
 
-            float valorTabela = Float.valueOf(tabResultados.getValueAt(linha, 2).toString().replaceAll("\\,", "."));
-            float valorSub = (float) spSubtrair.getValue();
+            float valorTabela = Float.valueOf(tabResultados.getValueAt(linha, 2).toString().replaceAll("\\.", "").replaceAll("\\,", "."));
+            float valorSub = Float.parseFloat(txtSubtrair.getText().replaceAll("\\.", "").replaceAll("\\,", "."));
 
             if (valorTabela - valorSub >= 0) {
 
@@ -303,13 +299,14 @@ public class AlterarEstoque extends javax.swing.JInternalFrame {
                 if (res != -1) {
                     JOptionPane.showMessageDialog(null, "Operação realizada com sucesso!.", "Controle Estoque", JOptionPane.INFORMATION_MESSAGE);
                     preencherTabela(new ProdutoDAO().listar(Menu.getUsuario()));
+
                 } else {
                     JOptionPane.showMessageDialog(null, "Ocorreu um erro durante a operação", "Controle Estoque", JOptionPane.ERROR_MESSAGE);
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Não é possível deixar o estoque negativo !", "Controle Estoque", JOptionPane.ERROR_MESSAGE);
             }
-            spSubtrair.setValue(0);
+            txtSubtrair.setText("");
         } else {
             JOptionPane.showMessageDialog(null, "Selecione um produto !");
         }
@@ -327,14 +324,14 @@ public class AlterarEstoque extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblSubtrair;
     private javax.swing.JRadioButton rbDescricao;
     private javax.swing.JRadioButton rbId;
-    private javax.swing.JSpinner spAdicionar;
-    private javax.swing.JSpinner spSubtrair;
     private javax.swing.JTable tabResultados;
+    private javax.swing.JTextField txtAdicionar;
     private javax.swing.JTextField txtPesquisa;
+    private javax.swing.JTextField txtSubtrair;
     // End of variables declaration//GEN-END:variables
 
     private void configurarFormulario() {
-        this.setTitle("Estoque");
+        this.setTitle("Alterar Estoque");
         this.setResizable(false);
         this.setMaximizable(false);
         this.setIconifiable(false);
@@ -347,7 +344,6 @@ public class AlterarEstoque extends javax.swing.JInternalFrame {
 
         configurarTabela();
 
-        //preencherTabela(new LivroDAO().listar());
         liberarFormulario();
 
     }
@@ -382,6 +378,8 @@ public class AlterarEstoque extends javax.swing.JInternalFrame {
         tabResultados.getColumnModel().getColumn(3).setCellRenderer(direita);
         tabResultados.getColumnModel().getColumn(4).setCellRenderer(direita);
         tabResultados.getColumnModel().getColumn(5).setCellRenderer(centralizado);
+        ((DefaultTableCellRenderer) tabResultados.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
+        tabResultados.getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 12));
     }
 
     private boolean liberarFormulario() {

@@ -2,9 +2,12 @@ package view;
 
 import controller.ClienteDAO;
 import controller.Conexao;
+import java.awt.Font;
 import java.util.HashMap;
 import java.util.List;
 import javax.swing.ButtonGroup;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import model.Cliente;
 import model.Usuario;
@@ -76,9 +79,19 @@ public class RelatorioCliente extends javax.swing.JInternalFrame {
 
         rbDescricao.setForeground(new java.awt.Color(101, 96, 168));
         rbDescricao.setText("Nome");
+        rbDescricao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                rbDescricaoMousePressed(evt);
+            }
+        });
 
         rbId.setForeground(new java.awt.Color(101, 96, 168));
         rbId.setText("ID");
+        rbId.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                rbIdMousePressed(evt);
+            }
+        });
 
         lblRelatorioClientes.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
         lblRelatorioClientes.setForeground(new java.awt.Color(101, 96, 168));
@@ -134,7 +147,7 @@ public class RelatorioCliente extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtPesquisa)
-                            .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(rbTodos)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -151,14 +164,13 @@ public class RelatorioCliente extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(rbId)
-                                .addComponent(rbDescricao))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(rbDescricao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(rbId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -195,25 +207,59 @@ public class RelatorioCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtPesquisaKeyReleased
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
-        Usuario u = new Usuario();
         HashMap param = new HashMap();
 
-        if (rbAtivos.isSelected()) {
-            param.put("PARAM", "1");
-        } else if (rbInativos.isSelected()) {
-            param.put("PARAM", "0");
+        if (txtPesquisa.getText().isEmpty() || txtPesquisa.getText().equalsIgnoreCase("Digite sua pesquisa aqui!")) {
+            if (rbAtivos.isSelected()) {
+                param.put("PARAM", "WHERE fg_ativo = 1");
+            } else if (rbInativos.isSelected()) {
+                param.put("PARAM", "WHERE fg_ativo = 0");
+            }
+        } else {
+            if (rbId.isSelected()) {
+                if (rbAtivos.isSelected()) {
+                    param.put("PARAM", "WHERE fg_ativo = 1 AND id = " + txtPesquisa.getText());
+                } else if (rbInativos.isSelected()) {
+                    param.put("PARAM", "WHERE fg_ativo = 0 AND id = " + txtPesquisa.getText());
+                }
+            } else if (rbDescricao.isSelected()) {
+                if (rbAtivos.isSelected()) {
+                    param.put("PARAM", "WHERE fg_ativo = 1 AND nome like " + "'%" + txtPesquisa.getText() + "%'");
+                } else if (rbInativos.isSelected()) {
+                    param.put("PARAM", "WHERE fg_ativo = 0 AND nome like " + "'%" + txtPesquisa.getText() + "%'");
+                }
+            }
         }
 
         if (rbTodos.isSelected()) {
-            new Relatorio(
+            if (txtPesquisa.getText().isEmpty() || txtPesquisa.getText().equalsIgnoreCase("Digite sua pesquisa aqui!")) {
+                param.put("PARAM", "");
+                new Relatorio(
                     "rpt_clientes", //nome do relatório
-                    Conexao.conectar(u), //conexão com o sgbd
-                    null //parâmetros
-            ).show();
+                    Conexao.conectar(Menu.getUsuario()), //conexão com o sgbd
+                    param //parâmetros
+                ).show();
+            } else{
+                if (rbId.isSelected()) {
+                    param.put("PARAM", "WHERE id = " + txtPesquisa.getText());
+                    new Relatorio(
+                        "rpt_clientes", //nome do relatório
+                        Conexao.conectar(Menu.getUsuario()), //conexão com o sgbd
+                        param //parâmetros
+                    ).show();
+                } else if (rbDescricao.isSelected()) {
+                    param.put("PARAM", "WHERE nome like " + "'%" + txtPesquisa.getText() + "%'");
+                    new Relatorio(
+                        "rpt_clientes", //nome do relatório
+                        Conexao.conectar(Menu.getUsuario()), //conexão com o sgbd
+                        param //parâmetros
+                    ).show();
+                }
+            }     
         } else {
             new Relatorio(
-                    "rpt_clientesAtivoOuInativo", //nome do relatório
-                    Conexao.conectar(u), //conexão com o sgbd
+                    "rpt_clientes", //nome do relatório
+                    Conexao.conectar(Menu.getUsuario()), //conexão com o sgbd
                     param //parâmetros
             ).show();
         }
@@ -227,6 +273,16 @@ public class RelatorioCliente extends javax.swing.JInternalFrame {
     private void rbTodosStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_rbTodosStateChanged
         preencherTabela(new ClienteDAO().listar(Menu.getUsuario()));
     }//GEN-LAST:event_rbTodosStateChanged
+
+    private void rbDescricaoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbDescricaoMousePressed
+        preencherTabela(new ClienteDAO().listar(Menu.getUsuario()));
+        txtPesquisa.setText("");
+    }//GEN-LAST:event_rbDescricaoMousePressed
+
+    private void rbIdMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbIdMousePressed
+        preencherTabela(new ClienteDAO().listar(Menu.getUsuario()));
+        txtPesquisa.setText("");
+    }//GEN-LAST:event_rbIdMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -284,7 +340,8 @@ public class RelatorioCliente extends javax.swing.JInternalFrame {
         tabResultados.getColumnModel().getColumn(2).setPreferredWidth(60);
         tabResultados.getColumnModel().getColumn(3).setPreferredWidth(60);
         tabResultados.getColumnModel().getColumn(4).setPreferredWidth(30);
-
+        ((DefaultTableCellRenderer) tabResultados.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
+        tabResultados.getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 12));
     }
 
     private void preencherTabela(List<Cliente> lista) {

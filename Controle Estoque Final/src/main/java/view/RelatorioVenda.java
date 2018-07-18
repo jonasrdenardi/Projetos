@@ -1,27 +1,27 @@
 package view;
 
-import controller.ClienteDAO;
 import controller.Conexao;
 import controller.VendaDAO;
+import java.awt.Font;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.sql.Date;
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.List;
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import model.Cliente;
 import model.Retorno;
-import model.Usuario;
-import model.Venda;
 import reports.Relatorio;
-import static view.VendaAbrirSelecCliente.tabCliente;
 
 public class RelatorioVenda extends javax.swing.JInternalFrame {
 
     List<Retorno> retornos = new ArrayList<Retorno>();
-
+    
+    DecimalFormat dm = new DecimalFormat("###,###,###,###,##0.00");
     SimpleDateFormat sdfNormal = new SimpleDateFormat("dd/MM/yyyy");
 
     public RelatorioVenda() {
@@ -157,8 +157,8 @@ public class RelatorioVenda extends javax.swing.JInternalFrame {
         jpPesquisaLayout.setVerticalGroup(
             jpPesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpPesquisaLayout.createSequentialGroup()
-                .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -224,10 +224,7 @@ public class RelatorioVenda extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jspResultados, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnImprimir)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnDetalhes))
+                    .addComponent(lblRelatorioVenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(rbId)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -239,7 +236,10 @@ public class RelatorioVenda extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jpData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 62, Short.MAX_VALUE))
-                    .addComponent(lblRelatorioVenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -260,7 +260,7 @@ public class RelatorioVenda extends javax.swing.JInternalFrame {
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(2, 2, 2))
                     .addComponent(jpData, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addComponent(jspResultados, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
+                .addComponent(jspResultados, javax.swing.GroupLayout.DEFAULT_SIZE, 393, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnImprimir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -296,7 +296,7 @@ public class RelatorioVenda extends javax.swing.JInternalFrame {
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
         HashMap param = new HashMap();
         String nomeRelatorio = "";
-
+        
         if (rbId.isSelected()) {
             if (txtPesquisa.getText().isEmpty() || txtPesquisa.getText().equalsIgnoreCase("Digite sua pesquisa aqui!")) {
                 new Relatorio(
@@ -353,7 +353,7 @@ public class RelatorioVenda extends javax.swing.JInternalFrame {
         if (indiceLinha != -1) {
             int idVenda = ((int) tabResultados.getValueAt(indiceLinha, 0));
 
-            VendaDetalhes jiVendaDetalhes = new VendaDetalhes(idVenda);
+            RelatorioVendaDetalhes jiVendaDetalhes = new RelatorioVendaDetalhes(idVenda);
             Menu.areaTrabalho.add(jiVendaDetalhes);
             jiVendaDetalhes.setVisible(true);
             jiVendaDetalhes.setPosicao();  // Centraliza a Tela Interna
@@ -457,8 +457,19 @@ public class RelatorioVenda extends javax.swing.JInternalFrame {
         tabResultados.getColumnModel().getColumn(0).setPreferredWidth(8);
         tabResultados.getColumnModel().getColumn(1).setPreferredWidth(60);
         tabResultados.getColumnModel().getColumn(2).setPreferredWidth(60);
-        tabResultados.getColumnModel().getColumn(3).setPreferredWidth(60);
-
+        tabResultados.getColumnModel().getColumn(3).setPreferredWidth(30);
+        tabResultados.getColumnModel().getColumn(4).setPreferredWidth(30);
+        DefaultTableCellRenderer esquerda = new DefaultTableCellRenderer();
+        DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
+        DefaultTableCellRenderer direita = new DefaultTableCellRenderer();
+        esquerda.setHorizontalAlignment(SwingConstants.LEFT);
+        centralizado.setHorizontalAlignment(SwingConstants.CENTER);
+        direita.setHorizontalAlignment(SwingConstants.RIGHT);
+        tabResultados.getColumnModel().getColumn(2).setCellRenderer(centralizado);
+        tabResultados.getColumnModel().getColumn(3).setCellRenderer(direita);
+        tabResultados.getColumnModel().getColumn(4).setCellRenderer(direita);
+        ((DefaultTableCellRenderer) tabResultados.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
+        tabResultados.getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 12));
     }
 
     private void preencherTabela() {
@@ -470,8 +481,8 @@ public class RelatorioVenda extends javax.swing.JInternalFrame {
                     retorno.venda.getId(),
                     retorno.cliente.getNome(),
                     sdfNormal.format(retorno.venda.getDataVenda()),
-                    retorno.venda.getDesconto(),
-                    retorno.venda.getValor()
+                    dm.format(retorno.venda.getDesconto()),
+                    dm.format(retorno.venda.getValor())
                 });
             }
             tabResultados.setModel(m);

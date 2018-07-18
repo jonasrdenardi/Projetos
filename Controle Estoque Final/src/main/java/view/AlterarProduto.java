@@ -1,6 +1,7 @@
 package view;
 
 import controller.ProdutoDAO;
+import java.awt.Font;
 import java.beans.PropertyVetoException;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -20,12 +21,14 @@ import model.Usuario;
  */
 public class AlterarProduto extends javax.swing.JInternalFrame {
 
-    DecimalFormat dm = new DecimalFormat("0.00");
+    DecimalFormat dm = new DecimalFormat("###,###,###,###,##0.00");
     SimpleDateFormat sdfNormal = new SimpleDateFormat("dd/MM/yyyy");
 
     public AlterarProduto() {
         initComponents();
         configurarFormulario();
+        
+        txtPrecoCompra.setDocument(new ApenasNumeros());
         txtPreco.setDocument(new ApenasNumeros());
         txtQtd.setDocument(new ApenasNumeros());
 
@@ -352,7 +355,7 @@ public class AlterarProduto extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtPesquisa)
-                            .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jspResultados)
                     .addGroup(layout.createSequentialGroup()
@@ -373,9 +376,9 @@ public class AlterarProduto extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(rbId)
-                        .addComponent(rbDescricao)
-                        .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(rbDescricao, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                        .addComponent(rbId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(4, 4, 4)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -384,7 +387,7 @@ public class AlterarProduto extends javax.swing.JInternalFrame {
                     .addComponent(rbAtivos)
                     .addComponent(rbInativos))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jspResultados, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+                .addComponent(jspResultados, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jpFormulario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -398,9 +401,9 @@ public class AlterarProduto extends javax.swing.JInternalFrame {
         Produto produto = new Produto();
 
         produto.setDescricao(txtDescricao.getText());
-        produto.setQtd(Float.parseFloat(txtQtd.getText().replaceAll("\\,", ".")));
-        produto.setPrecoCompra(Float.parseFloat(txtPrecoCompra.getText().replaceAll("\\,", ".")));
-        produto.setPreco(Float.parseFloat(txtPreco.getText().replaceAll("\\,", ".")));
+        produto.setQtd(Float.parseFloat(txtQtd.getText().replaceAll("\\.", "").replaceAll("\\,", ".")));
+        produto.setPrecoCompra(Float.parseFloat(txtPrecoCompra.getText().replaceAll("\\.", "").replaceAll("\\,", ".")));
+        produto.setPreco(Float.parseFloat(txtPreco.getText().replaceAll("\\.", "").replaceAll("\\,", ".")));
 
         //Por conta dos problemas com time zone tenho q subtrair 1
         java.util.Date dataSubtraida = jdcVencimento.getDate();
@@ -576,6 +579,8 @@ public class AlterarProduto extends javax.swing.JInternalFrame {
         tabResultados.getColumnModel().getColumn(4).setCellRenderer(direita);
         tabResultados.getColumnModel().getColumn(5).setCellRenderer(centralizado);
         tabResultados.getColumnModel().getColumn(6).setCellRenderer(centralizado);
+        ((DefaultTableCellRenderer) tabResultados.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
+        tabResultados.getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 12));
     }
 
     private boolean liberarFormulario() {

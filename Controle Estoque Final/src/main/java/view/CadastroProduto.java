@@ -12,11 +12,12 @@ import model.ApenasNumeros;
  */
 public class CadastroProduto extends javax.swing.JInternalFrame {
     
-    DecimalFormat df = new DecimalFormat("0.00");
+    DecimalFormat df = new DecimalFormat("###,###,###,###,##0.00");
 
     public CadastroProduto() {
         initComponents();
         configurarFormulario();
+        txtPrecoCompra.setDocument(new ApenasNumeros());
         txtPreco.setDocument(new ApenasNumeros());
         txtQtd.setDocument(new ApenasNumeros());
     }
@@ -249,16 +250,16 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
             produto.setDescricao(txtDescricao.getText());
             
             String qtd = txtQtd.getText(); // Pega a quantidade 
-            qtd = qtd.replaceAll("\\,", "."); // troca a virgula por ponto se houver
-            produto.setQtd(Float.valueOf(df.format(Float.valueOf(qtd)).replaceAll("\\,", "."))); // formata e acrescenta o valor em float
+            qtd = qtd.replaceAll("\\.", "").replaceAll("\\,", "."); // troca a virgula por ponto se houver
+            produto.setQtd(Float.valueOf(df.format(Float.valueOf(qtd)).replaceAll("\\.", "").replaceAll("\\,", "."))); // formata e acrescenta o valor em float
             
             String precoCompra = txtPrecoCompra.getText(); // Pega a quantidade             
-            precoCompra = precoCompra.replaceAll("\\,", "."); // troca a virgula por ponto se houver
+            precoCompra = precoCompra.replaceAll("\\.", "").replaceAll("\\,", "."); // troca a virgula por ponto se houver
             produto.setPrecoCompra(Float.valueOf(df.format(Float.valueOf(precoCompra)).replaceAll("\\,", "."))); // formata e acrescenta o valor em float
             
             String preco = txtPreco.getText(); // Pega a quantidade             
-            preco = preco.replaceAll("\\,", "."); // troca a virgula por ponto se houver
-            produto.setPreco(Float.valueOf(df.format(Float.valueOf(preco)).replaceAll("\\,", "."))); // formata e acrescenta o valor em float
+            preco = preco.replaceAll("\\.", "").replaceAll("\\,", "."); // troca a virgula por ponto se houver
+            produto.setPreco(Float.valueOf(df.format(Float.valueOf(preco)).replaceAll("\\.", "").replaceAll("\\,", "."))); // formata e acrescenta o valor em float
             
             produto.setData(jdcVencimento.getDate());
 
