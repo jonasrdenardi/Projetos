@@ -1,6 +1,7 @@
 package view;
 
 import controller.ProdutoDAO;
+import java.awt.Font;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -20,7 +21,7 @@ import model.ApenasNumeros;
  */
 public class AlterarEstoque extends javax.swing.JInternalFrame {
 
-    DecimalFormat dm = new DecimalFormat("0.00");
+    DecimalFormat dm = new DecimalFormat("###,###,###,###,##0.00");
     SimpleDateFormat sdfNormal = new SimpleDateFormat("dd/MM/yyyy");
 
     public AlterarEstoque() {
@@ -155,7 +156,7 @@ public class AlterarEstoque extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtPesquisa)
-                                    .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(lblSelecione, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -186,7 +187,7 @@ public class AlterarEstoque extends javax.swing.JInternalFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(rbId)
                         .addComponent(rbDescricao)
-                        .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblSelecione)
@@ -255,8 +256,8 @@ public class AlterarEstoque extends javax.swing.JInternalFrame {
 
         if (linha != -1) {
 
-            float valorTabela = Float.valueOf(tabResultados.getValueAt(linha, 2).toString().replaceAll("\\,", "."));
-            float valorAdc = Float.parseFloat(txtAdicionar.getText().replaceAll("\\,", "."));
+            float valorTabela = Float.valueOf(tabResultados.getValueAt(linha, 2).toString().replaceAll("\\.", "").replaceAll("\\,", "."));
+            float valorAdc = Float.parseFloat(txtAdicionar.getText().replaceAll("\\.", "").replaceAll("\\,", "."));
             p.setId((int) tabResultados.getValueAt(linha, 0));
             p.setQtd(valorTabela + valorAdc);
 
@@ -283,8 +284,8 @@ public class AlterarEstoque extends javax.swing.JInternalFrame {
 
         if (linha != -1) {
 
-            float valorTabela = Float.valueOf(tabResultados.getValueAt(linha, 2).toString().replaceAll("\\,", "."));
-            float valorSub = Float.parseFloat(txtSubtrair.getText().replaceAll("\\,", "."));
+            float valorTabela = Float.valueOf(tabResultados.getValueAt(linha, 2).toString().replaceAll("\\.", "").replaceAll("\\,", "."));
+            float valorSub = Float.parseFloat(txtSubtrair.getText().replaceAll("\\.", "").replaceAll("\\,", "."));
 
             if (valorTabela - valorSub >= 0) {
 
@@ -377,6 +378,8 @@ public class AlterarEstoque extends javax.swing.JInternalFrame {
         tabResultados.getColumnModel().getColumn(3).setCellRenderer(direita);
         tabResultados.getColumnModel().getColumn(4).setCellRenderer(direita);
         tabResultados.getColumnModel().getColumn(5).setCellRenderer(centralizado);
+        ((DefaultTableCellRenderer) tabResultados.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
+        tabResultados.getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 12));
     }
 
     private boolean liberarFormulario() {

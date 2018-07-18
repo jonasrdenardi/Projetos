@@ -1,6 +1,7 @@
 package view;
 
 import controller.ClienteDAO;
+import java.awt.Font;
 import java.text.DecimalFormat;
 import java.util.List;
 import javax.swing.ButtonGroup;
@@ -9,8 +10,6 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import model.Cliente;
-import model.FormatoCpf;
-import model.FormatoTelefone;
 
 /**
  *
@@ -21,8 +20,6 @@ public class AlterarCliente extends javax.swing.JInternalFrame {
     public AlterarCliente() {
         initComponents();
         configurarFormulario();
-        txtTelefone.setDocument(new FormatoTelefone());
-        txtCpf.setDocument(new FormatoCpf());
 
         preencherTabela(new ClienteDAO().listar(Menu.getUsuario()));
     }
@@ -303,7 +300,7 @@ public class AlterarCliente extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtPesquisa)
-                            .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblSelecione, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -507,6 +504,8 @@ public class AlterarCliente extends javax.swing.JInternalFrame {
         tabResultadosAlt.getColumnModel().getColumn(2).setCellRenderer(esquerda);
         tabResultadosAlt.getColumnModel().getColumn(3).setCellRenderer(esquerda);
         tabResultadosAlt.getColumnModel().getColumn(4).setCellRenderer(centralizado);
+        ((DefaultTableCellRenderer) tabResultadosAlt.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
+        tabResultadosAlt.getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 12));
     }
 
     private boolean liberarFormulario() {

@@ -25,8 +25,8 @@ public class Menu extends javax.swing.JFrame {
         menuAdministracao.setVisible(false);
         
         setVisible(true);
-        // Se o usuário for root ou o/a "..." mostra o menu administração
-        if (usuario.getNome().equals("cassia") || usuario.getNome().equals("root")) {
+        // Se o usuário for root ou o diego mostra o menu administração
+        if (usuario.getNome().equals("pamela") || usuario.getNome().equals("root")) {
             menuAdministracao.setVisible(true);
         }
         
@@ -42,28 +42,33 @@ public class Menu extends javax.swing.JFrame {
         areaTrabalho = new util.JDesktopPanePersonalizado("fundo.png");
         barraMenu = new javax.swing.JMenuBar();
         menuArquivo = new javax.swing.JMenu();
-        menuitemDesconectar = new javax.swing.JMenuItem();
+        jmiArquivoDesconectar = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
-        menuitemSair = new javax.swing.JMenuItem();
+        jmiArquivoSair = new javax.swing.JMenuItem();
         menuClientes = new javax.swing.JMenu();
-        jmiCadasrtarCliente = new javax.swing.JMenuItem();
+        jmiClientesCadastrarCliente = new javax.swing.JMenuItem();
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
-        jmiAlterarCliente = new javax.swing.JMenuItem();
+        jmiClientesAlterarCliente = new javax.swing.JMenuItem();
         menuProdutos = new javax.swing.JMenu();
-        jmiCadastrarProduto = new javax.swing.JMenuItem();
+        jmiEstoqueCadastrarProduto = new javax.swing.JMenuItem();
         jSeparator6 = new javax.swing.JPopupMenu.Separator();
-        jmiAlterarProduto = new javax.swing.JMenuItem();
+        jmiEstoqueAlterarProduto = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        jmiEstoque = new javax.swing.JMenuItem();
+        jmiEstoqueAlterarEstoque = new javax.swing.JMenuItem();
         jmVenda = new javax.swing.JMenu();
-        jmiAbrirVenda = new javax.swing.JMenuItem();
+        jmiVendaAbrirVenda = new javax.swing.JMenuItem();
+        jSeparator7 = new javax.swing.JPopupMenu.Separator();
+        jmiVendaAlterarVenda = new javax.swing.JMenuItem();
+        jSeparator8 = new javax.swing.JPopupMenu.Separator();
+        jmiVendaRecebimento = new javax.swing.JMenuItem();
         menuAdministracao = new javax.swing.JMenu();
-        jmiRelEstoque = new javax.swing.JMenu();
-        menuitemRelProdutos = new javax.swing.JMenuItem();
+        jmiAdmRelatorios = new javax.swing.JMenu();
+        jmiAdmRelatoriosEstoque = new javax.swing.JMenuItem();
         jSeparator4 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jmiAdmRelatoriosClientes = new javax.swing.JMenuItem();
         jSeparator5 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jmiAdmRelatoriosVendas = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -84,28 +89,28 @@ public class Menu extends javax.swing.JFrame {
         menuArquivo.setText("Arquivo");
         menuArquivo.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
 
-        menuitemDesconectar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        menuitemDesconectar.setFont(new java.awt.Font("sansserif", 0, 13)); // NOI18N
-        menuitemDesconectar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/desconectar.png"))); // NOI18N
-        menuitemDesconectar.setText("Desconectar");
-        menuitemDesconectar.addActionListener(new java.awt.event.ActionListener() {
+        jmiArquivoDesconectar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jmiArquivoDesconectar.setFont(new java.awt.Font("sansserif", 0, 13)); // NOI18N
+        jmiArquivoDesconectar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/desconectar.png"))); // NOI18N
+        jmiArquivoDesconectar.setText("Desconectar");
+        jmiArquivoDesconectar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuitemDesconectarActionPerformed(evt);
+                jmiArquivoDesconectarActionPerformed(evt);
             }
         });
-        menuArquivo.add(menuitemDesconectar);
+        menuArquivo.add(jmiArquivoDesconectar);
         menuArquivo.add(jSeparator2);
 
-        menuitemSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        menuitemSair.setFont(new java.awt.Font("sansserif", 0, 13)); // NOI18N
-        menuitemSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/sair.png"))); // NOI18N
-        menuitemSair.setText("Sair");
-        menuitemSair.addActionListener(new java.awt.event.ActionListener() {
+        jmiArquivoSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jmiArquivoSair.setFont(new java.awt.Font("sansserif", 0, 13)); // NOI18N
+        jmiArquivoSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/sair.png"))); // NOI18N
+        jmiArquivoSair.setText("Sair");
+        jmiArquivoSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuitemSairActionPerformed(evt);
+                jmiArquivoSairActionPerformed(evt);
             }
         });
-        menuArquivo.add(menuitemSair);
+        menuArquivo.add(jmiArquivoSair);
 
         barraMenu.add(menuArquivo);
 
@@ -113,69 +118,69 @@ public class Menu extends javax.swing.JFrame {
         menuClientes.setText("Clientes");
         menuClientes.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
 
-        jmiCadasrtarCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK));
-        jmiCadasrtarCliente.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
-        jmiCadasrtarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/cadastro_cliente.png"))); // NOI18N
-        jmiCadasrtarCliente.setText("Cadastrar Cliente");
-        jmiCadasrtarCliente.addActionListener(new java.awt.event.ActionListener() {
+        jmiClientesCadastrarCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK));
+        jmiClientesCadastrarCliente.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        jmiClientesCadastrarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/cadastro_cliente.png"))); // NOI18N
+        jmiClientesCadastrarCliente.setText("Cadastrar Cliente");
+        jmiClientesCadastrarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiCadasrtarClienteActionPerformed(evt);
+                jmiClientesCadastrarClienteActionPerformed(evt);
             }
         });
-        menuClientes.add(jmiCadasrtarCliente);
+        menuClientes.add(jmiClientesCadastrarCliente);
         menuClientes.add(jSeparator3);
 
-        jmiAlterarCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        jmiAlterarCliente.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
-        jmiAlterarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/cadastro.png"))); // NOI18N
-        jmiAlterarCliente.setText("Alterar Cliente");
-        jmiAlterarCliente.addActionListener(new java.awt.event.ActionListener() {
+        jmiClientesAlterarCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jmiClientesAlterarCliente.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        jmiClientesAlterarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/cliente_alterar.png"))); // NOI18N
+        jmiClientesAlterarCliente.setText("Alterar Cliente");
+        jmiClientesAlterarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiAlterarClienteActionPerformed(evt);
+                jmiClientesAlterarClienteActionPerformed(evt);
             }
         });
-        menuClientes.add(jmiAlterarCliente);
+        menuClientes.add(jmiClientesAlterarCliente);
 
         barraMenu.add(menuClientes);
 
         menuProdutos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/produtos.png"))); // NOI18N
-        menuProdutos.setText("Produtos");
+        menuProdutos.setText("Estoque");
         menuProdutos.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
 
-        jmiCadastrarProduto.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_MASK));
-        jmiCadastrarProduto.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
-        jmiCadastrarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/produto_cadastro.png"))); // NOI18N
-        jmiCadastrarProduto.setText("Cadastrar Produto");
-        jmiCadastrarProduto.addActionListener(new java.awt.event.ActionListener() {
+        jmiEstoqueCadastrarProduto.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_MASK));
+        jmiEstoqueCadastrarProduto.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        jmiEstoqueCadastrarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/produto_cadastro.png"))); // NOI18N
+        jmiEstoqueCadastrarProduto.setText("Cadastrar Produto");
+        jmiEstoqueCadastrarProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiCadastrarProdutoActionPerformed(evt);
+                jmiEstoqueCadastrarProdutoActionPerformed(evt);
             }
         });
-        menuProdutos.add(jmiCadastrarProduto);
+        menuProdutos.add(jmiEstoqueCadastrarProduto);
         menuProdutos.add(jSeparator6);
 
-        jmiAlterarProduto.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        jmiAlterarProduto.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
-        jmiAlterarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/produto_cadastro_alterar.png"))); // NOI18N
-        jmiAlterarProduto.setText("Alterar Produto");
-        jmiAlterarProduto.addActionListener(new java.awt.event.ActionListener() {
+        jmiEstoqueAlterarProduto.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jmiEstoqueAlterarProduto.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        jmiEstoqueAlterarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/produto_cadastro_alterar.png"))); // NOI18N
+        jmiEstoqueAlterarProduto.setText("Alterar Produto");
+        jmiEstoqueAlterarProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiAlterarProdutoActionPerformed(evt);
+                jmiEstoqueAlterarProdutoActionPerformed(evt);
             }
         });
-        menuProdutos.add(jmiAlterarProduto);
+        menuProdutos.add(jmiEstoqueAlterarProduto);
         menuProdutos.add(jSeparator1);
 
-        jmiEstoque.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.ALT_MASK));
-        jmiEstoque.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
-        jmiEstoque.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/cadastro_alterar_cliente_pet.png"))); // NOI18N
-        jmiEstoque.setText("Alterar Estoque");
-        jmiEstoque.addActionListener(new java.awt.event.ActionListener() {
+        jmiEstoqueAlterarEstoque.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.ALT_MASK));
+        jmiEstoqueAlterarEstoque.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        jmiEstoqueAlterarEstoque.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/estoque_alterar.png"))); // NOI18N
+        jmiEstoqueAlterarEstoque.setText("Alterar Estoque");
+        jmiEstoqueAlterarEstoque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiEstoqueActionPerformed(evt);
+                jmiEstoqueAlterarEstoqueActionPerformed(evt);
             }
         });
-        menuProdutos.add(jmiEstoque);
+        menuProdutos.add(jmiEstoqueAlterarEstoque);
 
         barraMenu.add(menuProdutos);
 
@@ -183,16 +188,40 @@ public class Menu extends javax.swing.JFrame {
         jmVenda.setText("Venda");
         jmVenda.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
 
-        jmiAbrirVenda.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.ALT_MASK));
-        jmiAbrirVenda.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
-        jmiAbrirVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/abrir_venda.png"))); // NOI18N
-        jmiAbrirVenda.setText("Abrir Venda");
-        jmiAbrirVenda.addActionListener(new java.awt.event.ActionListener() {
+        jmiVendaAbrirVenda.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.ALT_MASK));
+        jmiVendaAbrirVenda.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        jmiVendaAbrirVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/abrir_venda.png"))); // NOI18N
+        jmiVendaAbrirVenda.setText("Abrir Venda");
+        jmiVendaAbrirVenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiAbrirVendaActionPerformed(evt);
+                jmiVendaAbrirVendaActionPerformed(evt);
             }
         });
-        jmVenda.add(jmiAbrirVenda);
+        jmVenda.add(jmiVendaAbrirVenda);
+        jmVenda.add(jSeparator7);
+
+        jmiVendaAlterarVenda.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jmiVendaAlterarVenda.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        jmiVendaAlterarVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/venda_alterar.png"))); // NOI18N
+        jmiVendaAlterarVenda.setText("Alterar Venda");
+        jmiVendaAlterarVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiVendaAlterarVendaActionPerformed(evt);
+            }
+        });
+        jmVenda.add(jmiVendaAlterarVenda);
+        jmVenda.add(jSeparator8);
+
+        jmiVendaRecebimento.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.ALT_MASK));
+        jmiVendaRecebimento.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        jmiVendaRecebimento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/venda_recebimentos.png"))); // NOI18N
+        jmiVendaRecebimento.setText("Recebimento");
+        jmiVendaRecebimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiVendaRecebimentoActionPerformed(evt);
+            }
+        });
+        jmVenda.add(jmiVendaRecebimento);
 
         barraMenu.add(jmVenda);
 
@@ -200,43 +229,49 @@ public class Menu extends javax.swing.JFrame {
         menuAdministracao.setText("Administração");
         menuAdministracao.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
 
-        jmiRelEstoque.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/adm_relatorio.png"))); // NOI18N
-        jmiRelEstoque.setText("Relatórios");
-        jmiRelEstoque.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        jmiAdmRelatorios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/adm_relatorio.png"))); // NOI18N
+        jmiAdmRelatorios.setText("Relatórios");
+        jmiAdmRelatorios.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
 
-        menuitemRelProdutos.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
-        menuitemRelProdutos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/pesquisar_produto.png"))); // NOI18N
-        menuitemRelProdutos.setText("Estoque");
-        menuitemRelProdutos.addActionListener(new java.awt.event.ActionListener() {
+        jmiAdmRelatoriosEstoque.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        jmiAdmRelatoriosEstoque.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/pesquisar_produto.png"))); // NOI18N
+        jmiAdmRelatoriosEstoque.setText("Estoque");
+        jmiAdmRelatoriosEstoque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuitemRelProdutosActionPerformed(evt);
+                jmiAdmRelatoriosEstoqueActionPerformed(evt);
             }
         });
-        jmiRelEstoque.add(menuitemRelProdutos);
-        jmiRelEstoque.add(jSeparator4);
+        jmiAdmRelatorios.add(jmiAdmRelatoriosEstoque);
+        jmiAdmRelatorios.add(jSeparator4);
 
+        jmiAdmRelatoriosClientes.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        jmiAdmRelatoriosClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/pesquisar_cliente.png"))); // NOI18N
+        jmiAdmRelatoriosClientes.setText("Clientes");
+        jmiAdmRelatoriosClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiAdmRelatoriosClientesActionPerformed(evt);
+            }
+        });
+        jmiAdmRelatorios.add(jmiAdmRelatoriosClientes);
+        jmiAdmRelatorios.add(jSeparator5);
+
+        jmiAdmRelatoriosVendas.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        jmiAdmRelatoriosVendas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/adm_relatorio_vendas.png"))); // NOI18N
+        jmiAdmRelatoriosVendas.setText("Vendas");
+        jmiAdmRelatoriosVendas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiAdmRelatoriosVendasActionPerformed(evt);
+            }
+        });
+        jmiAdmRelatorios.add(jmiAdmRelatoriosVendas);
+
+        menuAdministracao.add(jmiAdmRelatorios);
+
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.ALT_MASK));
         jMenuItem1.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
-        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/pesquisar_cliente.png"))); // NOI18N
-        jMenuItem1.setText("Clientes");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        jmiRelEstoque.add(jMenuItem1);
-        jmiRelEstoque.add(jSeparator5);
-
-        jMenuItem2.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
-        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/adm_relatorio_vendas.png"))); // NOI18N
-        jMenuItem2.setText("Vendas");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
-        jmiRelEstoque.add(jMenuItem2);
-
-        menuAdministracao.add(jmiRelEstoque);
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/adm_usuario.png"))); // NOI18N
+        jMenuItem1.setText("Gerenciar Usuários");
+        menuAdministracao.add(jMenuItem1);
 
         barraMenu.add(menuAdministracao);
 
@@ -256,51 +291,59 @@ public class Menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jmiCadastrarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCadastrarProdutoActionPerformed
+    private void jmiEstoqueCadastrarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiEstoqueCadastrarProdutoActionPerformed
         abrirFormulario(new CadastroProduto());
-    }//GEN-LAST:event_jmiCadastrarProdutoActionPerformed
+    }//GEN-LAST:event_jmiEstoqueCadastrarProdutoActionPerformed
 
-    private void menuitemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuitemSairActionPerformed
+    private void jmiArquivoSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiArquivoSairActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_menuitemSairActionPerformed
+    }//GEN-LAST:event_jmiArquivoSairActionPerformed
 
-    private void menuitemDesconectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuitemDesconectarActionPerformed
+    private void jmiArquivoDesconectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiArquivoDesconectarActionPerformed
         Login lg = new Login();
         lg.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_menuitemDesconectarActionPerformed
+    }//GEN-LAST:event_jmiArquivoDesconectarActionPerformed
 
-    private void jmiAlterarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAlterarProdutoActionPerformed
+    private void jmiEstoqueAlterarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiEstoqueAlterarProdutoActionPerformed
         abrirFormulario(new AlterarProduto());
-    }//GEN-LAST:event_jmiAlterarProdutoActionPerformed
+    }//GEN-LAST:event_jmiEstoqueAlterarProdutoActionPerformed
 
-    private void menuitemRelProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuitemRelProdutosActionPerformed
+    private void jmiAdmRelatoriosEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAdmRelatoriosEstoqueActionPerformed
         abrirFormulario(new RelatorioEstoque());
-    }//GEN-LAST:event_menuitemRelProdutosActionPerformed
+    }//GEN-LAST:event_jmiAdmRelatoriosEstoqueActionPerformed
 
-    private void jmiEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiEstoqueActionPerformed
+    private void jmiEstoqueAlterarEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiEstoqueAlterarEstoqueActionPerformed
         abrirFormulario(new AlterarEstoque());
-    }//GEN-LAST:event_jmiEstoqueActionPerformed
+    }//GEN-LAST:event_jmiEstoqueAlterarEstoqueActionPerformed
 
-    private void jmiCadasrtarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCadasrtarClienteActionPerformed
+    private void jmiClientesCadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiClientesCadastrarClienteActionPerformed
         abrirFormulario(new CadastroCliente());
-    }//GEN-LAST:event_jmiCadasrtarClienteActionPerformed
+    }//GEN-LAST:event_jmiClientesCadastrarClienteActionPerformed
 
-    private void jmiAlterarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAlterarClienteActionPerformed
+    private void jmiClientesAlterarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiClientesAlterarClienteActionPerformed
         abrirFormulario(new AlterarCliente());
-    }//GEN-LAST:event_jmiAlterarClienteActionPerformed
+    }//GEN-LAST:event_jmiClientesAlterarClienteActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void jmiAdmRelatoriosClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAdmRelatoriosClientesActionPerformed
         abrirFormulario(new RelatorioCliente());
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_jmiAdmRelatoriosClientesActionPerformed
 
-    private void jmiAbrirVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAbrirVendaActionPerformed
-        abrirFormulario(new VendaAbrirSelecCliente());
-    }//GEN-LAST:event_jmiAbrirVendaActionPerformed
+    private void jmiVendaAbrirVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiVendaAbrirVendaActionPerformed
+        abrirFormulario(new VendaAbrirSelectCliente());
+    }//GEN-LAST:event_jmiVendaAbrirVendaActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void jmiAdmRelatoriosVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAdmRelatoriosVendasActionPerformed
         abrirFormulario(new RelatorioVenda());
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_jmiAdmRelatoriosVendasActionPerformed
+
+    private void jmiVendaRecebimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiVendaRecebimentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jmiVendaRecebimentoActionPerformed
+
+    private void jmiVendaAlterarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiVendaAlterarVendaActionPerformed
+        abrirFormulario(new VendaAlterarSelectVenda());
+    }//GEN-LAST:event_jmiVendaAlterarVendaActionPerformed
 
 
     public static void main(String args[]) {
@@ -343,28 +386,33 @@ public class Menu extends javax.swing.JFrame {
     public static javax.swing.JDesktopPane areaTrabalho;
     private javax.swing.JMenuBar barraMenu;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JPopupMenu.Separator jSeparator5;
     private javax.swing.JPopupMenu.Separator jSeparator6;
+    private javax.swing.JPopupMenu.Separator jSeparator7;
+    private javax.swing.JPopupMenu.Separator jSeparator8;
     private javax.swing.JMenu jmVenda;
-    private javax.swing.JMenuItem jmiAbrirVenda;
-    private javax.swing.JMenuItem jmiAlterarCliente;
-    private javax.swing.JMenuItem jmiAlterarProduto;
-    private javax.swing.JMenuItem jmiCadasrtarCliente;
-    private javax.swing.JMenuItem jmiCadastrarProduto;
-    private javax.swing.JMenuItem jmiEstoque;
-    private javax.swing.JMenu jmiRelEstoque;
+    private javax.swing.JMenu jmiAdmRelatorios;
+    private javax.swing.JMenuItem jmiAdmRelatoriosClientes;
+    private javax.swing.JMenuItem jmiAdmRelatoriosEstoque;
+    private javax.swing.JMenuItem jmiAdmRelatoriosVendas;
+    private javax.swing.JMenuItem jmiArquivoDesconectar;
+    private javax.swing.JMenuItem jmiArquivoSair;
+    private javax.swing.JMenuItem jmiClientesAlterarCliente;
+    private javax.swing.JMenuItem jmiClientesCadastrarCliente;
+    private javax.swing.JMenuItem jmiEstoqueAlterarEstoque;
+    private javax.swing.JMenuItem jmiEstoqueAlterarProduto;
+    private javax.swing.JMenuItem jmiEstoqueCadastrarProduto;
+    private javax.swing.JMenuItem jmiVendaAbrirVenda;
+    private javax.swing.JMenuItem jmiVendaAlterarVenda;
+    private javax.swing.JMenuItem jmiVendaRecebimento;
     private javax.swing.JMenu menuAdministracao;
     private javax.swing.JMenu menuArquivo;
     private javax.swing.JMenu menuClientes;
     private javax.swing.JMenu menuProdutos;
-    private javax.swing.JMenuItem menuitemDesconectar;
-    private javax.swing.JMenuItem menuitemRelProdutos;
-    private javax.swing.JMenuItem menuitemSair;
     // End of variables declaration//GEN-END:variables
 
     private void configurarFormulario(){

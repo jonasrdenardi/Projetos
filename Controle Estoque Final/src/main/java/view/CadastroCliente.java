@@ -3,8 +3,6 @@ package view;
 import controller.ClienteDAO;
 import javax.swing.JOptionPane;
 import model.Cliente;
-import model.FormatoCpf;
-import model.FormatoTelefone;
 
 /**
  *
@@ -15,9 +13,6 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
     public CadastroCliente() {
         initComponents();
         configurarFormulario();
-
-        txtTelefone.setDocument(new FormatoTelefone());
-        txtCPF.setDocument(new FormatoCpf());
     }
 
     @SuppressWarnings("unchecked")
