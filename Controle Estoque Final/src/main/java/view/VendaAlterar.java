@@ -155,13 +155,13 @@ public class VendaAlterar extends javax.swing.JInternalFrame {
             }
         });
 
-        btnGerarVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gerar1.png"))); // NOI18N
+        btnGerarVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/atualizar1.png"))); // NOI18N
         btnGerarVenda.setBorder(null);
         btnGerarVenda.setBorderPainted(false);
         btnGerarVenda.setContentAreaFilled(false);
         btnGerarVenda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnGerarVenda.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gerar2.png"))); // NOI18N
-        btnGerarVenda.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gerar2.png"))); // NOI18N
+        btnGerarVenda.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/atualizar2.png"))); // NOI18N
+        btnGerarVenda.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/atualizar2.png"))); // NOI18N
         btnGerarVenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGerarVendaActionPerformed(evt);
@@ -316,7 +316,7 @@ public class VendaAlterar extends javax.swing.JInternalFrame {
 
         lblProdutosDisponiveis2.setFont(new java.awt.Font("Constantia", 0, 13)); // NOI18N
         lblProdutosDisponiveis2.setForeground(new java.awt.Color(101, 96, 168));
-        lblProdutosDisponiveis2.setText("ID Cliente:");
+        lblProdutosDisponiveis2.setText("ID Venda:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -509,6 +509,7 @@ public class VendaAlterar extends javax.swing.JInternalFrame {
                 count = tblProdutoVenda.getRowCount();
 
                 Venda v = new Venda();
+                v.setId(Integer.valueOf(txtIdVenda.getText()));
                 v.setIdCliente(cliente.getId());
                 v.setDataVenda(jdcData.getDate());
 
@@ -542,37 +543,40 @@ public class VendaAlterar extends javax.swing.JInternalFrame {
                     pv[x].setValorProduto(Float.valueOf(valoUnString)); // acrescenta o valor em float  
                 }
 
-                v.setId(new VendaDAO().inserir(Menu.getUsuario(), v));
-
-                System.out.println(v.getId());
-
-                if (v.getId() != -1) {
-                    for (int i = 0; i < pv.length; i++) {
-                        pv[i].setIdVenda(v.getId());
+                
+                
+                
+                int retorno = new ProdutoVendaDAO().deletar(Menu.getUsuario(), v.getId());
+                if (retorno != -1) {
+                    retorno = new VendaDAO().alterar(Menu.getUsuario(), v);
+                    if (retorno != -1) {
+                        for (int i = 0; i < pv.length; i++) {
+                            pv[i].setIdVenda(v.getId());
+                        }
+                        int res = (new ProdutoVendaDAO().inserir(Menu.getUsuario(), pv));
+                        if (res != -1) {
+                            for (int i = 0; i < p.length; i++) {
+                                p[i].setQtd(p[i].getQtd() - pv[i].getQtdProduto());
+                                new ProdutoDAO().atualizarEstoque(Menu.getUsuario(), p[i]);
+                            }
+                            JOptionPane.showMessageDialog(null, "Venda " + v.getId() + " Gerado com sucesso!");
+                            while (tblProdutoVenda.getModel().getRowCount() > 0) {
+                                DefaultTableModel dtm = (DefaultTableModel) tblProdutoVenda.getModel();
+                                dtm.removeRow(0);
+                            }
+                            while (tblProduto.getModel().getRowCount() > 0) {
+                                DefaultTableModel dtm = (DefaultTableModel) tblProduto.getModel();
+                                dtm.removeRow(0);
+                            }
+                            preencherTabelaProduto(new ProdutoDAO().listarAtivos(Menu.getUsuario()));
+                            txtDesconto.setText("");
+                            lblVlTotalVenda.setText("0,00");
+                            txtQtd.setText("1");
+                            jdcData.setDate(null);
+                        }
                     }
-                    int res = (new ProdutoVendaDAO().inserir(Menu.getUsuario(), pv));
-                    if (res != -1) {
-                        for (int i = 0; i < p.length; i++) {
-                            p[i].setQtd(p[i].getQtd() - pv[i].getQtdProduto());
-                            new ProdutoDAO().atualizarEstoque(Menu.getUsuario(), p[i]);
-                        }
-                        JOptionPane.showMessageDialog(null, "Venda " + v.getId() + " Gerado com sucesso!");
-                        while (tblProdutoVenda.getModel().getRowCount() > 0) {
-                            DefaultTableModel dtm = (DefaultTableModel) tblProdutoVenda.getModel();
-                            dtm.removeRow(0);
-                        }
-                        while (tblProduto.getModel().getRowCount() > 0) {
-                            DefaultTableModel dtm = (DefaultTableModel) tblProduto.getModel();
-                            dtm.removeRow(0);
-                        }
-                        preencherTabelaProduto(new ProdutoDAO().listarAtivos(Menu.getUsuario()));
-                        txtDesconto.setText("");
-                        lblVlTotalVenda.setText("0,00");
-                        txtQtd.setText("1");
-                        jdcData.setDate(null);
-                    }
+
                 }
-
             } else {
                 JOptionPane.showMessageDialog(null, "Data não pode estar em branco!");
             }
@@ -630,7 +634,6 @@ public class VendaAlterar extends javax.swing.JInternalFrame {
         setTotalVenda();
     }//GEN-LAST:event_rdbDescPorcentagemMousePressed
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdicionar;
     private javax.swing.JButton btnExcluirItem;
@@ -670,7 +673,7 @@ public class VendaAlterar extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     private void configurarFormulario() {
-        this.setTitle("Abrir Venda");
+        this.setTitle("Alterar Venda");
         this.setResizable(false);
         this.setClosable(true);
         this.setIconifiable(true);
@@ -697,12 +700,12 @@ public class VendaAlterar extends javax.swing.JInternalFrame {
 
         tblProdutoVenda.setModel(m);
 
-        tblProdutoVenda.getColumnModel().getColumn(0).setPreferredWidth(50);
+        tblProdutoVenda.getColumnModel().getColumn(0).setPreferredWidth(30);
         tblProdutoVenda.getColumnModel().getColumn(1).setPreferredWidth(200);
-        tblProdutoVenda.getColumnModel().getColumn(2).setPreferredWidth(50);
+        tblProdutoVenda.getColumnModel().getColumn(2).setPreferredWidth(80);
         tblProdutoVenda.getColumnModel().getColumn(3).setPreferredWidth(50);
-        tblProdutoVenda.getColumnModel().getColumn(4).setPreferredWidth(100);
-        tblProdutoVenda.getColumnModel().getColumn(5).setPreferredWidth(100);
+        tblProdutoVenda.getColumnModel().getColumn(4).setPreferredWidth(80);
+        tblProdutoVenda.getColumnModel().getColumn(5).setPreferredWidth(80);
         DefaultTableCellRenderer esquerda = new DefaultTableCellRenderer();
         DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
         DefaultTableCellRenderer direita = new DefaultTableCellRenderer();
@@ -807,7 +810,12 @@ public class VendaAlterar extends javax.swing.JInternalFrame {
 
             for (Object obj : lista) {
                 Produto p = (Produto) obj;
-                m.addRow(new Object[]{p.getId(), p.getDescricao(), dm.format(p.getQtd()), dm.format(p.getPreco())});
+                m.addRow(new Object[]{
+                    p.getId(),
+                    p.getDescricao(),
+                    dm.format(p.getQtd()),
+                    dm.format(p.getPreco())
+                });
 
             }
             tblProduto.setModel(m);

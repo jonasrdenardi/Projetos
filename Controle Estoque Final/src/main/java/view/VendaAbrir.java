@@ -665,12 +665,12 @@ public class VendaAbrir extends javax.swing.JInternalFrame {
 
         tblProdutoVenda.setModel(m);
 
-        tblProdutoVenda.getColumnModel().getColumn(0).setPreferredWidth(50);
+        tblProdutoVenda.getColumnModel().getColumn(0).setPreferredWidth(30);
         tblProdutoVenda.getColumnModel().getColumn(1).setPreferredWidth(200);
-        tblProdutoVenda.getColumnModel().getColumn(2).setPreferredWidth(50);
+        tblProdutoVenda.getColumnModel().getColumn(2).setPreferredWidth(80);
         tblProdutoVenda.getColumnModel().getColumn(3).setPreferredWidth(50);
-        tblProdutoVenda.getColumnModel().getColumn(4).setPreferredWidth(100);
-        tblProdutoVenda.getColumnModel().getColumn(5).setPreferredWidth(100);
+        tblProdutoVenda.getColumnModel().getColumn(4).setPreferredWidth(80);
+        tblProdutoVenda.getColumnModel().getColumn(5).setPreferredWidth(80);
         DefaultTableCellRenderer esquerda = new DefaultTableCellRenderer();
         DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
         DefaultTableCellRenderer direita = new DefaultTableCellRenderer();

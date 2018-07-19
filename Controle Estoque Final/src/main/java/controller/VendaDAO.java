@@ -140,10 +140,10 @@ public class VendaDAO {
     public List<Retorno> pesquisarClienteVendaPorId(Usuario usuario, int idVenda) {
         try {
             String SQL = "SELECT v.id as 'id_venda', c.nome, v.data_venda, v.desconto, v.valor\n"
-                       + "FROM venda as v\n"
-                       + "INNER JOIN cliente as c ON (v.id_cliente = c.id)\n"
-                       + "WHERE v.id = ?\n"
-                       + "ORDER BY v.data_venda desc";
+                    + "FROM venda as v\n"
+                    + "INNER JOIN cliente as c ON (v.id_cliente = c.id)\n"
+                    + "WHERE v.id = ?\n"
+                    + "ORDER BY v.data_venda desc";
 
             con = controller.Conexao.conectar(usuario);
             cmd = con.prepareStatement(SQL);
@@ -177,20 +177,20 @@ public class VendaDAO {
             Conexao.desconectar(con);
         }
     }
-    
+
     public List<Retorno> pesquisarClienteVendaPorData(Usuario usuario, java.util.Date dataInicio, java.util.Date dataFim) {
         try {
             String SQL = "SELECT v.id as 'id_venda', c.nome, v.data_venda, v.desconto, v.valor\n"
-                       + "FROM venda as v\n"
-                       + "INNER JOIN cliente as c ON (v.id_cliente = c.id)\n"
-                       + "WHERE data_venda BETWEEN ? AND ?\n"
-                       + "ORDER BY v.data_venda desc";
+                    + "FROM venda as v\n"
+                    + "INNER JOIN cliente as c ON (v.id_cliente = c.id)\n"
+                    + "WHERE data_venda BETWEEN ? AND ?\n"
+                    + "ORDER BY v.data_venda desc";
 
             con = controller.Conexao.conectar(usuario);
             cmd = con.prepareStatement(SQL);
 
-            cmd.setDate(1,  new Date(dataInicio.getTime()));
-            cmd.setDate(2,  new Date(dataFim.getTime()));
+            cmd.setDate(1, new Date(dataInicio.getTime()));
+            cmd.setDate(2, new Date(dataFim.getTime()));
             //retornar o resultado da consulta
             ResultSet rs = cmd.executeQuery();
 
@@ -219,14 +219,14 @@ public class VendaDAO {
             Conexao.desconectar(con);
         }
     }
-    
+
     public List<Retorno> pesquisarClienteVendaPorNome(Usuario usuario, String data) {
         try {
             String SQL = "SELECT v.id as 'id_venda', c.nome, v.data_venda, v.desconto, v.valor\n"
-                       + "FROM venda as v\n"
-                       + "INNER JOIN cliente as c ON (v.id_cliente = c.id)\n"
-                       + "WHERE c.nome like ?\n"
-                       + "ORDER BY v.data_venda desc";
+                    + "FROM venda as v\n"
+                    + "INNER JOIN cliente as c ON (v.id_cliente = c.id)\n"
+                    + "WHERE c.nome like ?\n"
+                    + "ORDER BY v.data_venda desc";
 
             con = controller.Conexao.conectar(usuario);
             cmd = con.prepareStatement(SQL);
@@ -375,6 +375,43 @@ public class VendaDAO {
             return null;
         } finally {
             Conexao.desconectar(con);
+        }
+    }
+
+    public int alterar(Usuario u, Venda v) {
+        try {
+
+            final String SQL = "UPDATE venda\n"
+                    + "SET id_cliente=?, data_venda=?, desconto=?, valor=?\n"
+                    + "WHERE id =?;";
+
+            con = controller.Conexao.conectar(u);
+            //a execucao da instrucao retornara o valor da chave gerada pelo SGBD
+            cmd = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+
+            //configurar os parametros da intrucao SQL, sao especificados com o simbolo de interrogacao
+            cmd.setInt(1, v.getIdCliente());
+            cmd.setDate(2, new Date(v.getDataVenda().getTime()));
+            cmd.setFloat(3, v.getDesconto());
+            cmd.setFloat(4, v.getValor());
+            cmd.setInt(5, v.getId());
+
+            //enviar a instrucao SQL para o SGBD
+            //resultado maior que 0 significa que o comando foi executado corretamente
+            int retorno = cmd.executeUpdate();
+
+            if (retorno > 0) {
+                return retorno;
+            }
+            //algo de errado aconteceu, a instrucao nao foi executada.
+            return -1;
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage());
+            return -1;
+
+        } finally {
+            controller.Conexao.desconectar(con);
         }
     }
 }

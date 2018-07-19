@@ -140,6 +140,18 @@ public class AlterarEstoque extends javax.swing.JInternalFrame {
             }
         });
 
+        txtAdicionar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtAdicionarKeyReleased(evt);
+            }
+        });
+
+        txtSubtrair.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSubtrairKeyReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -312,6 +324,14 @@ public class AlterarEstoque extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnOkSubtrairActionPerformed
 
+    private void txtAdicionarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAdicionarKeyReleased
+        txtSubtrair.setText("");
+    }//GEN-LAST:event_txtAdicionarKeyReleased
+
+    private void txtSubtrairKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSubtrairKeyReleased
+        txtAdicionar.setText("");
+    }//GEN-LAST:event_txtSubtrairKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnOkAdicionar;
@@ -344,7 +364,7 @@ public class AlterarEstoque extends javax.swing.JInternalFrame {
 
         configurarTabela();
 
-        liberarFormulario();
+        liberarFormulario();  
 
     }
 

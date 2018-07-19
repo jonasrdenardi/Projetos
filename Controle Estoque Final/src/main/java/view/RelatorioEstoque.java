@@ -353,6 +353,8 @@ public class RelatorioEstoque extends javax.swing.JInternalFrame {
         rbTodos.setSelected(true);
 
         configurarTabela();
+        
+        getRootPane().setDefaultButton(btnImprimir);
 
     }
 

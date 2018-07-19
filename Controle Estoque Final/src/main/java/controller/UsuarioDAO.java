@@ -18,7 +18,7 @@ public class UsuarioDAO {
     private static final String HOST = "127.0.0.1:3306";
     private static final String DATABASE = "db_controle_estoque";
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-    private static final String URL = "jdbc:mysql://" + HOST + "/" + DATABASE + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false";
+    private static final String URL = "jdbc:mysql://" + HOST + "/" + DATABASE + "?useTimezone=true&serverTimezone=Brazil/East";
 
     public Connection Logar(Usuario usuario) {
         try {
@@ -32,20 +32,23 @@ public class UsuarioDAO {
         }
     }
 
-    public int criar(Usuario u, Usuario uc) {
+    public int criar(Usuario u, String usuario, String senha) {
         try {
-            String SQL = "CREATE user ?@localhost IDENTIFIED BY ?; \n"+
-                        "GRANT all ON db_controle_estoque.* TO ?@?;";
+            String SQL = "CREATE user ?@'localhost' IDENTIFIED BY ?";
 
             con = Conexao.conectar(u);
             cmd = con.prepareStatement(SQL);
-            cmd.setString(1, uc.getNome());
-            cmd.setString(2, uc.getSenha());
-            cmd.setString(3, uc.getNome());
-            cmd.setString(4, "localhost");
-            
+            cmd.setString(1, usuario);
+            cmd.setString(2, senha);
 
             int retorno = cmd.executeUpdate();
+
+            SQL = "GRANT all ON db_controle_estoque.* to ?@'localhost';";
+
+            cmd = con.prepareStatement(SQL);
+            cmd.setString(1, usuario);
+
+            retorno = cmd.executeUpdate();
 
             if (retorno >= 0) {
                 return retorno;
@@ -61,29 +64,27 @@ public class UsuarioDAO {
         }
     }
 
-    public List<Object> listar(Usuario usuario) {
+    public List<Usuario> listar(Usuario usuario) {
         try {
-            String SQL = "SELECT s.usename, a.rolconnlimit\n"
-                    + "from pg_authid a\n"
-                    + "INNER JOIN pg_shadow s ON (s.usename = a.rolname);";
+            String SQL = "SELECT * FROM mysql.user ORDER BY UPPER(User);";
 
             con = Conexao.conectar(usuario);
             cmd = con.prepareStatement(SQL);
             ResultSet rs = cmd.executeQuery();
 
-            List<Object> lista = new ArrayList<>();
+            List<Usuario> lista = new ArrayList<>();
 
             while (rs.next()) {
-                // if para não mostrar o usuário postgres pois ele é o administrador do banco de dados        
-                if (!rs.getString("usename").equals("postgres")) {
+                // if para não mostrar o usuário root pois ele é o administrador do banco de dados        
+                if (!rs.getString("User").equals("root")) {
                     Usuario u = new Usuario();
-                    u.setNome(rs.getString("usename"));
-                    u.setLimiteCon(rs.getInt("rolconnlimit"));
+                    u.setNome(rs.getString("User"));
 
                     lista.add(u);
                 }
 
             }
+
             return lista;
 
         } catch (Exception e) {
@@ -97,7 +98,7 @@ public class UsuarioDAO {
 
     public int deletar(Usuario usuario, String usuarioEx) {
         try {
-            String SQL = "DROP USER " + usuarioEx + " ;";
+            String SQL = "DROP USER " + usuarioEx + "@localhost;";
 
             con = Conexao.conectar(usuario);
             cmd = con.prepareStatement(SQL);
@@ -128,6 +129,34 @@ public class UsuarioDAO {
             cmd = con.prepareStatement(SQL);
 
             int retorno = cmd.executeUpdate();
+
+            if (retorno >= 0) {
+                return retorno;
+            } else {
+                return -1;
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage());
+            return -1;
+        } finally {
+            Conexao.desconectar(con);
+        }
+    }
+
+    public int atualizarSenha(Usuario u, String usuario, String novaSenha) {
+        try {
+            String SQL = "UPDATE mysql.user SET password='" + novaSenha + "' WHERE User ='" + usuario + "';";
+
+            con = Conexao.conectar(u);
+            cmd = con.prepareStatement(SQL);
+
+            int retorno = cmd.executeUpdate();
+
+            SQL = "FLUSH PRIVILEGES;";
+
+            cmd = con.prepareStatement(SQL);
+            retorno = cmd.executeUpdate();
 
             if (retorno >= 0) {
                 return retorno;

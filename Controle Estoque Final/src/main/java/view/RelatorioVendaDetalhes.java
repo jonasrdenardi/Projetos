@@ -61,7 +61,7 @@ public class RelatorioVendaDetalhes extends javax.swing.JInternalFrame {
         lblProdutosDisponiveis5 = new javax.swing.JLabel();
         txtTotal = new javax.swing.JTextField();
         jSeparator12 = new javax.swing.JSeparator();
-        jButton1 = new javax.swing.JButton();
+        btnImprimir = new javax.swing.JButton();
 
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icone.png"))); // NOI18N
 
@@ -163,16 +163,16 @@ public class RelatorioVendaDetalhes extends javax.swing.JInternalFrame {
         jSeparator12.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imprimir1.png"))); // NOI18N
-        jButton1.setBorder(null);
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imprimir2.png"))); // NOI18N
-        jButton1.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imprimir2.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imprimir1.png"))); // NOI18N
+        btnImprimir.setBorder(null);
+        btnImprimir.setBorderPainted(false);
+        btnImprimir.setContentAreaFilled(false);
+        btnImprimir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnImprimir.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imprimir2.png"))); // NOI18N
+        btnImprimir.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imprimir2.png"))); // NOI18N
+        btnImprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnImprimirActionPerformed(evt);
             }
         });
 
@@ -192,7 +192,7 @@ public class RelatorioVendaDetalhes extends javax.swing.JInternalFrame {
                             .addComponent(txtDesconto)
                             .addComponent(jSeparator11, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE))
                         .addGap(535, 535, 535)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblProdutosDisponiveis4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -246,7 +246,7 @@ public class RelatorioVendaDetalhes extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(lblProdutosDisponiveis5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
@@ -266,7 +266,7 @@ public class RelatorioVendaDetalhes extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
         HashMap param = new HashMap();
 
         param.put("PARAM", idVenda);
@@ -276,11 +276,11 @@ public class RelatorioVendaDetalhes extends javax.swing.JInternalFrame {
                 param //parâmetros
         ).show();
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnImprimirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnImprimir;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
@@ -308,6 +308,8 @@ public class RelatorioVendaDetalhes extends javax.swing.JInternalFrame {
         this.setClosable(true);
 
         configurarTabela();
+        
+        getRootPane().setDefaultButton(btnImprimir);
     }
 
     private void configurarTabela() {

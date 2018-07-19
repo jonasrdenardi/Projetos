@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import model.Usuario;
-import reports.Relatorio;
+
 
 /**
  *
@@ -68,7 +68,7 @@ public class Menu extends javax.swing.JFrame {
         jmiAdmRelatoriosClientes = new javax.swing.JMenuItem();
         jSeparator5 = new javax.swing.JPopupMenu.Separator();
         jmiAdmRelatoriosVendas = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jmiGerenciarUsuarios = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -267,11 +267,16 @@ public class Menu extends javax.swing.JFrame {
 
         menuAdministracao.add(jmiAdmRelatorios);
 
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.ALT_MASK));
-        jMenuItem1.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
-        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/adm_usuario.png"))); // NOI18N
-        jMenuItem1.setText("Gerenciar Usuários");
-        menuAdministracao.add(jMenuItem1);
+        jmiGerenciarUsuarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.ALT_MASK));
+        jmiGerenciarUsuarios.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        jmiGerenciarUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/adm_usuario.png"))); // NOI18N
+        jmiGerenciarUsuarios.setText("Gerenciar Usuários");
+        jmiGerenciarUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiGerenciarUsuariosActionPerformed(evt);
+            }
+        });
+        menuAdministracao.add(jmiGerenciarUsuarios);
 
         barraMenu.add(menuAdministracao);
 
@@ -345,6 +350,10 @@ public class Menu extends javax.swing.JFrame {
         abrirFormulario(new VendaAlterarSelectVenda());
     }//GEN-LAST:event_jmiVendaAlterarVendaActionPerformed
 
+    private void jmiGerenciarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiGerenciarUsuariosActionPerformed
+        abrirFormulario(new AdministracaoUsuarios());
+    }//GEN-LAST:event_jmiGerenciarUsuariosActionPerformed
+
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -385,7 +394,6 @@ public class Menu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JDesktopPane areaTrabalho;
     private javax.swing.JMenuBar barraMenu;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
@@ -406,6 +414,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmiEstoqueAlterarEstoque;
     private javax.swing.JMenuItem jmiEstoqueAlterarProduto;
     private javax.swing.JMenuItem jmiEstoqueCadastrarProduto;
+    private javax.swing.JMenuItem jmiGerenciarUsuarios;
     private javax.swing.JMenuItem jmiVendaAbrirVenda;
     private javax.swing.JMenuItem jmiVendaAlterarVenda;
     private javax.swing.JMenuItem jmiVendaRecebimento;
