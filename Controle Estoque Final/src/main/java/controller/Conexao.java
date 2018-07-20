@@ -26,7 +26,7 @@ public class Conexao {
             Class.forName("com.mysql.cj.jdbc.Driver");
             return DriverManager.getConnection(URL, USR, PWD);
         } catch (ClassNotFoundException | SQLException e) {
-            System.out.println("ERRO: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage(),"Erro", JOptionPane.ERROR_MESSAGE);
             return null;
         }
     }
@@ -35,7 +35,7 @@ public class Conexao {
         try {
             con.close();
         } catch (Exception e) {
-            System.out.println("ERRO: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage(),"Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
     

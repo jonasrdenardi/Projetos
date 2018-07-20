@@ -6,6 +6,7 @@ import controller.VendaDAO;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.text.DecimalFormat;
+import java.util.Date;
 import java.util.List;
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
@@ -27,8 +28,9 @@ public class VendaAbrir extends javax.swing.JInternalFrame {
     public VendaAbrir(Cliente cliente) {
         initComponents();
         configurarFormulario();
-
+        
         this.cliente = cliente;
+        jdcData.setDate(new Date(System.currentTimeMillis()));
         txtCliente.setText(cliente.getNome());
         txtCliente.setEditable(false);
         txtDesconto.setDocument(new ApenasNumeros());

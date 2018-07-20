@@ -2,6 +2,7 @@ package view;
 
 import controller.Conexao;
 import controller.VendaDAO;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -355,11 +356,11 @@ public class VendaAlterarSelectVenda extends javax.swing.JInternalFrame {
             int idVenda = ((int) tabResultados.getValueAt(indiceLinha, 0));
             String cliente = (String) tabResultados.getValueAt(indiceLinha, 1);
 
-            VendaAlterarSelectCliente idVendaAlterarSelectCliente = new VendaAlterarSelectCliente(idVenda, cliente);
-            Menu.areaTrabalho.add(idVendaAlterarSelectCliente);
-            idVendaAlterarSelectCliente.setVisible(true);
-            idVendaAlterarSelectCliente.setPosicao();  // Centraliza a Tela Interna
-            //this.dispose();
+            VendaAlterarSelectCliente jiVendaAlterarSelectCliente = new VendaAlterarSelectCliente(idVenda, cliente);
+            Menu.areaTrabalho.add(jiVendaAlterarSelectCliente);
+            jiVendaAlterarSelectCliente.setVisible(true);
+            jiVendaAlterarSelectCliente.setPosicao();  // Centraliza a Tela Interna
+            this.dispose();
         } else {
             JOptionPane.showMessageDialog(null, "Selecione uma venda!");
         }
@@ -450,6 +451,10 @@ public class VendaAlterarSelectVenda extends javax.swing.JInternalFrame {
             }
             tabResultados.setModel(m);
         }
+    }
+        public void setPosicao() {
+        Dimension d = this.getDesktopPane().getSize();
+        this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
     }
 
 }

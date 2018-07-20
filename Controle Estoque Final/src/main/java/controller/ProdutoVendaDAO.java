@@ -58,7 +58,7 @@ public class ProdutoVendaDAO {
             return -1;
 
         } catch (SQLException e) {
-            System.out.println("ERRO: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage(),"Erro", JOptionPane.ERROR_MESSAGE);
             return -1;
 
         } finally {
@@ -106,7 +106,7 @@ public class ProdutoVendaDAO {
             return retornos;
 
         } catch (Exception e) {
-            System.out.println("ERRO: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage(),"Erro", JOptionPane.ERROR_MESSAGE);
             return null;
         } finally {
             Conexao.desconectar(con);
@@ -135,7 +135,7 @@ public class ProdutoVendaDAO {
             return -1;
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage(),"Erro", JOptionPane.ERROR_MESSAGE);
             return -1;
 
         } finally {

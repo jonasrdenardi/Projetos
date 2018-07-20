@@ -7,6 +7,7 @@ import controller.VendaDAO;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
@@ -26,6 +27,7 @@ public class VendaAlterar extends javax.swing.JInternalFrame {
     float descontoFinal = 0;
     Cliente cliente = new Cliente();
     int idVenda;
+    List<Retorno> retornosInicio = new ArrayList<Retorno>();
 
     public VendaAlterar(Cliente cliente, int idVenda) {
         initComponents();
@@ -542,40 +544,39 @@ public class VendaAlterar extends javax.swing.JInternalFrame {
                     valoUnString = valoUnString.replaceAll("\\.", "").replaceAll("\\,", "."); // substitui virgula por ponto
                     pv[x].setValorProduto(Float.valueOf(valoUnString)); // acrescenta o valor em float  
                 }
+                int retorno = -2;
 
-                
-                
-                
-                int retorno = new ProdutoVendaDAO().deletar(Menu.getUsuario(), v.getId());
+                for (Retorno retornoInicio : retornosInicio) {
+                    retornoInicio.produto.setQtd(retornoInicio.produto.getQtd() + retornoInicio.produtoVenda.getQtdProduto());
+                    retorno = new ProdutoDAO().atualizarEstoque(Menu.getUsuario(), retornoInicio.produto);
+                    if (retorno == -1) {
+                        break;
+                    }
+                }
                 if (retorno != -1) {
-                    retorno = new VendaDAO().alterar(Menu.getUsuario(), v);
+                    retorno = new ProdutoVendaDAO().deletar(Menu.getUsuario(), v.getId());
                     if (retorno != -1) {
-                        for (int i = 0; i < pv.length; i++) {
-                            pv[i].setIdVenda(v.getId());
-                        }
-                        int res = (new ProdutoVendaDAO().inserir(Menu.getUsuario(), pv));
-                        if (res != -1) {
-                            for (int i = 0; i < p.length; i++) {
-                                p[i].setQtd(p[i].getQtd() - pv[i].getQtdProduto());
-                                new ProdutoDAO().atualizarEstoque(Menu.getUsuario(), p[i]);
+                        retorno = new VendaDAO().alterar(Menu.getUsuario(), v);
+                        if (retorno != -1) {
+                            for (int i = 0; i < pv.length; i++) {
+                                pv[i].setIdVenda(v.getId());
                             }
-                            JOptionPane.showMessageDialog(null, "Venda " + v.getId() + " Gerado com sucesso!");
-                            while (tblProdutoVenda.getModel().getRowCount() > 0) {
-                                DefaultTableModel dtm = (DefaultTableModel) tblProdutoVenda.getModel();
-                                dtm.removeRow(0);
+                            int res = (new ProdutoVendaDAO().inserir(Menu.getUsuario(), pv));
+                            if (res != -1) {
+                                for (int i = 0; i < p.length; i++) {
+                                    p[i].setQtd(p[i].getQtd() - pv[i].getQtdProduto());
+                                    new ProdutoDAO().atualizarEstoque(Menu.getUsuario(), p[i]);
+                                }
+                                JOptionPane.showMessageDialog(null, "Venda " + v.getId() + " atualizada com sucesso!");
+                                
+                                VendaAlterarSelectVenda jiVendaAlterarSelectVenda = new VendaAlterarSelectVenda();
+                                Menu.areaTrabalho.add(jiVendaAlterarSelectVenda);
+                                jiVendaAlterarSelectVenda.setVisible(true);
+                                jiVendaAlterarSelectVenda.setPosicao();
+                                this.dispose();
                             }
-                            while (tblProduto.getModel().getRowCount() > 0) {
-                                DefaultTableModel dtm = (DefaultTableModel) tblProduto.getModel();
-                                dtm.removeRow(0);
-                            }
-                            preencherTabelaProduto(new ProdutoDAO().listarAtivos(Menu.getUsuario()));
-                            txtDesconto.setText("");
-                            lblVlTotalVenda.setText("0,00");
-                            txtQtd.setText("1");
-                            jdcData.setDate(null);
                         }
                     }
-
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Data não pode estar em branco!");
@@ -691,7 +692,8 @@ public class VendaAlterar extends javax.swing.JInternalFrame {
         configurarTabelaProduto();
         configurarTabelaProdutoVenda();
         preencherTabelaProduto(new ProdutoDAO().listarAtivos(Menu.getUsuario()));
-        preencherDadosInicio(new RetornoDAO().listarVendaEProdutoVendaEProduto(Menu.getUsuario(), idVenda));
+        retornosInicio = new RetornoDAO().listarVendaEProdutoVendaEProduto(Menu.getUsuario(), idVenda);
+        preencherDadosInicio(retornosInicio);
     }
 
     public void configurarTabelaProdutoVenda() {

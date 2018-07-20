@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import model.Retorno;
 import model.Usuario;
 
@@ -51,7 +52,7 @@ public class RetornoDAO {
             return retornos;
 
         } catch (Exception e) {
-            System.out.println("ERRO: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage(),"Erro", JOptionPane.ERROR_MESSAGE);
             return null;
         } finally {
             Conexao.desconectar(con);

@@ -50,7 +50,7 @@ public class VendaDAO {
             return -1;
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage(),"Erro", JOptionPane.ERROR_MESSAGE);
             return -1;
 
         } finally {
@@ -91,7 +91,7 @@ public class VendaDAO {
             return resultado;
 
         } catch (Exception e) {
-            System.out.println("ERRO: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage(),"Erro", JOptionPane.ERROR_MESSAGE);
             return null;
         } finally {
             Conexao.desconectar(con);
@@ -130,7 +130,7 @@ public class VendaDAO {
             return retornos;
 
         } catch (Exception e) {
-            System.out.println("ERRO: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage(),"Erro", JOptionPane.ERROR_MESSAGE);
             return null;
         } finally {
             Conexao.desconectar(con);
@@ -171,7 +171,7 @@ public class VendaDAO {
             return retornos;
 
         } catch (Exception e) {
-            System.out.println("ERRO: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage(),"Erro", JOptionPane.ERROR_MESSAGE);
             return null;
         } finally {
             Conexao.desconectar(con);
@@ -213,7 +213,7 @@ public class VendaDAO {
             return retornos;
 
         } catch (Exception e) {
-            System.out.println("ERRO: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage(),"Erro", JOptionPane.ERROR_MESSAGE);
             return null;
         } finally {
             Conexao.desconectar(con);
@@ -254,7 +254,7 @@ public class VendaDAO {
             return retornos;
 
         } catch (Exception e) {
-            System.out.println("ERRO: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage(),"Erro", JOptionPane.ERROR_MESSAGE);
             return null;
         } finally {
             Conexao.desconectar(con);
@@ -294,7 +294,7 @@ public class VendaDAO {
             return resultado;
 
         } catch (Exception e) {
-            System.out.println("ERRO: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage(),"Erro", JOptionPane.ERROR_MESSAGE);
             return null;
         } finally {
             Conexao.desconectar(con);
@@ -334,7 +334,7 @@ public class VendaDAO {
             return resultado;
 
         } catch (Exception e) {
-            System.out.println("ERRO: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage(),"Erro", JOptionPane.ERROR_MESSAGE);
             return null;
         } finally {
             Conexao.desconectar(con);
@@ -371,7 +371,7 @@ public class VendaDAO {
             return null;
 
         } catch (Exception e) {
-            System.out.println("ERRO: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage(),"Erro", JOptionPane.ERROR_MESSAGE);
             return null;
         } finally {
             Conexao.desconectar(con);
@@ -407,7 +407,7 @@ public class VendaDAO {
             return -1;
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage(),"Erro", JOptionPane.ERROR_MESSAGE);
             return -1;
 
         } finally {

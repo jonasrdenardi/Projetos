@@ -55,12 +55,14 @@ public class Menu extends javax.swing.JFrame {
         jmiEstoqueAlterarProduto = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jmiEstoqueAlterarEstoque = new javax.swing.JMenuItem();
-        jmVenda = new javax.swing.JMenu();
+        menuVenda = new javax.swing.JMenu();
         jmiVendaAbrirVenda = new javax.swing.JMenuItem();
         jSeparator7 = new javax.swing.JPopupMenu.Separator();
         jmiVendaAlterarVenda = new javax.swing.JMenuItem();
+        menuRecebimento = new javax.swing.JMenu();
+        jmiAlterarRecebimento = new javax.swing.JMenuItem();
         jSeparator8 = new javax.swing.JPopupMenu.Separator();
-        jmiVendaRecebimento = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         menuAdministracao = new javax.swing.JMenu();
         jmiAdmRelatorios = new javax.swing.JMenu();
         jmiAdmRelatoriosEstoque = new javax.swing.JMenuItem();
@@ -68,6 +70,7 @@ public class Menu extends javax.swing.JFrame {
         jmiAdmRelatoriosClientes = new javax.swing.JMenuItem();
         jSeparator5 = new javax.swing.JPopupMenu.Separator();
         jmiAdmRelatoriosVendas = new javax.swing.JMenuItem();
+        jSeparator9 = new javax.swing.JPopupMenu.Separator();
         jmiGerenciarUsuarios = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -184,9 +187,9 @@ public class Menu extends javax.swing.JFrame {
 
         barraMenu.add(menuProdutos);
 
-        jmVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/venda.png"))); // NOI18N
-        jmVenda.setText("Venda");
-        jmVenda.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        menuVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/venda.png"))); // NOI18N
+        menuVenda.setText("Venda");
+        menuVenda.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
 
         jmiVendaAbrirVenda.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.ALT_MASK));
         jmiVendaAbrirVenda.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
@@ -197,8 +200,8 @@ public class Menu extends javax.swing.JFrame {
                 jmiVendaAbrirVendaActionPerformed(evt);
             }
         });
-        jmVenda.add(jmiVendaAbrirVenda);
-        jmVenda.add(jSeparator7);
+        menuVenda.add(jmiVendaAbrirVenda);
+        menuVenda.add(jSeparator7);
 
         jmiVendaAlterarVenda.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         jmiVendaAlterarVenda.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
@@ -209,21 +212,33 @@ public class Menu extends javax.swing.JFrame {
                 jmiVendaAlterarVendaActionPerformed(evt);
             }
         });
-        jmVenda.add(jmiVendaAlterarVenda);
-        jmVenda.add(jSeparator8);
+        menuVenda.add(jmiVendaAlterarVenda);
 
-        jmiVendaRecebimento.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.ALT_MASK));
-        jmiVendaRecebimento.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
-        jmiVendaRecebimento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/venda_recebimentos.png"))); // NOI18N
-        jmiVendaRecebimento.setText("Recebimento");
-        jmiVendaRecebimento.addActionListener(new java.awt.event.ActionListener() {
+        barraMenu.add(menuVenda);
+
+        menuRecebimento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/venda_recebimentos.png"))); // NOI18N
+        menuRecebimento.setText("Recebimento");
+        menuRecebimento.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+
+        jmiAlterarRecebimento.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.ALT_MASK));
+        jmiAlterarRecebimento.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        jmiAlterarRecebimento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/recebimento_abrir.png"))); // NOI18N
+        jmiAlterarRecebimento.setText("Abrir Recebimento");
+        jmiAlterarRecebimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiVendaRecebimentoActionPerformed(evt);
+                jmiAlterarRecebimentoActionPerformed(evt);
             }
         });
-        jmVenda.add(jmiVendaRecebimento);
+        menuRecebimento.add(jmiAlterarRecebimento);
+        menuRecebimento.add(jSeparator8);
 
-        barraMenu.add(jmVenda);
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem2.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/recebimento_alterar.png"))); // NOI18N
+        jMenuItem2.setText("Alterar Recebimento");
+        menuRecebimento.add(jMenuItem2);
+
+        barraMenu.add(menuRecebimento);
 
         menuAdministracao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/adm.png"))); // NOI18N
         menuAdministracao.setText("Administração");
@@ -266,6 +281,7 @@ public class Menu extends javax.swing.JFrame {
         jmiAdmRelatorios.add(jmiAdmRelatoriosVendas);
 
         menuAdministracao.add(jmiAdmRelatorios);
+        menuAdministracao.add(jSeparator9);
 
         jmiGerenciarUsuarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.ALT_MASK));
         jmiGerenciarUsuarios.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
@@ -342,10 +358,6 @@ public class Menu extends javax.swing.JFrame {
         abrirFormulario(new RelatorioVenda());
     }//GEN-LAST:event_jmiAdmRelatoriosVendasActionPerformed
 
-    private void jmiVendaRecebimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiVendaRecebimentoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jmiVendaRecebimentoActionPerformed
-
     private void jmiVendaAlterarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiVendaAlterarVendaActionPerformed
         abrirFormulario(new VendaAlterarSelectVenda());
     }//GEN-LAST:event_jmiVendaAlterarVendaActionPerformed
@@ -353,6 +365,10 @@ public class Menu extends javax.swing.JFrame {
     private void jmiGerenciarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiGerenciarUsuariosActionPerformed
         abrirFormulario(new AdministracaoUsuarios());
     }//GEN-LAST:event_jmiGerenciarUsuariosActionPerformed
+
+    private void jmiAlterarRecebimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAlterarRecebimentoActionPerformed
+        abrirFormulario(new RecebimentoAbrir());
+    }//GEN-LAST:event_jmiAlterarRecebimentoActionPerformed
 
 
     public static void main(String args[]) {
@@ -394,6 +410,7 @@ public class Menu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JDesktopPane areaTrabalho;
     private javax.swing.JMenuBar barraMenu;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
@@ -402,11 +419,12 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator6;
     private javax.swing.JPopupMenu.Separator jSeparator7;
     private javax.swing.JPopupMenu.Separator jSeparator8;
-    private javax.swing.JMenu jmVenda;
+    private javax.swing.JPopupMenu.Separator jSeparator9;
     private javax.swing.JMenu jmiAdmRelatorios;
     private javax.swing.JMenuItem jmiAdmRelatoriosClientes;
     private javax.swing.JMenuItem jmiAdmRelatoriosEstoque;
     private javax.swing.JMenuItem jmiAdmRelatoriosVendas;
+    private javax.swing.JMenuItem jmiAlterarRecebimento;
     private javax.swing.JMenuItem jmiArquivoDesconectar;
     private javax.swing.JMenuItem jmiArquivoSair;
     private javax.swing.JMenuItem jmiClientesAlterarCliente;
@@ -417,11 +435,12 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmiGerenciarUsuarios;
     private javax.swing.JMenuItem jmiVendaAbrirVenda;
     private javax.swing.JMenuItem jmiVendaAlterarVenda;
-    private javax.swing.JMenuItem jmiVendaRecebimento;
     private javax.swing.JMenu menuAdministracao;
     private javax.swing.JMenu menuArquivo;
     private javax.swing.JMenu menuClientes;
     private javax.swing.JMenu menuProdutos;
+    private javax.swing.JMenu menuRecebimento;
+    private javax.swing.JMenu menuVenda;
     // End of variables declaration//GEN-END:variables
 
     private void configurarFormulario(){

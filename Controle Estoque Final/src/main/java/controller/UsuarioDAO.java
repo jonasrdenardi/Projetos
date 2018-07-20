@@ -27,7 +27,7 @@ public class UsuarioDAO {
             JOptionPane.showMessageDialog(null, "Conexão realizada com sucesso.");
             return con;
         } catch (ClassNotFoundException | SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+            JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage(),"Erro", JOptionPane.ERROR_MESSAGE);
             return null;
         }
     }
@@ -57,7 +57,7 @@ public class UsuarioDAO {
             }
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage(),"Erro", JOptionPane.ERROR_MESSAGE);
             return -1;
         } finally {
             Conexao.desconectar(con);
@@ -88,7 +88,7 @@ public class UsuarioDAO {
             return lista;
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Problema ao listar usuários: " + e.getMessage());
+           JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage(),"Erro", JOptionPane.ERROR_MESSAGE);
             return null;
 
         } finally {
@@ -113,7 +113,7 @@ public class UsuarioDAO {
             }
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage(),"Erro", JOptionPane.ERROR_MESSAGE);
             return -1;
 
         } finally {
@@ -137,7 +137,7 @@ public class UsuarioDAO {
             }
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage(),"Erro", JOptionPane.ERROR_MESSAGE);
             return -1;
         } finally {
             Conexao.desconectar(con);
@@ -165,7 +165,7 @@ public class UsuarioDAO {
             }
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage(),"Erro", JOptionPane.ERROR_MESSAGE);
             return -1;
         } finally {
             Conexao.desconectar(con);
