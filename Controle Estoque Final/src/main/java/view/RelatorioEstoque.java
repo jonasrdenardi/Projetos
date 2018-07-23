@@ -63,7 +63,7 @@ public class RelatorioEstoque extends javax.swing.JInternalFrame {
         ));
         jspResultados.setViewportView(tabResultados);
 
-        txtPesquisa.setBackground(new java.awt.Color(214, 217, 223));
+        txtPesquisa.setBackground(new java.awt.Color(240, 240, 240));
         txtPesquisa.setFont(new java.awt.Font("sansserif", 0, 15)); // NOI18N
         txtPesquisa.setForeground(new java.awt.Color(153, 153, 153));
         txtPesquisa.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -157,7 +157,7 @@ public class RelatorioEstoque extends javax.swing.JInternalFrame {
                     .addComponent(lblRelatorioProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jspResultados, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)

@@ -80,7 +80,7 @@ public class AlterarProduto extends javax.swing.JInternalFrame {
         lblSelecione.setForeground(new java.awt.Color(101, 96, 168));
         lblSelecione.setText("Pesquise e clique 2x no produto para efetuar a alteração");
 
-        txtQtd.setBackground(new java.awt.Color(214, 217, 223));
+        txtQtd.setBackground(new java.awt.Color(240, 240, 240));
         txtQtd.setFont(new java.awt.Font("sansserif", 0, 15)); // NOI18N
         txtQtd.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtQtd.setBorder(null);
@@ -95,12 +95,12 @@ public class AlterarProduto extends javax.swing.JInternalFrame {
         lblId.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblId.setText("ID");
 
-        txtPreco.setBackground(new java.awt.Color(214, 217, 223));
+        txtPreco.setBackground(new java.awt.Color(240, 240, 240));
         txtPreco.setFont(new java.awt.Font("sansserif", 0, 15)); // NOI18N
         txtPreco.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtPreco.setBorder(null);
 
-        txtId.setBackground(new java.awt.Color(214, 217, 223));
+        txtId.setBackground(new java.awt.Color(240, 240, 240));
         txtId.setFont(new java.awt.Font("sansserif", 0, 15)); // NOI18N
         txtId.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtId.setBorder(null);
@@ -133,7 +133,7 @@ public class AlterarProduto extends javax.swing.JInternalFrame {
         jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        txtDescricao.setBackground(new java.awt.Color(214, 217, 223));
+        txtDescricao.setBackground(new java.awt.Color(240, 240, 240));
         txtDescricao.setFont(new java.awt.Font("sansserif", 0, 15)); // NOI18N
         txtDescricao.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtDescricao.setBorder(null);
@@ -161,7 +161,7 @@ public class AlterarProduto extends javax.swing.JInternalFrame {
         lblPrecoCompra.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPrecoCompra.setText("Preço Compra");
 
-        txtPrecoCompra.setBackground(new java.awt.Color(214, 217, 223));
+        txtPrecoCompra.setBackground(new java.awt.Color(240, 240, 240));
         txtPrecoCompra.setFont(new java.awt.Font("sansserif", 0, 15)); // NOI18N
         txtPrecoCompra.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtPrecoCompra.setBorder(null);
@@ -282,7 +282,7 @@ public class AlterarProduto extends javax.swing.JInternalFrame {
         jSeparator6.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        txtPesquisa.setBackground(new java.awt.Color(214, 217, 223));
+        txtPesquisa.setBackground(new java.awt.Color(240, 240, 240));
         txtPesquisa.setFont(new java.awt.Font("sansserif", 0, 15)); // NOI18N
         txtPesquisa.setForeground(new java.awt.Color(153, 153, 153));
         txtPesquisa.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -362,13 +362,13 @@ public class AlterarProduto extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtPesquisa)
                             .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 477, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jspResultados))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(247, 247, 247)
                 .addComponent(jpFormulario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(235, 235, 235))
+                .addGap(247, 247, 247))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

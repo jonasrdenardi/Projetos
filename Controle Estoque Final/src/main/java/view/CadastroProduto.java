@@ -75,7 +75,7 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
         lblDescricao.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDescricao.setText("Descrição");
 
-        txtQtd.setBackground(new java.awt.Color(214, 217, 223));
+        txtQtd.setBackground(new java.awt.Color(240, 240, 240));
         txtQtd.setFont(new java.awt.Font("sansserif", 0, 15)); // NOI18N
         txtQtd.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtQtd.setBorder(null);
@@ -88,7 +88,7 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
         lblPreco.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPreco.setText("Preço");
 
-        txtDescricao.setBackground(new java.awt.Color(214, 217, 223));
+        txtDescricao.setBackground(new java.awt.Color(240, 240, 240));
         txtDescricao.setFont(new java.awt.Font("sansserif", 0, 15)); // NOI18N
         txtDescricao.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtDescricao.setBorder(null);
@@ -98,7 +98,7 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
         lblId.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblId.setText("ID");
 
-        txtPreco.setBackground(new java.awt.Color(214, 217, 223));
+        txtPreco.setBackground(new java.awt.Color(240, 240, 240));
         txtPreco.setFont(new java.awt.Font("sansserif", 0, 15)); // NOI18N
         txtPreco.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtPreco.setBorder(null);
@@ -108,7 +108,7 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
         lblQtd.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblQtd.setText("Quantidade");
 
-        txtId.setBackground(new java.awt.Color(214, 217, 223));
+        txtId.setBackground(new java.awt.Color(240, 240, 240));
         txtId.setFont(new java.awt.Font("sansserif", 0, 15)); // NOI18N
         txtId.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtId.setBorder(null);
@@ -126,7 +126,7 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
         lblVencimento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblVencimento.setText("Vencimento");
 
-        txtPrecoCompra.setBackground(new java.awt.Color(214, 217, 223));
+        txtPrecoCompra.setBackground(new java.awt.Color(240, 240, 240));
         txtPrecoCompra.setFont(new java.awt.Font("sansserif", 0, 15)); // NOI18N
         txtPrecoCompra.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtPrecoCompra.setBorder(null);

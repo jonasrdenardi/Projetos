@@ -128,7 +128,7 @@ public class VendaAlterarSelectVenda extends javax.swing.JInternalFrame {
             }
         });
 
-        txtPesquisa.setBackground(new java.awt.Color(214, 217, 223));
+        txtPesquisa.setBackground(new java.awt.Color(240, 240, 240));
         txtPesquisa.setFont(new java.awt.Font("sansserif", 0, 15)); // NOI18N
         txtPesquisa.setForeground(new java.awt.Color(153, 153, 153));
         txtPesquisa.setHorizontalAlignment(javax.swing.JTextField.CENTER);

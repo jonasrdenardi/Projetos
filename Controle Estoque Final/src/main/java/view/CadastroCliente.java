@@ -69,7 +69,7 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
         lblNome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNome.setText("Nome");
 
-        txtTelefone.setBackground(new java.awt.Color(214, 217, 223));
+        txtTelefone.setBackground(new java.awt.Color(240, 240, 240));
         txtTelefone.setFont(new java.awt.Font("sansserif", 0, 15)); // NOI18N
         txtTelefone.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtTelefone.setBorder(null);
@@ -82,7 +82,7 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
         lblCPF.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblCPF.setText("CPF");
 
-        txtNome.setBackground(new java.awt.Color(214, 217, 223));
+        txtNome.setBackground(new java.awt.Color(240, 240, 240));
         txtNome.setFont(new java.awt.Font("sansserif", 0, 15)); // NOI18N
         txtNome.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtNome.setBorder(null);
@@ -92,7 +92,7 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
         lblId.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblId.setText("ID");
 
-        txtCPF.setBackground(new java.awt.Color(214, 217, 223));
+        txtCPF.setBackground(new java.awt.Color(240, 240, 240));
         txtCPF.setFont(new java.awt.Font("sansserif", 0, 15)); // NOI18N
         txtCPF.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtCPF.setBorder(null);
@@ -102,7 +102,7 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
         lblTelefone.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTelefone.setText("Telefone");
 
-        txtId.setBackground(new java.awt.Color(214, 217, 223));
+        txtId.setBackground(new java.awt.Color(240, 240, 240));
         txtId.setFont(new java.awt.Font("sansserif", 0, 15)); // NOI18N
         txtId.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtId.setBorder(null);

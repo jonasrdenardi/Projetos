@@ -30,7 +30,7 @@
                   <Component id="lblRelatorioProduto" max="32767" attributes="0"/>
                   <Component id="jspResultados" alignment="1" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="btnImprimir" min="-2" pref="202" max="-2" attributes="0"/>
+                      <Component id="btnImprimir" min="-2" pref="158" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -136,7 +136,7 @@
     <Component class="javax.swing.JTextField" name="txtPesquisa">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="df" green="d9" red="d6" type="rgb"/>
+          <Color blue="f0" green="f0" red="f0" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="sansserif" size="15" style="0"/>

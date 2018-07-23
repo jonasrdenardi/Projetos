@@ -83,10 +83,11 @@ public class Menu extends javax.swing.JFrame {
         );
         areaTrabalhoLayout.setVerticalGroup(
             areaTrabalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 441, Short.MAX_VALUE)
+            .addGap(0, 433, Short.MAX_VALUE)
         );
 
         barraMenu.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        barraMenu.setPreferredSize(new java.awt.Dimension(678, 50));
 
         menuArquivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/arquivo.png"))); // NOI18N
         menuArquivo.setText("Arquivo");
@@ -367,7 +368,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiGerenciarUsuariosActionPerformed
 
     private void jmiAlterarRecebimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAlterarRecebimentoActionPerformed
-        abrirFormulario(new RecebimentoAbrir());
+        abrirFormulario(new RecebimentoAbrirSelectVenda());
     }//GEN-LAST:event_jmiAlterarRecebimentoActionPerformed
 
 

@@ -38,13 +38,13 @@ public class Login extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/face.png"))); // NOI18N
 
-        txtUsuario.setBackground(new java.awt.Color(214, 217, 223));
+        txtUsuario.setBackground(new java.awt.Color(240, 240, 240));
         txtUsuario.setFont(new java.awt.Font("Arial Unicode MS", 0, 24)); // NOI18N
         txtUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtUsuario.setBorder(null);
 
-        jpfSenha.setBackground(new java.awt.Color(214, 217, 223));
-        jpfSenha.setFont(new java.awt.Font("Arial Unicode MS", 0, 24)); // NOI18N
+        jpfSenha.setBackground(new java.awt.Color(240, 240, 240));
+        jpfSenha.setFont(new java.awt.Font("Arial Unicode MS", 0, 14)); // NOI18N
         jpfSenha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jpfSenha.setBorder(null);
         jpfSenha.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -143,7 +143,7 @@ public class Login extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }

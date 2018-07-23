@@ -96,7 +96,7 @@ public class VendaAlterarDetalhes extends javax.swing.JInternalFrame {
             tabResultados.getColumnModel().getColumn(4).setResizable(false);
         }
 
-        txtCliente.setBackground(new java.awt.Color(214, 217, 223));
+        txtCliente.setBackground(new java.awt.Color(240, 240, 240));
         txtCliente.setFont(new java.awt.Font("sansserif", 0, 15)); // NOI18N
         txtCliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtCliente.setBorder(null);
@@ -109,7 +109,7 @@ public class VendaAlterarDetalhes extends javax.swing.JInternalFrame {
         lblProdutosDisponiveis1.setForeground(new java.awt.Color(101, 96, 168));
         lblProdutosDisponiveis1.setText("Cliente:");
 
-        txtIdVenda.setBackground(new java.awt.Color(214, 217, 223));
+        txtIdVenda.setBackground(new java.awt.Color(240, 240, 240));
         txtIdVenda.setFont(new java.awt.Font("sansserif", 0, 15)); // NOI18N
         txtIdVenda.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtIdVenda.setBorder(null);
@@ -122,7 +122,7 @@ public class VendaAlterarDetalhes extends javax.swing.JInternalFrame {
         lblProdutosDisponiveis2.setForeground(new java.awt.Color(101, 96, 168));
         lblProdutosDisponiveis2.setText("ID Venda:");
 
-        txtDataVenda.setBackground(new java.awt.Color(214, 217, 223));
+        txtDataVenda.setBackground(new java.awt.Color(240, 240, 240));
         txtDataVenda.setFont(new java.awt.Font("sansserif", 0, 15)); // NOI18N
         txtDataVenda.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtDataVenda.setBorder(null);
@@ -139,7 +139,7 @@ public class VendaAlterarDetalhes extends javax.swing.JInternalFrame {
         lblProdutosDisponiveis4.setForeground(new java.awt.Color(101, 96, 168));
         lblProdutosDisponiveis4.setText("Total da Venda:");
 
-        txtDesconto.setBackground(new java.awt.Color(214, 217, 223));
+        txtDesconto.setBackground(new java.awt.Color(240, 240, 240));
         txtDesconto.setFont(new java.awt.Font("Constantia", 0, 15)); // NOI18N
         txtDesconto.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtDesconto.setBorder(null);
@@ -152,7 +152,7 @@ public class VendaAlterarDetalhes extends javax.swing.JInternalFrame {
         lblProdutosDisponiveis5.setForeground(new java.awt.Color(101, 96, 168));
         lblProdutosDisponiveis5.setText("Desconto na Venda:");
 
-        txtTotal.setBackground(new java.awt.Color(214, 217, 223));
+        txtTotal.setBackground(new java.awt.Color(240, 240, 240));
         txtTotal.setFont(new java.awt.Font("Constantia", 0, 18)); // NOI18N
         txtTotal.setForeground(new java.awt.Color(0, 0, 204));
         txtTotal.setHorizontalAlignment(javax.swing.JTextField.CENTER);

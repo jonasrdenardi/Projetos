@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import model.Produto;
 import model.Usuario;
 
@@ -87,7 +88,7 @@ public class ProdutoDAO {
             //algo de errado aconteceu, a instrucao nao foi executada.
             return -1;
         } catch (Exception e) {
-            System.out.println("ERRO: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage(),"Erro", JOptionPane.ERROR_MESSAGE);
             return -1;
         }finally{
             Conexao.desconectar(con);
@@ -116,7 +117,7 @@ public class ProdutoDAO {
             //algo de errado aconteceu, a instrucao nao foi executada.
             return -1;
         } catch (Exception e) {
-            System.out.println("ERRO: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage(),"Erro", JOptionPane.ERROR_MESSAGE);
             return -1;
         }finally{
             Conexao.desconectar(con);
@@ -135,7 +136,7 @@ public class ProdutoDAO {
             return cmd.executeUpdate();
 
         } catch (Exception e) {
-            System.out.println("ERRO: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage(),"Erro", JOptionPane.ERROR_MESSAGE);
             return -1;
         }finally{
             Conexao.desconectar(con);
@@ -180,7 +181,7 @@ public class ProdutoDAO {
             return resultado;
             
         } catch (Exception e) {
-            System.out.println("ERRO: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage(),"Erro", JOptionPane.ERROR_MESSAGE);
             return null;
         }finally{
             Conexao.desconectar(con);
@@ -225,7 +226,7 @@ public class ProdutoDAO {
             return resultado;
             
         } catch (Exception e) {
-            System.out.println("ERRO: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage(),"Erro", JOptionPane.ERROR_MESSAGE);
             return null;
         }finally{
             Conexao.desconectar(con);
@@ -271,7 +272,7 @@ public class ProdutoDAO {
             return resultado;
             
         } catch (Exception e) {
-            System.out.println("ERRO: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage(),"Erro", JOptionPane.ERROR_MESSAGE);
             return null;
         }finally{
             Conexao.desconectar(con);
@@ -317,7 +318,7 @@ public class ProdutoDAO {
             return resultado;
             
         } catch (Exception e) {
-            System.out.println("ERRO: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage(),"Erro", JOptionPane.ERROR_MESSAGE);
             return null;
         }finally{
             Conexao.desconectar(con);
@@ -360,7 +361,7 @@ public class ProdutoDAO {
             return null;
             
         } catch (Exception e) {
-            System.out.println("ERRO: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage(),"Erro", JOptionPane.ERROR_MESSAGE);
             return null;
         }finally{
             Conexao.desconectar(con);

@@ -102,12 +102,12 @@ public class AdministracaoUsuarios extends javax.swing.JInternalFrame {
         lblSenha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSenha.setText("Senha");
 
-        txtNome.setBackground(new java.awt.Color(214, 217, 223));
+        txtNome.setBackground(new java.awt.Color(240, 240, 240));
         txtNome.setFont(new java.awt.Font("Arial Unicode MS", 0, 13)); // NOI18N
         txtNome.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtNome.setBorder(null);
 
-        jpfSenha.setBackground(new java.awt.Color(214, 217, 223));
+        jpfSenha.setBackground(new java.awt.Color(240, 240, 240));
         jpfSenha.setFont(new java.awt.Font("Arial Unicode MS", 0, 13)); // NOI18N
         jpfSenha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jpfSenha.setBorder(null);
