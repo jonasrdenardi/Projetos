@@ -49,6 +49,7 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
         btnCadastrar.setBorderPainted(false);
         btnCadastrar.setContentAreaFilled(false);
         btnCadastrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCadastrar.setFocusPainted(false);
         btnCadastrar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnCadastrar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cadastrarLogin2.png"))); // NOI18N
         btnCadastrar.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cadastrarLogin2.png"))); // NOI18N

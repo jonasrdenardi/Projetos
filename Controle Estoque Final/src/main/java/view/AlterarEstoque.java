@@ -119,6 +119,7 @@ public class AlterarEstoque extends javax.swing.JInternalFrame {
         btnOkAdicionar.setBorderPainted(false);
         btnOkAdicionar.setContentAreaFilled(false);
         btnOkAdicionar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnOkAdicionar.setFocusPainted(false);
         btnOkAdicionar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add.png"))); // NOI18N
         btnOkAdicionar.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add.png"))); // NOI18N
         btnOkAdicionar.addActionListener(new java.awt.event.ActionListener() {
@@ -132,6 +133,7 @@ public class AlterarEstoque extends javax.swing.JInternalFrame {
         btnOkSubtrair.setBorderPainted(false);
         btnOkSubtrair.setContentAreaFilled(false);
         btnOkSubtrair.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnOkSubtrair.setFocusPainted(false);
         btnOkSubtrair.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/sub.png"))); // NOI18N
         btnOkSubtrair.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/sub.png"))); // NOI18N
         btnOkSubtrair.addActionListener(new java.awt.event.ActionListener() {

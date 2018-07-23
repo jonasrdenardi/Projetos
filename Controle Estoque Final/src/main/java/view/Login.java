@@ -67,6 +67,7 @@ public class Login extends javax.swing.JFrame {
         btnEntrar.setBorderPainted(false);
         btnEntrar.setContentAreaFilled(false);
         btnEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEntrar.setFocusPainted(false);
         btnEntrar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login2.png"))); // NOI18N
         btnEntrar.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login2.png"))); // NOI18N
         btnEntrar.addActionListener(new java.awt.event.ActionListener() {

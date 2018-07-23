@@ -116,6 +116,7 @@ public class VendaAbrir extends javax.swing.JInternalFrame {
         btnAdicionar.setBorderPainted(false);
         btnAdicionar.setContentAreaFilled(false);
         btnAdicionar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAdicionar.setFocusPainted(false);
         btnAdicionar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/adc2.png"))); // NOI18N
         btnAdicionar.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/adc2.png"))); // NOI18N
         btnAdicionar.addActionListener(new java.awt.event.ActionListener() {
@@ -143,6 +144,7 @@ public class VendaAbrir extends javax.swing.JInternalFrame {
         btnExcluirItem.setBorderPainted(false);
         btnExcluirItem.setContentAreaFilled(false);
         btnExcluirItem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnExcluirItem.setFocusPainted(false);
         btnExcluirItem.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/excluir2.png"))); // NOI18N
         btnExcluirItem.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/excluir2.png"))); // NOI18N
         btnExcluirItem.addActionListener(new java.awt.event.ActionListener() {
@@ -156,6 +158,7 @@ public class VendaAbrir extends javax.swing.JInternalFrame {
         btnGerarVenda.setBorderPainted(false);
         btnGerarVenda.setContentAreaFilled(false);
         btnGerarVenda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGerarVenda.setFocusPainted(false);
         btnGerarVenda.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gerar2.png"))); // NOI18N
         btnGerarVenda.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gerar2.png"))); // NOI18N
         btnGerarVenda.addActionListener(new java.awt.event.ActionListener() {

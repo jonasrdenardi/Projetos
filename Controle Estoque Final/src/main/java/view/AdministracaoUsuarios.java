@@ -58,6 +58,7 @@ public class AdministracaoUsuarios extends javax.swing.JInternalFrame {
         btnExcluir.setBorderPainted(false);
         btnExcluir.setContentAreaFilled(false);
         btnExcluir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnExcluir.setFocusPainted(false);
         btnExcluir.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/excluir2.png"))); // NOI18N
         btnExcluir.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/excluir2.png"))); // NOI18N
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
@@ -71,6 +72,7 @@ public class AdministracaoUsuarios extends javax.swing.JInternalFrame {
         btnAlterarSenha.setBorderPainted(false);
         btnAlterarSenha.setContentAreaFilled(false);
         btnAlterarSenha.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAlterarSenha.setFocusPainted(false);
         btnAlterarSenha.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/atualizarSenha2.png"))); // NOI18N
         btnAlterarSenha.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/atualizarSenha2.png"))); // NOI18N
         btnAlterarSenha.addActionListener(new java.awt.event.ActionListener() {
@@ -89,6 +91,7 @@ public class AdministracaoUsuarios extends javax.swing.JInternalFrame {
         btnCriar.setBorderPainted(false);
         btnCriar.setContentAreaFilled(false);
         btnCriar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCriar.setFocusPainted(false);
         btnCriar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/criar2.png"))); // NOI18N
         btnCriar.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/criar2.png"))); // NOI18N
         btnCriar.addActionListener(new java.awt.event.ActionListener() {

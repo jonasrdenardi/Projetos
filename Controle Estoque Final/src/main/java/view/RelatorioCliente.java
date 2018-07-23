@@ -103,6 +103,7 @@ public class RelatorioCliente extends javax.swing.JInternalFrame {
         btnImprimir.setBorderPainted(false);
         btnImprimir.setContentAreaFilled(false);
         btnImprimir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnImprimir.setFocusPainted(false);
         btnImprimir.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imprimir2.png"))); // NOI18N
         btnImprimir.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imprimir2.png"))); // NOI18N
         btnImprimir.addActionListener(new java.awt.event.ActionListener() {

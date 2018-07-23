@@ -5,6 +5,9 @@ use db_controle_estoque;
 
 drop table if exists produto;
 drop table if exists cliente;
+drop table if exists venda;
+drop table if exists produto_venda;
+drop table if exists recebimento;
 
 create table if not exists produto(
 	id int auto_increment,
@@ -55,25 +58,16 @@ create table if not exists produto_venda(
 
 create table if not exists recebimento(
 	id int auto_increment,
+    id_venda int,
     num_parcela int,
     data_recebimento date,
     valor_recebido float,
-    modo_pgto varchar(20),
+    modo_pgto varchar(50),
     obs varchar(240),
 	fg_ativo bool,
-		PRIMARY KEY (id)
+		CONSTRAINT pk_recebimento_id PRIMARY KEY(id),
+        CONSTRAINT fk_recebimento_id_venda FOREIGN KEY(id_venda) REFERENCES venda(id)
 );
-
-
-create table if not exists venda_recebimento(
-	id_venda int,
-	id_recebimento int,
-		CONSTRAINT pk_venda_recebimento_id_venda_id_recebimento PRIMARY KEY(id_venda,id_recebimento),
-        CONSTRAINT fk_venda_recebimento_id_venda FOREIGN KEY(id_venda) REFERENCES venda(id),
-        CONSTRAINT fk_venda_recebimento_id_recebimento FOREIGN KEY(id_recebimento) REFERENCES recebimento(id) 
-        ON DELETE CASCADE
-);
-
 
 
 

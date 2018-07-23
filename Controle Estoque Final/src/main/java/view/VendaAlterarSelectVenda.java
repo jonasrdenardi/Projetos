@@ -99,6 +99,7 @@ public class VendaAlterarSelectVenda extends javax.swing.JInternalFrame {
         btnAlterarCliente.setBorderPainted(false);
         btnAlterarCliente.setContentAreaFilled(false);
         btnAlterarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAlterarCliente.setFocusPainted(false);
         btnAlterarCliente.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/alterar2.png"))); // NOI18N
         btnAlterarCliente.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/alterar2.png"))); // NOI18N
         btnAlterarCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -112,6 +113,7 @@ public class VendaAlterarSelectVenda extends javax.swing.JInternalFrame {
         btnDetalhes.setBorderPainted(false);
         btnDetalhes.setContentAreaFilled(false);
         btnDetalhes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDetalhes.setFocusPainted(false);
         btnDetalhes.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/detalhes2.png"))); // NOI18N
         btnDetalhes.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/detalhes2.png"))); // NOI18N
         btnDetalhes.addActionListener(new java.awt.event.ActionListener() {
@@ -169,6 +171,7 @@ public class VendaAlterarSelectVenda extends javax.swing.JInternalFrame {
         btnOk.setBorderPainted(false);
         btnOk.setContentAreaFilled(false);
         btnOk.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnOk.setFocusPainted(false);
         btnOk.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ok2.png"))); // NOI18N
         btnOk.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ok2.png"))); // NOI18N
         btnOk.addActionListener(new java.awt.event.ActionListener() {

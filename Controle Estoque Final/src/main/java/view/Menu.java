@@ -63,6 +63,8 @@ public class Menu extends javax.swing.JFrame {
         jmiAlterarRecebimento = new javax.swing.JMenuItem();
         jSeparator8 = new javax.swing.JPopupMenu.Separator();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jSeparator10 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem1 = new javax.swing.JMenuItem();
         menuAdministracao = new javax.swing.JMenu();
         jmiAdmRelatorios = new javax.swing.JMenu();
         jmiAdmRelatoriosEstoque = new javax.swing.JMenuItem();
@@ -218,7 +220,7 @@ public class Menu extends javax.swing.JFrame {
         barraMenu.add(menuVenda);
 
         menuRecebimento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/venda_recebimentos.png"))); // NOI18N
-        menuRecebimento.setText("Recebimento");
+        menuRecebimento.setText("Financeiro");
         menuRecebimento.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
 
         jmiAlterarRecebimento.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.ALT_MASK));
@@ -238,6 +240,12 @@ public class Menu extends javax.swing.JFrame {
         jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/recebimento_alterar.png"))); // NOI18N
         jMenuItem2.setText("Alterar Recebimento");
         menuRecebimento.add(jMenuItem2);
+        menuRecebimento.add(jSeparator10);
+
+        jMenuItem1.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/recebimento_abrir.png"))); // NOI18N
+        jMenuItem1.setText("Receber");
+        menuRecebimento.add(jMenuItem1);
 
         barraMenu.add(menuRecebimento);
 
@@ -411,8 +419,10 @@ public class Menu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JDesktopPane areaTrabalho;
     private javax.swing.JMenuBar barraMenu;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator10;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;

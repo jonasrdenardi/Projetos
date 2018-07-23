@@ -103,6 +103,7 @@ public class RecebimentoAbrirSelectVenda extends javax.swing.JInternalFrame {
         btnDetalhes.setBorderPainted(false);
         btnDetalhes.setContentAreaFilled(false);
         btnDetalhes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDetalhes.setFocusPainted(false);
         btnDetalhes.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/detalhes2.png"))); // NOI18N
         btnDetalhes.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/detalhes2.png"))); // NOI18N
         btnDetalhes.addActionListener(new java.awt.event.ActionListener() {
@@ -160,6 +161,7 @@ public class RecebimentoAbrirSelectVenda extends javax.swing.JInternalFrame {
         btnOk.setBorderPainted(false);
         btnOk.setContentAreaFilled(false);
         btnOk.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnOk.setFocusPainted(false);
         btnOk.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ok2.png"))); // NOI18N
         btnOk.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ok2.png"))); // NOI18N
         btnOk.addActionListener(new java.awt.event.ActionListener() {
@@ -208,14 +210,14 @@ public class RecebimentoAbrirSelectVenda extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/receber1.png"))); // NOI18N
-        jButton1.setText("Abrir recebimento");
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/abrir_recebimento1.png"))); // NOI18N
         jButton1.setBorder(null);
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/receber2.png"))); // NOI18N
-        jButton1.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/receber2.png"))); // NOI18N
+        jButton1.setFocusPainted(false);
+        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/abrir_recebimento2.png"))); // NOI18N
+        jButton1.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/abrir_recebimento2.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -243,7 +245,7 @@ public class RecebimentoAbrirSelectVenda extends javax.swing.JInternalFrame {
                         .addComponent(jpData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 62, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -266,7 +268,7 @@ public class RecebimentoAbrirSelectVenda extends javax.swing.JInternalFrame {
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(2, 2, 2))
                     .addComponent(jpData, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addComponent(jspResultados, javax.swing.GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE)
+                .addComponent(jspResultados, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -366,7 +368,7 @@ public class RecebimentoAbrirSelectVenda extends javax.swing.JInternalFrame {
             try {
                 venda.setDataVenda(sdfNormal.parse(dataVenda));
             } catch (ParseException ex) {
-                Logger.getLogger(RecebimentoAbrirSelectVenda.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, "ERRO: " + ex.getMessage(),"Erro", JOptionPane.ERROR_MESSAGE);
             }
             
             String descontoString = (String) tabResultados.getValueAt(indiceLinha, 3); // pega o valor
