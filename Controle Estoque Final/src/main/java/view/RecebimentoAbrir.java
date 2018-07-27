@@ -1,6 +1,7 @@
 package view;
 
 import controller.RecebimentoDAO;
+import controller.VendaDAO;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.text.DecimalFormat;
@@ -30,7 +31,7 @@ public class RecebimentoAbrir extends javax.swing.JInternalFrame {
         txtCliente.setText(cliente);
         txtDataVenda.setText(sdfNormal.format(venda.getDataVenda()));
         lblVDesconto.setText(String.valueOf(venda.getDesconto()));
-        lblVlTotalVenda.setText(String.valueOf(venda.getValor()));
+        lblVlTotalVenda.setText(dm.format(venda.getValor()));
         txtDataVenda.setEditable(false);
         txtIdVenda.setEditable(false);
         txtCliente.setEditable(false);
@@ -441,18 +442,18 @@ public class RecebimentoAbrir extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(btnGerar, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLayeredPane1))
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jpInformacoesVenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(10, 10, 10))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblAbrirRecebimento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(btnGerar, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblAbrirRecebimento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.CENTER, layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLayeredPane1)
+                .addGap(10, 10, 10))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jpInformacoesVenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(10, 10, 10))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -463,9 +464,9 @@ public class RecebimentoAbrir extends javax.swing.JInternalFrame {
                 .addComponent(jpInformacoesVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(btnGerar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -530,8 +531,11 @@ public class RecebimentoAbrir extends javax.swing.JInternalFrame {
 
             if (recebimento.getId() == -1) {
                 JOptionPane.showMessageDialog(null, "Erro ao gerar Recebimento! ID Venda: " + recebimento.getId_venda());
+            } else if (new VendaDAO().alterarFg_ativo(Menu.getUsuario(), recebimento.getId_venda(), false) == -1) {
+                JOptionPane.showMessageDialog(null, "Erro ao atualizar fg_ativo de Venda! ID Venda: " + recebimento.getId_venda());
             } else {
                 JOptionPane.showMessageDialog(null, "Recebimento(s) gerado(s) com sucesso!");
+                dispose();
             }
 
         } else if (rbParcelado.isSelected()) {
@@ -551,7 +555,7 @@ public class RecebimentoAbrir extends javax.swing.JInternalFrame {
 
                 recebimento.setModo_Pgto(rbParcelado.getText() + " | " + cbModoPgtoParcelado.getSelectedItem());
                 recebimento.setObs(taParcelado.getText());
-                recebimento.setFg_ativo(true);
+                recebimento.setFg_ativo((cbModoPgtoParcelado.getSelectedItem() != "Crédito"));
 
                 recebimento.setId(Integer.valueOf(txtIdVenda.getText()));
                 recebimento.setId_venda(Integer.valueOf(txtIdVenda.getText()));
@@ -565,8 +569,11 @@ public class RecebimentoAbrir extends javax.swing.JInternalFrame {
                 indiceLinha++;
             }
 
-            if (!gerouErro) {
+            if (new VendaDAO().alterarFg_ativo(Menu.getUsuario(), Integer.valueOf(txtIdVenda.getText()), false) == -1) {
+                JOptionPane.showMessageDialog(null, "Erro ao atualizar fg_ativo de Venda! ID Venda: " + Integer.valueOf(txtIdVenda.getText()));
+            } else if (!gerouErro) {
                 JOptionPane.showMessageDialog(null, "Recebimento(s) gerado(s) com sucesso!");
+                dispose();
             }
         }
     }//GEN-LAST:event_btnGerarActionPerformed
@@ -621,6 +628,8 @@ public class RecebimentoAbrir extends javax.swing.JInternalFrame {
         rbg.add(rbAVista);
         rbg.add(rbParcelado);
         rbAVista.setSelected(true);
+
+        getRootPane().setDefaultButton(btnGerar);
 
         configurarTabela();
     }

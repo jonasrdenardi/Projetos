@@ -112,7 +112,7 @@ public class RecebimentoDAO {
     //LISTAR TODOS OS REGISTROS DA TABELA
     public List<Recebimento> listar(Usuario usuario) {
         try {
-            String SQL = "select * from db_controle_estoque.recebimento order by data_recebimento";
+            String SQL = "select * from db_controle_estoque.recebimento order by data_recebimento desc";
 
             con = controller.Conexao.conectar(usuario);
             cmd = con.prepareStatement(SQL);
@@ -130,6 +130,7 @@ public class RecebimentoDAO {
                 //criar um objeto produto
                 Recebimento r = new Recebimento();
                 r.setId(rs.getInt("id"));
+                r.setId_venda(rs.getInt("id_venda"));
                 r.setNum_parcela(rs.getInt("num_parcela"));
 
                 //Valor do banco esta vindo com 1 dia a menos por conta da timezone
@@ -155,13 +156,13 @@ public class RecebimentoDAO {
         }
     }
 
-    public List<Recebimento> pesquisarPorDataRecebimento(Usuario usuario, Date data) {
+    public List<Recebimento> pesquisarPorDataRecebimento(Usuario usuario, java.util.Date data) {
         try {
-            String SQL = "select * from db_controle_estoque.recebimento where data_recebimento = ? order by data_recebimento;";
+            String SQL = "select * from db_controle_estoque.recebimento where data_recebimento = ? order by data_recebimento desc;";
 
             con = controller.Conexao.conectar(usuario);
             cmd = con.prepareStatement(SQL);
-            cmd.setDate(1, data);
+            cmd.setDate(1, new Date(data.getTime()));
 
             //retornar o resultado da consulta
             ResultSet rs = cmd.executeQuery();
@@ -176,6 +177,7 @@ public class RecebimentoDAO {
                 //criar um objeto produto
                 Recebimento r = new Recebimento();
                 r.setId(rs.getInt("id"));
+                r.setId_venda(rs.getInt("id_venda"));
                 r.setNum_parcela(rs.getInt("num_parcela"));
 
                 //Valor do banco esta vindo com 1 dia a menos por conta da timezone
@@ -184,7 +186,9 @@ public class RecebimentoDAO {
                 r.setData_recebimento(dataSomada);
 
                 r.setValor_recebido(rs.getFloat("valor_recebido"));
-                r.setModo_Pgto(rs.getString("modo"));
+                r.setModo_Pgto(rs.getString("modo_pgto"));
+                r.setObs(rs.getString("obs"));
+                r.setFg_ativo(rs.getBoolean("fg_ativo"));
 
                 //adiciona a lista
                 resultado.add(r);
@@ -199,9 +203,9 @@ public class RecebimentoDAO {
         }
     }
 
-    public List<Recebimento> pesquisarPorId(Usuario usuario, int id) {
+    public List<Recebimento> pesquisarPorIdVenda(Usuario usuario, int id) {
         try {
-            String SQL = "select * from db_controle_estoque.recebimento where id=? order by data_recebimento";
+            String SQL = "select * from db_controle_estoque.recebimento where id_venda=? order by data_recebimento desc";
 
             con = controller.Conexao.conectar(usuario);
             cmd = con.prepareStatement(SQL);
@@ -220,6 +224,7 @@ public class RecebimentoDAO {
                 //criar um objeto produto
                 Recebimento r = new Recebimento();
                 r.setId(rs.getInt("id"));
+                r.setId_venda(rs.getInt("id_venda"));
                 r.setNum_parcela(rs.getInt("num_parcela"));
 
                 //Valor do banco esta vindo com 1 dia a menos por conta da timezone
@@ -228,7 +233,9 @@ public class RecebimentoDAO {
                 r.setData_recebimento(dataSomada);
 
                 r.setValor_recebido(rs.getFloat("valor_recebido"));
-                r.setModo_Pgto(rs.getString("modo"));
+                r.setModo_Pgto(rs.getString("modo_pgto"));
+                r.setObs(rs.getString("obs"));
+                r.setFg_ativo(rs.getBoolean("fg_ativo"));
 
                 //adiciona a lista
                 resultado.add(r);

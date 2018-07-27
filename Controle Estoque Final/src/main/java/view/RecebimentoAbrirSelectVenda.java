@@ -364,17 +364,17 @@ public class RecebimentoAbrirSelectVenda extends javax.swing.JInternalFrame {
             venda.setId(((int) tabResultados.getValueAt(indiceLinha, 0)));
             String cliente = ((String) tabResultados.getValueAt(indiceLinha, 1));
             String dataVenda = (String) tabResultados.getValueAt(indiceLinha, 2);
-            
+
             try {
                 venda.setDataVenda(sdfNormal.parse(dataVenda));
             } catch (ParseException ex) {
-                JOptionPane.showMessageDialog(null, "ERRO: " + ex.getMessage(),"Erro", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "ERRO: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
             }
-            
+
             String descontoString = (String) tabResultados.getValueAt(indiceLinha, 3); // pega o valor
             descontoString = descontoString.replaceAll("\\.", "").replaceAll("\\,", "."); // substitui virgula por ponto
             venda.setDesconto(Float.valueOf(descontoString)); // acrescenta o valor em float
-            
+
             String valorString = (String) tabResultados.getValueAt(indiceLinha, 4); // pega o valor
             valorString = valorString.replaceAll("\\.", "").replaceAll("\\,", "."); // substitui virgula por ponto
             venda.setValor(Float.valueOf(valorString)); // acrescenta o valor em float     
@@ -383,7 +383,7 @@ public class RecebimentoAbrirSelectVenda extends javax.swing.JInternalFrame {
             Menu.areaTrabalho.add(jiRecebimentoAbrir);
             jiRecebimentoAbrir.setVisible(true);
             jiRecebimentoAbrir.setPosicao();  // Centraliza a Tela Interna
-            //this.dispose();
+            this.dispose();
         } else {
             JOptionPane.showMessageDialog(null, "Selecione uma venda!");
         }
@@ -464,13 +464,15 @@ public class RecebimentoAbrirSelectVenda extends javax.swing.JInternalFrame {
         if (retornos.size() > 0) {
             DefaultTableModel m = (DefaultTableModel) tabResultados.getModel();
             for (Retorno retorno : retornos) {
-                m.addRow(new Object[]{
-                    retorno.venda.getId(),
-                    retorno.cliente.getNome(),
-                    sdfNormal.format(retorno.venda.getDataVenda()),
-                    dm.format(retorno.venda.getDesconto()),
-                    dm.format(retorno.venda.getValor())
-                });
+                if (retorno.venda.getFg_ativo() == true) {
+                    m.addRow(new Object[]{
+                        retorno.venda.getId(),
+                        retorno.cliente.getNome(),
+                        sdfNormal.format(retorno.venda.getDataVenda()),
+                        dm.format(retorno.venda.getDesconto()),
+                        dm.format(retorno.venda.getValor())
+                    });
+                }
             }
             tabResultados.setModel(m);
         }

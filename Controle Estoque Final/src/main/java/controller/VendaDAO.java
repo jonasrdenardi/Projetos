@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import model.Cliente;
+import model.Produto;
 import model.Retorno;
 import model.Usuario;
 import model.Venda;
@@ -57,6 +58,35 @@ public class VendaDAO {
             controller.Conexao.desconectar(con);
         }
     }
+    
+    public int alterarFg_ativo(Usuario usuario, int idVenda, boolean fg_ativo){
+        try {
+            
+            final String SQL = "update venda set fg_ativo=? where id=?";
+            
+            con = controller.Conexao.conectar(usuario);
+            //a execucao da instrucao retornara o valor da chave gerada pelo SGBD
+            cmd = con.prepareStatement(SQL);
+            
+            //configurar os parametros da intrucao SQL, sao especificados com o simbolo de interrogacao
+            cmd.setBoolean(1, fg_ativo);
+            cmd.setInt(2, idVenda);           
+                        
+            //enviar a instrucao SQL para o SGBD
+            //resultado maior que 0 significa que o comando foi executado corretamente
+            if(cmd.executeUpdate()>0){
+                return idVenda;
+            }
+            
+            //algo de errado aconteceu, a instrucao nao foi executada.
+            return -1;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage(),"Erro", JOptionPane.ERROR_MESSAGE);
+            return -1;
+        }finally{
+            Conexao.desconectar(con);
+        }
+    }
 
     //LISTAR TODOS OS REGISTROS DA TABELA
     public List<Venda> listar(Usuario usuario) {
@@ -100,7 +130,7 @@ public class VendaDAO {
 
     public List<Retorno> listarClienteVenda(Usuario usuario) {
         try {
-            String SQL = "SELECT v.id as 'id_venda', c.nome, v.data_venda, v.desconto, v.valor\n"
+            String SQL = "SELECT v.id as 'id_venda', c.nome, v.data_venda, v.desconto, v.valor, v.fg_ativo\n"
                     + "FROM venda as v\n"
                     + "INNER JOIN cliente as c ON (v.id_cliente = c.id)\n"
                     + "ORDER BY v.data_venda desc";
@@ -123,6 +153,7 @@ public class VendaDAO {
                 retorno.venda.setDataVenda(rs.getDate("data_venda"));
                 retorno.venda.setDesconto(rs.getFloat("desconto"));
                 retorno.venda.setValor(rs.getFloat("valor"));
+                retorno.venda.setFg_ativo(rs.getBoolean("fg_ativo"));
 
                 //adiciona a lista
                 retornos.add(retorno);

@@ -43,7 +43,7 @@ public class Venda {
         this.valor = valor;
     }
 
-    public boolean isFg_ativo() {
+    public boolean getFg_ativo() {
         return fg_ativo;
     }
 
