@@ -311,6 +311,7 @@ public class AlterarProduto extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
             }
         ));
+        tabResultados.setSelectionBackground(new java.awt.Color(168, 193, 221));
         tabResultados.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tabResultadosMouseClicked(evt);

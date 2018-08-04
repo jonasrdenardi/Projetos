@@ -51,6 +51,7 @@ public class AdministracaoUsuarios extends javax.swing.JInternalFrame {
                 "Usuários"
             }
         ));
+        tblUsuarios.setSelectionBackground(new java.awt.Color(168, 193, 221));
         jScrollPane1.setViewportView(tblUsuarios);
 
         btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/excluir1.png"))); // NOI18N

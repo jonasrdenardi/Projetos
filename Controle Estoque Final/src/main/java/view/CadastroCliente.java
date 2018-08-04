@@ -1,7 +1,9 @@
 package view;
 
 import controller.ClienteDAO;
+import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
+import javax.swing.plaf.basic.BasicInternalFrameUI;
 import model.Cliente;
 import model.FormatoCpf;
 import model.FormatoLimiteCaracter;
@@ -15,11 +17,11 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
 
     public CadastroCliente() {
         initComponents();
-        
+
         txtCPF.setDocument(new FormatoCpf());
         txtTelefone.setDocument(new FormatoTelefone());
         txtNome.setDocument(new FormatoLimiteCaracter());
-        
+
         configurarFormulario();
     }
 
@@ -252,7 +254,6 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
         txtId.setEditable(false);
 
         getRootPane().setDefaultButton(btnCadastrar);
-
     }
 
 }

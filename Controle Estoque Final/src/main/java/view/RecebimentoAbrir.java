@@ -308,6 +308,7 @@ public class RecebimentoAbrir extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblData.setSelectionBackground(new java.awt.Color(168, 193, 221));
         tblData.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(tblData);
         if (tblData.getColumnModel().getColumnCount() > 0) {

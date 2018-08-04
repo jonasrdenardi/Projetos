@@ -88,6 +88,7 @@ public class VendaAlterarDetalhes extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+        tabResultados.setSelectionBackground(new java.awt.Color(168, 193, 221));
         jScrollPane1.setViewportView(tabResultados);
         if (tabResultados.getColumnModel().getColumnCount() > 0) {
             tabResultados.getColumnModel().getColumn(0).setResizable(false);

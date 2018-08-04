@@ -98,6 +98,7 @@ public class VendaAlterar extends javax.swing.JInternalFrame {
                 "Id", "Descrição", "Qtde", "Preço"
             }
         ));
+        tblProduto.setSelectionBackground(new java.awt.Color(168, 193, 221));
         tblProduto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 tblProdutoMousePressed(evt);
@@ -139,6 +140,7 @@ public class VendaAlterar extends javax.swing.JInternalFrame {
                 "Id", "Descrição", "Qtde Disp", "Qtde", "Preço Un", "Preço Total"
             }
         ));
+        tblProdutoVenda.setSelectionBackground(new java.awt.Color(168, 193, 221));
         jScrollPane2.setViewportView(tblProdutoVenda);
 
         lblPordutosIncVenda.setFont(new java.awt.Font("Constantia", 0, 13)); // NOI18N

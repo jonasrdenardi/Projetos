@@ -95,6 +95,7 @@ public class VendaAlterarSelectCliente extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tabCliente.setSelectionBackground(new java.awt.Color(168, 193, 221));
         tabCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tabClienteMouseClicked(evt);

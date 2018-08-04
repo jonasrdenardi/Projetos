@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rpt_vendas" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="602057c6-8dd1-4fef-ac10-9ba1d850fcd9">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="230"/>
+	<property name="ireport.y" value="0"/>
 	<queryString>
 		<![CDATA[SELECT
 c.id as 'id_cliente', c.nome, v.id as 'id_venda', v.data_venda, v.desconto, v.valor, v.fg_ativo
@@ -70,14 +70,14 @@ ORDER BY v.data_venda desc;]]>
 				<textElement textAlignment="Center">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[NOME CLIENTE]]></text>
+				<text><![CDATA[CLIENTE]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="282" y="18" width="88" height="20" uuid="c082344d-d092-4aee-a88a-ae6839953c0d"/>
 				<textElement textAlignment="Center">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[DATA DA VENDA]]></text>
+				<text><![CDATA[DATA VENDA]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="380" y="18" width="67" height="20" uuid="fa757582-197c-4d6f-9b7d-9afd01ff22d8"/>
@@ -91,7 +91,7 @@ ORDER BY v.data_venda desc;]]>
 				<textElement textAlignment="Center">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[VALOR DA VENDA]]></text>
+				<text><![CDATA[VALOR]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="220" y="18" width="52" height="20" uuid="6f517073-b3b0-4fa1-a179-249861a9538d"/>

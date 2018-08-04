@@ -262,6 +262,7 @@ public class AlterarCliente extends javax.swing.JInternalFrame {
                 return types [columnIndex];
             }
         });
+        tabResultadosAlt.setSelectionBackground(new java.awt.Color(168, 193, 221));
         tabResultadosAlt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tabResultadosAltMouseClicked(evt);

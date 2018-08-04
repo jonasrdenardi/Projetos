@@ -28,7 +28,7 @@ public class VendaAbrir extends javax.swing.JInternalFrame {
     public VendaAbrir(Cliente cliente) {
         initComponents();
         configurarFormulario();
-        
+
         this.cliente = cliente;
         jdcData.setDate(new Date(System.currentTimeMillis()));
         txtCliente.setText(cliente.getNome());
@@ -92,6 +92,7 @@ public class VendaAbrir extends javax.swing.JInternalFrame {
                 "Id", "Descrição", "Qtde", "Preço"
             }
         ));
+        tblProduto.setSelectionBackground(new java.awt.Color(168, 193, 221));
         tblProduto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 tblProdutoMousePressed(evt);
@@ -133,6 +134,7 @@ public class VendaAbrir extends javax.swing.JInternalFrame {
                 "Id", "Descrição", "Qtde Disp", "Qtde", "Preço Un", "Preço Total"
             }
         ));
+        tblProdutoVenda.setSelectionBackground(new java.awt.Color(168, 193, 221));
         jScrollPane2.setViewportView(tblProdutoVenda);
 
         lblPordutosIncVenda.setFont(new java.awt.Font("Constantia", 0, 13)); // NOI18N
@@ -528,8 +530,6 @@ public class VendaAbrir extends javax.swing.JInternalFrame {
 
                 v.setId(new VendaDAO().inserir(Menu.getUsuario(), v));
 
-                System.out.println(v.getId());
-
                 if (v.getId() != -1) {
                     for (int i = 0; i < pv.length; i++) {
                         pv[i].setIdVenda(v.getId());
@@ -553,7 +553,18 @@ public class VendaAbrir extends javax.swing.JInternalFrame {
                         txtDesconto.setText("");
                         lblVlTotalVenda.setText("0,00");
                         txtQtd.setText("1");
-                        jdcData.setDate(null);
+                        jdcData.setDate(new Date());
+                        
+                        Object[] options = {"Sim", "Não"};
+                        int resposta = JOptionPane.showOptionDialog(null, "Deseja ir para Abrir Recebimento?", "Selecione uma opção", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+                        if (resposta == 0) {
+                            RecebimentoAbrir jiRecebimentoAbrir = new RecebimentoAbrir(v, cliente.getNome());
+                            Menu.areaTrabalho.add(jiRecebimentoAbrir);
+                            jiRecebimentoAbrir.setVisible(true);
+                            jiRecebimentoAbrir.setPosicao();  // Centraliza a Tela Interna
+                            this.dispose();
+                        }
+                        this.dispose();
                     }
                 }
 
@@ -807,7 +818,7 @@ public class VendaAbrir extends javax.swing.JInternalFrame {
         m.addColumn("Descrição");
         m.addColumn("Qtde");
         m.addColumn("Preço");
-        
+
         tblProduto.setModel(m);
 
         tblProduto.getColumnModel().getColumn(0).setPreferredWidth(10);

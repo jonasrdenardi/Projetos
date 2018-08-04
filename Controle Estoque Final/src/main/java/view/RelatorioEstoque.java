@@ -61,6 +61,7 @@ public class RelatorioEstoque extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tabResultados.setSelectionBackground(new java.awt.Color(168, 193, 221));
         jspResultados.setViewportView(tabResultados);
 
         txtPesquisa.setBackground(new java.awt.Color(240, 240, 240));

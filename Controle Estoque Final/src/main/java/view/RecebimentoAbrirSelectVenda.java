@@ -1,18 +1,13 @@
 package view;
 
-import controller.Conexao;
 import controller.VendaDAO;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.text.DecimalFormat;
 import java.text.ParseException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
@@ -20,11 +15,10 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import model.Retorno;
 import model.Venda;
-import reports.Relatorio;
 
 public class RecebimentoAbrirSelectVenda extends javax.swing.JInternalFrame {
 
-    List<Retorno> retornos = new ArrayList<Retorno>();
+    List<Retorno> retornos = new ArrayList<>();
 
     DecimalFormat dm = new DecimalFormat("###,###,###,###,##0.00");
     SimpleDateFormat sdfNormal = new SimpleDateFormat("dd/MM/yyyy");
@@ -75,6 +69,7 @@ public class RecebimentoAbrirSelectVenda extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tabResultados.setSelectionBackground(new java.awt.Color(168, 193, 221));
         jspResultados.setViewportView(tabResultados);
 
         rbData.setForeground(new java.awt.Color(101, 96, 168));
@@ -96,7 +91,7 @@ public class RecebimentoAbrirSelectVenda extends javax.swing.JInternalFrame {
         lblRelatorioVenda.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
         lblRelatorioVenda.setForeground(new java.awt.Color(101, 96, 168));
         lblRelatorioVenda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblRelatorioVenda.setText("ABRIR RECEBIMENTO");
+        lblRelatorioVenda.setText("SELECIONAR VENDA PARA GERAR RECEBIMENTO");
 
         btnDetalhes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/detalhes1.png"))); // NOI18N
         btnDetalhes.setBorder(null);
@@ -210,14 +205,14 @@ public class RecebimentoAbrirSelectVenda extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/abrir_recebimento1.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/selecionar1.png"))); // NOI18N
         jButton1.setBorder(null);
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.setFocusPainted(false);
-        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/abrir_recebimento2.png"))); // NOI18N
-        jButton1.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/abrir_recebimento2.png"))); // NOI18N
+        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/selecionar2.png"))); // NOI18N
+        jButton1.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/selecionar2.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -411,7 +406,7 @@ public class RecebimentoAbrirSelectVenda extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     private void configurarFormulario() {
-        this.setTitle("Receber Venda");
+        this.setTitle("Abrir Recebimento");
         this.setResizable(false);
         this.setMaximizable(false);
         this.setIconifiable(false);

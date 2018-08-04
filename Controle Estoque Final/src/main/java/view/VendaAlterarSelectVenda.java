@@ -71,6 +71,7 @@ public class VendaAlterarSelectVenda extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tabResultados.setSelectionBackground(new java.awt.Color(168, 193, 221));
         jspResultados.setViewportView(tabResultados);
 
         rbData.setForeground(new java.awt.Color(101, 96, 168));

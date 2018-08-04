@@ -89,6 +89,7 @@ public class VendaAbrirSelectCliente extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tabCliente.setSelectionBackground(new java.awt.Color(168, 193, 221));
         tabCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tabClienteMouseClicked(evt);
@@ -173,7 +174,6 @@ public class VendaAbrirSelectCliente extends javax.swing.JInternalFrame {
                 Menu.areaTrabalho.add(jiVendaAbrir);
                 jiVendaAbrir.setVisible(true);
                 jiVendaAbrir.setPosicao();  // Centraliza a Tela Interna
-                this.dispose();
             } else {
                 JOptionPane.showMessageDialog(null, "Selecione um cliente!");
             }
