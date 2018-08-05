@@ -323,7 +323,7 @@ public class RelatorioFinanceiro extends javax.swing.JInternalFrame {
         if (indiceLinha != -1) {
             int idVenda = ((int) tabResultados.getValueAt(indiceLinha, 0));
 
-            RecebimentoAlterarDetalhe jiVendaDetalhes = new RecebimentoAlterarDetalhe(idVenda);
+            RelatorioFinanceiroVendaDetalhes jiVendaDetalhes = new RelatorioFinanceiroVendaDetalhes(idVenda);
             Menu.areaTrabalho.add(jiVendaDetalhes);
             jiVendaDetalhes.setVisible(true);
             jiVendaDetalhes.setPosicao();  // Centraliza a Tela Interna

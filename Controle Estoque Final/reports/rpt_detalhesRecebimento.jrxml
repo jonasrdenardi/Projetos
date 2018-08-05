@@ -2,17 +2,17 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rpt_detalhesRecebimento" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="602057c6-8dd1-4fef-ac10-9ba1d850fcd9">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="110"/>
+	<property name="ireport.y" value="150"/>
 	<parameter name="PARAM" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[SELECT if(r.fg_ativo = false,'Não','Sim') as 'fg_ativo', c.id as 'id_cliente', c.nome, r.id as 'id_recebimento', r.num_parcela, r.data_recebimento, r.valor_recebido, r.modo_pgto,
-r.id_venda, v.desconto, v.data_venda, v.valor, r.obs
+		<![CDATA[SELECT c.id as 'id_cliente', c.nome, r.id as 'id_recebimento', r.num_parcela, r.data_recebimento, r.valor_recebido, r.modo_pgto,
+r.id_venda, v.desconto, v.data_venda, v.valor, r.obs, if(r.fg_ativo = true,'Sim','Não') as 'fg_ativo'
 
-FROM recebimento as r
-INNER JOIN venda as v ON (r.id_venda = v.id)
-INNER JOIN cliente as c ON (v.id_cliente = c.id)
+FROM db_controle_estoque.recebimento as r
+INNER JOIN db_controle_estoque.venda as v ON (r.id_venda = v.id)
+INNER JOIN db_controle_estoque.cliente as c ON (v.id_cliente = c.id)
 
 $P!{PARAM}
 
@@ -50,7 +50,7 @@ ORDER BY r.data_recebimento;]]>
 	<field name="obs" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="fg_ativo" class="java.lang.Boolean">
+	<field name="fg_ativo" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<variable name="totalVenda" class="java.lang.Double" calculation="Sum">
@@ -205,7 +205,7 @@ ORDER BY r.data_recebimento;]]>
 				<text><![CDATA[Valor Recebido]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="345" y="13" width="100" height="20" uuid="54e7fb61-e4d9-4241-8fd7-aadf57998c41"/>
+				<reportElement x="346" y="13" width="104" height="20" uuid="54e7fb61-e4d9-4241-8fd7-aadf57998c41"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
@@ -238,7 +238,7 @@ ORDER BY r.data_recebimento;]]>
 				<textFieldExpression><![CDATA[$F{valor_recebido}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="345" y="10" width="100" height="20" uuid="588ee1e8-ccfe-4c49-a3b9-6c27524e7f62"/>
+				<reportElement x="346" y="10" width="104" height="20" uuid="588ee1e8-ccfe-4c49-a3b9-6c27524e7f62"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{modo_pgto}]]></textFieldExpression>
 			</textField>
@@ -247,8 +247,8 @@ ORDER BY r.data_recebimento;]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{data_recebimento}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="457" y="10" width="93" height="20" uuid="77614459-16c4-41cd-bc36-1d468cf0c5fc"/>
+			<textField pattern="">
+				<reportElement x="457" y="10" width="93" height="20" uuid="9890623b-5708-4ec2-b6f2-43e77eabb5ee"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{fg_ativo}]]></textFieldExpression>
 			</textField>
@@ -259,8 +259,8 @@ ORDER BY r.data_recebimento;]]>
 	</columnFooter>
 	<pageFooter>
 		<band height="54" splitType="Stretch">
-			<textField>
-				<reportElement x="455" y="34" width="100" height="20" uuid="8962dd60-472e-426a-b20b-723213326fc9"/>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement x="455" y="34" width="100" height="20" uuid="739b6e9a-f152-43bf-af85-7b29cc3beb36"/>
 				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 		</band>

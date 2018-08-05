@@ -13,18 +13,17 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import model.Retorno;
-import model.Venda;
 import reports.Relatorio;
 
-public class RelatorioVendaDetalhes extends javax.swing.JInternalFrame {
+public class RelatorioFinanceiroVendaDetalhes extends javax.swing.JInternalFrame {
 
-    List<Retorno> retornos = new ArrayList<Retorno>();
+    List<Retorno> retornos = new ArrayList<>();
     int idVenda;
     
     DecimalFormat dm = new DecimalFormat("###,###,###,###,##0.00");
     SimpleDateFormat sdfNormal = new SimpleDateFormat("dd/MM/yyyy");
 
-    public RelatorioVendaDetalhes(int idVenda) {
+    public RelatorioFinanceiroVendaDetalhes(int idVenda) {
         initComponents();
         this.idVenda = idVenda;
         configurarFormulario();
