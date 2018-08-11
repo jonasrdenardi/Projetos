@@ -70,7 +70,7 @@ public class RelatorioRecebimento extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "ID Recebimento", "ID Venda", "N° Parcela", "Cliente", "Data Venda", "Data Recebimento", "Valor Recebido", "Modo Pgto", "Recebido?"
+                "ID Recebimento", "ID Venda", "N° Parcela", "Cliente", "Data Venda", "Data Recebimento", "Valor Parcela", "Modo Pgto", "Recebido?"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -292,7 +292,7 @@ public class RelatorioRecebimento extends javax.swing.JInternalFrame {
                         .addComponent(jpPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jpData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 4, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(rbTodos)
@@ -303,7 +303,7 @@ public class RelatorioRecebimento extends javax.swing.JInternalFrame {
                         .addComponent(rbNao))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(324, 324, 324)
+                        .addGap(298, 298, 298)
                         .addComponent(btnDetalhesRecebimento, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnDetalhesVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -329,7 +329,7 @@ public class RelatorioRecebimento extends javax.swing.JInternalFrame {
                                     .addComponent(rbId, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jpPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 10, Short.MAX_VALUE)))
+                                        .addGap(0, 14, Short.MAX_VALUE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -488,7 +488,7 @@ public class RelatorioRecebimento extends javax.swing.JInternalFrame {
                 if (jdcData1.getDate() == null || jdcData2.getDate() == null) {
                     JOptionPane.showMessageDialog(null, "Preencha as datas corretamente!", "Erro", JOptionPane.WARNING_MESSAGE);
                 } else {
-                    param.put("PARAM", "WHERE v.data_venda BETWEEN '" + new Date(jdcData1.getDate().getTime()) + "' AND '" + new Date(jdcData2.getDate().getTime()) + "'");
+                    param.put("PARAM", "WHERE r.data_recebimento BETWEEN '" + new Date(jdcData1.getDate().getTime()) + "' AND '" + new Date(jdcData2.getDate().getTime()) + "'");
                     new Relatorio(
                             "rpt_recebimento", //nome do relatório
                             Conexao.conectar(Menu.getUsuario()), //conexão com o sgbd
@@ -499,7 +499,7 @@ public class RelatorioRecebimento extends javax.swing.JInternalFrame {
                 if (jdcData1.getDate() == null || jdcData2.getDate() == null) {
                     JOptionPane.showMessageDialog(null, "Preencha as datas corretamente!", "Erro", JOptionPane.WARNING_MESSAGE);
                 } else {
-                    param.put("PARAM", "WHERE v.data_venda BETWEEN '" + new Date(jdcData1.getDate().getTime()) + "' AND '" + new Date(jdcData2.getDate().getTime()) + "'" + "AND r.fg_ativo = false");
+                    param.put("PARAM", "WHERE r.data_recebimento BETWEEN '" + new Date(jdcData1.getDate().getTime()) + "' AND '" + new Date(jdcData2.getDate().getTime()) + "'" + "AND r.fg_ativo = false");
                     new Relatorio(
                             "rpt_recebimento", //nome do relatório
                             Conexao.conectar(Menu.getUsuario()), //conexão com o sgbd
@@ -510,7 +510,7 @@ public class RelatorioRecebimento extends javax.swing.JInternalFrame {
                 if (jdcData1.getDate() == null || jdcData2.getDate() == null) {
                     JOptionPane.showMessageDialog(null, "Preencha as datas corretamente!", "Erro", JOptionPane.WARNING_MESSAGE);
                 } else {
-                    param.put("PARAM", "WHERE v.data_venda BETWEEN '" + new Date(jdcData1.getDate().getTime()) + "' AND '" + new Date(jdcData2.getDate().getTime()) + "'" + "AND r.fg_ativo = true");
+                    param.put("PARAM", "WHERE r.data_recebimento BETWEEN '" + new Date(jdcData1.getDate().getTime()) + "' AND '" + new Date(jdcData2.getDate().getTime()) + "'" + "AND r.fg_ativo = true");
                     new Relatorio(
                             "rpt_recebimento", //nome do relatório
                             Conexao.conectar(Menu.getUsuario()), //conexão com o sgbd

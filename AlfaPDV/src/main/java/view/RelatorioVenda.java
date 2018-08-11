@@ -1,6 +1,7 @@
 package view;
 
 import controller.Conexao;
+import controller.RecebimentoDAO;
 import controller.RetornoDAO;
 import controller.VendaDAO;
 import java.awt.Dimension;
@@ -17,6 +18,7 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import model.Recebimento;
 import model.Retorno;
 import reports.Relatorio;
 
@@ -426,6 +428,7 @@ public class RelatorioVenda extends javax.swing.JInternalFrame {
     private void btnDetalhesRecebimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetalhesRecebimentoActionPerformed
         // Pega o indice da linha selecionada
         int indiceLinha = tabResultados.getSelectedRow();
+        List<Recebimento> recebimentos = new ArrayList<>();
 
         if (indiceLinha != -1) {
             Retorno retorno = new Retorno();
@@ -446,11 +449,19 @@ public class RelatorioVenda extends javax.swing.JInternalFrame {
             TotalString = TotalString.replaceAll("\\.", "").replaceAll("\\,", "."); // substitui virgula por ponto
             retorno.venda.setValor(Float.valueOf(TotalString)); // acrescenta o valor em float
 
-            RelatorioVendaDetalhesRecebimento jiDetalhesRecebimento = new RelatorioVendaDetalhesRecebimento(retorno);
-            Menu.areaTrabalho.add(jiDetalhesRecebimento);
-            jiDetalhesRecebimento.setVisible(true);
-            jiDetalhesRecebimento.setPosicao();  // Centraliza a Tela Interna
-            //this.dispose();
+            
+            recebimentos = new RecebimentoDAO().pesquisarPorIdVendaOrderParcela(Menu.getUsuario(), retorno.venda.getId());
+            if (recebimentos.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Venda: " + retorno.venda.getId() + " não possui recebimentos!", "Atenção!", JOptionPane.WARNING_MESSAGE);
+                //this.dispose();
+            } else {
+                RelatorioVendaDetalhesRecebimento jiDetalhesRecebimento = new RelatorioVendaDetalhesRecebimento(retorno);
+                Menu.areaTrabalho.add(jiDetalhesRecebimento);
+                jiDetalhesRecebimento.setVisible(true);
+                jiDetalhesRecebimento.setPosicao();  // Centraliza a Tela Interna
+                //this.dispose();
+            }
+
         } else {
             JOptionPane.showMessageDialog(null, "Selecione uma venda!");
         }

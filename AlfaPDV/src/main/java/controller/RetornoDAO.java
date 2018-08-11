@@ -301,7 +301,7 @@ public class RetornoDAO {
                     + "FROM recebimento as r\n"
                     + "INNER JOIN venda as v ON (r.id_venda = v.id)\n"
                     + "INNER JOIN cliente as c ON (v.id_cliente = c.id)\n"
-                    + "WHERE v.data_venda BETWEEN ? AND ?\n"
+                    + "WHERE r.data_recebimento BETWEEN ? AND ?\n"
                     + "ORDER BY r.id desc;";
 
             con = controller.Conexao.conectar(usuario);

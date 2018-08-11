@@ -267,7 +267,7 @@ public class RecebimentoReceber extends javax.swing.JInternalFrame {
         if (cbModoPgto.getSelectedItem() != "Indefinido") {
             if (jdcDataRecebimento.getDate() != null) {
                 recebimento.setData_recebimento(jdcDataRecebimento.getDate());
-                recebimento.setModo_Pgto("Parcelado" + " | " + cbModoPgto.getSelectedItem());
+                recebimento.setModo_Pgto("À Vista" + " | " + cbModoPgto.getSelectedItem());
                 recebimento.setObs(taObs.getText());
                 recebimento.setFg_ativo(false);
 

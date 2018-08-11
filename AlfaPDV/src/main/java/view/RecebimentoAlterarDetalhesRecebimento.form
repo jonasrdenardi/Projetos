@@ -53,11 +53,6 @@
               <Component id="lblAbrirRecebimento1" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="285" max="-2" attributes="0"/>
-              <Component id="btnImprimir" min="-2" pref="162" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -72,8 +67,6 @@
               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="btnImprimir" min="-2" pref="44" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -419,31 +412,6 @@
         <Property name="text" type="java.lang.String" value="PARCELAS A RECEBER"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnImprimir">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/images/imprimir1.png"/>
-        </Property>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="null"/>
-        </Property>
-        <Property name="borderPainted" type="boolean" value="false"/>
-        <Property name="contentAreaFilled" type="boolean" value="false"/>
-        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-          <Color id="Cursor em Forma de M&#xe3;o"/>
-        </Property>
-        <Property name="requestFocusEnabled" type="boolean" value="false"/>
-        <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/images/imprimir2.png"/>
-        </Property>
-        <Property name="selectedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/images/imprimir2.png"/>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnImprimirActionPerformed"/>
-      </Events>
-    </Component>
     <Container class="javax.swing.JPanel" name="jPanel2">
 
       <Layout>
@@ -478,7 +446,7 @@
                     <Column editable="false" title="Id Rebimento" type="java.lang.Object"/>
                     <Column editable="false" title="N&#xb0; Parcela" type="java.lang.Object"/>
                     <Column editable="false" title="Data Recebimento" type="java.lang.Object"/>
-                    <Column editable="false" title="Valor Parcela" type="java.lang.Object"/>
+                    <Column editable="false" title="Valor Recebido" type="java.lang.Object"/>
                     <Column editable="false" title="Modo Pgto" type="java.lang.Object"/>
                   </Table>
                 </Property>
@@ -579,7 +547,7 @@
                     <Column editable="false" title="Id Rebimento" type="java.lang.Object"/>
                     <Column editable="false" title="N&#xb0; Parcela" type="java.lang.Object"/>
                     <Column editable="false" title="Data Recebimento" type="java.lang.Object"/>
-                    <Column editable="false" title="Valor Parcela" type="java.lang.Object"/>
+                    <Column editable="false" title="Valor Recebido" type="java.lang.Object"/>
                     <Column editable="false" title="Modo Pgto" type="java.lang.Object"/>
                   </Table>
                 </Property>

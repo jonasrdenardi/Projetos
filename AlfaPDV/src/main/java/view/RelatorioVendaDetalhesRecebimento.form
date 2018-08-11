@@ -478,7 +478,7 @@
                     <Column editable="false" title="Id Rebimento" type="java.lang.Object"/>
                     <Column editable="false" title="N&#xb0; Parcela" type="java.lang.Object"/>
                     <Column editable="false" title="Data Recebimento" type="java.lang.Object"/>
-                    <Column editable="false" title="Valor Recebido" type="java.lang.Object"/>
+                    <Column editable="false" title="Valor Parcela" type="java.lang.Object"/>
                     <Column editable="false" title="Modo Pgto" type="java.lang.Object"/>
                   </Table>
                 </Property>
@@ -579,7 +579,7 @@
                     <Column editable="false" title="Id Rebimento" type="java.lang.Object"/>
                     <Column editable="false" title="N&#xb0; Parcela" type="java.lang.Object"/>
                     <Column editable="false" title="Data Recebimento" type="java.lang.Object"/>
-                    <Column editable="false" title="Valor Recebido" type="java.lang.Object"/>
+                    <Column editable="false" title="Valor Parcela" type="java.lang.Object"/>
                     <Column editable="false" title="Modo Pgto" type="java.lang.Object"/>
                   </Table>
                 </Property>

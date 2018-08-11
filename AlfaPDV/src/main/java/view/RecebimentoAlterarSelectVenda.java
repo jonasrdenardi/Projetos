@@ -1,7 +1,7 @@
 package view;
 
+import controller.RecebimentoDAO;
 import controller.RetornoDAO;
-import controller.VendaDAO;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.text.SimpleDateFormat;
@@ -14,8 +14,8 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import model.Recebimento;
 import model.Retorno;
-import model.Venda;
 
 public class RecebimentoAlterarSelectVenda extends javax.swing.JInternalFrame {
 
@@ -56,6 +56,7 @@ public class RecebimentoAlterarSelectVenda extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnAlterar = new javax.swing.JButton();
+        btnDetalhesRecebimento = new javax.swing.JButton();
 
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icone.png"))); // NOI18N
 
@@ -220,6 +221,20 @@ public class RecebimentoAlterarSelectVenda extends javax.swing.JInternalFrame {
             }
         });
 
+        btnDetalhesRecebimento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/detalhes_recebimento1.png"))); // NOI18N
+        btnDetalhesRecebimento.setBorder(null);
+        btnDetalhesRecebimento.setBorderPainted(false);
+        btnDetalhesRecebimento.setContentAreaFilled(false);
+        btnDetalhesRecebimento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDetalhesRecebimento.setRequestFocusEnabled(false);
+        btnDetalhesRecebimento.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/detalhes_recebimento2.png"))); // NOI18N
+        btnDetalhesRecebimento.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/detalhes_recebimento2.png"))); // NOI18N
+        btnDetalhesRecebimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDetalhesRecebimentoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -239,10 +254,12 @@ public class RecebimentoAlterarSelectVenda extends javax.swing.JInternalFrame {
                         .addComponent(jpPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jpData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 62, Short.MAX_VALUE))
+                        .addGap(0, 63, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(225, 225, 225)
+                        .addComponent(btnDetalhesRecebimento, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 225, Short.MAX_VALUE)
                         .addComponent(btnDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -261,14 +278,15 @@ public class RecebimentoAlterarSelectVenda extends javax.swing.JInternalFrame {
                             .addComponent(rbId, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jpPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGap(0, 2, Short.MAX_VALUE)))
                         .addGap(2, 2, 2))
                     .addComponent(jpData, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addComponent(jspResultados, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
+                .addComponent(jspResultados, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(btnDetalhesRecebimento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(27, 27, 27))
         );
 
@@ -352,16 +370,76 @@ public class RecebimentoAlterarSelectVenda extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_rbIdMousePressed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-//        RecebimentoAlterar jiRecebimentoAlterar = new RecebimentoAlterar();
-//        Menu.areaTrabalho.add(jiRecebimentoAlterar);
-//        jiRecebimentoAlterar.setVisible(true);
-//        jiRecebimentoAlterar.setPosicao();  // Centraliza a Tela Interna
+// Pega o indice da linha selecionada
+        int indiceLinha = tabResultados.getSelectedRow();
+
+        if (indiceLinha != -1) {
+            Retorno retorno = new Retorno();
+            retorno.venda.setId(((int) tabResultados.getValueAt(indiceLinha, 0)));
+            retorno.cliente.setNome((String) tabResultados.getValueAt(indiceLinha, 1));
+
+            try {
+                retorno.venda.setDataVenda(sdfNormal.parse((String) tabResultados.getValueAt(indiceLinha, 2)));
+            } catch (ParseException ex) {
+                JOptionPane.showMessageDialog(null, "ERRO: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);;
+            }
+
+            String descontoString = (String) tabResultados.getValueAt(indiceLinha, 3); // pega o valor do total do pedido
+            descontoString = descontoString.replaceAll("\\.", "").replaceAll("\\,", "."); // substitui virgula por ponto
+            retorno.venda.setDesconto(Float.valueOf(descontoString)); // acrescenta o valor em float
+
+            String TotalString = (String) tabResultados.getValueAt(indiceLinha, 4); // pega o valor do total do pedido
+            TotalString = TotalString.replaceAll("\\.", "").replaceAll("\\,", "."); // substitui virgula por ponto
+            retorno.venda.setValor(Float.valueOf(TotalString)); // acrescenta o valor em float
+
+            RecebimentoAlterar jiRecebimentoAlterar = new RecebimentoAlterar(retorno);
+            Menu.areaTrabalho.add(jiRecebimentoAlterar);
+            jiRecebimentoAlterar.setVisible(true);
+            jiRecebimentoAlterar.setPosicao();  // Centraliza a Tela Interna
+            //this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione uma venda!");
+        }
     }//GEN-LAST:event_btnAlterarActionPerformed
+
+    private void btnDetalhesRecebimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetalhesRecebimentoActionPerformed
+        // Pega o indice da linha selecionada
+        int indiceLinha = tabResultados.getSelectedRow();
+
+        if (indiceLinha != -1) {
+            Retorno retorno = new Retorno();
+            retorno.venda.setId(((int) tabResultados.getValueAt(indiceLinha, 0)));
+            retorno.cliente.setNome((String) tabResultados.getValueAt(indiceLinha, 1));
+
+            try {
+                retorno.venda.setDataVenda(sdfNormal.parse((String) tabResultados.getValueAt(indiceLinha, 2)));
+            } catch (ParseException ex) {
+                JOptionPane.showMessageDialog(null, "ERRO: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);;
+            }
+
+            String descontoString = (String) tabResultados.getValueAt(indiceLinha, 3); // pega o valor do total do pedido
+            descontoString = descontoString.replaceAll("\\.", "").replaceAll("\\,", "."); // substitui virgula por ponto
+            retorno.venda.setDesconto(Float.valueOf(descontoString)); // acrescenta o valor em float
+
+            String TotalString = (String) tabResultados.getValueAt(indiceLinha, 4); // pega o valor do total do pedido
+            TotalString = TotalString.replaceAll("\\.", "").replaceAll("\\,", "."); // substitui virgula por ponto
+            retorno.venda.setValor(Float.valueOf(TotalString)); // acrescenta o valor em float
+
+            RecebimentoAlterarDetalhesRecebimento jiRecebimentoAlterarDetalhesRecebimento = new RecebimentoAlterarDetalhesRecebimento(retorno);
+            Menu.areaTrabalho.add(jiRecebimentoAlterarDetalhesRecebimento);
+            jiRecebimentoAlterarDetalhesRecebimento.setVisible(true);
+            jiRecebimentoAlterarDetalhesRecebimento.setPosicao();  // Centraliza a Tela Interna
+            //this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione uma venda!");
+        }
+    }//GEN-LAST:event_btnDetalhesRecebimentoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnDetalhes;
+    private javax.swing.JButton btnDetalhesRecebimento;
     private javax.swing.JButton btnOk;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

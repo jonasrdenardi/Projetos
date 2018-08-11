@@ -9,33 +9,42 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import model.Recebimento;
-import model.Venda;
+import model.Retorno;
 
 public class RecebimentoAlterar extends javax.swing.JInternalFrame {
 
     SimpleDateFormat sdfNormal = new SimpleDateFormat("dd/MM/yyyy");
     DecimalFormat dm = new DecimalFormat(("###,###,###,###,##0.00"));
-    Venda venda = new Venda();
+    Retorno retorno = new Retorno();
+    List<Recebimento> recebimentos = new ArrayList<>();
 
-    public RecebimentoAlterar(Venda venda, String cliente) {
+    public RecebimentoAlterar(Retorno retorno) {
         initComponents();
 
-        this.venda = venda;
-        txtIdVenda.setText(String.valueOf(venda.getId()));
-        txtCliente.setText(cliente);
-        txtDataVenda.setText(sdfNormal.format(venda.getDataVenda()));
-        lblVDesconto.setText(String.valueOf(venda.getDesconto()));
-        lblVlTotalVenda.setText(dm.format(venda.getValor()));
+        this.retorno = retorno;
+        txtIdVenda.setText(String.valueOf(retorno.venda.getId()));
+        txtCliente.setText(retorno.cliente.getNome());
+        txtDataVenda.setText(sdfNormal.format(retorno.venda.getDataVenda()));
+        lblVDesconto.setText(String.valueOf(retorno.venda.getDesconto()));
+        lblVlTotalVenda.setText(dm.format(retorno.venda.getValor()));
         txtDataVenda.setEditable(false);
         txtIdVenda.setEditable(false);
         txtCliente.setEditable(false);
         txtDataVenda.setEditable(false);
+        
+        
+        
+        
+        
+        
         jpAVista.setVisible(true);
         jpParcelado.setVisible(false);
         configurarFormulario();
@@ -497,7 +506,7 @@ public class RecebimentoAlterar extends javax.swing.JInternalFrame {
             //Converte util.Date em LocalDate
             LocalDate primeiraParcela = jdc.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             while (parcelaAtual <= qtdParcelas) {
-                preencherData(parcelaAtual, primeiraParcela.plusMonths(somarData), venda.getValor() / qtdParcelas);
+                preencherData(parcelaAtual, primeiraParcela.plusMonths(somarData), retorno.venda.getValor() / qtdParcelas);
                 parcelaAtual++;
                 somarData++;
             }

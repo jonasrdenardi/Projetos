@@ -1,14 +1,13 @@
 package view;
 
-import controller.Conexao;
 import controller.RecebimentoDAO;
+import controller.RetornoDAO;
 import controller.VendaDAO;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -16,27 +15,25 @@ import javax.swing.table.DefaultTableModel;
 import model.Recebimento;
 import model.Retorno;
 import model.Venda;
-import reports.Relatorio;
 
-public class RelatorioRecebimentoDetalhesRecebimento extends javax.swing.JInternalFrame {
+public class RecebimentoAlterarDetalhesRecebimento extends javax.swing.JInternalFrame {
 
     SimpleDateFormat sdfNormal = new SimpleDateFormat("dd/MM/yyyy");
     DecimalFormat dm = new DecimalFormat(("###,###,###,###,##0.00"));
     Retorno retorno = new Retorno();
     List<Recebimento> recebimentos = new ArrayList<>();
 
-    public RelatorioRecebimentoDetalhesRecebimento(Retorno retorno) {
+    public RecebimentoAlterarDetalhesRecebimento(Retorno retorno) {
         recebimentos = new RecebimentoDAO().pesquisarPorIdVendaOrderParcela(Menu.getUsuario(), retorno.venda.getId());
-        List<Venda> vendas = new VendaDAO().pesquisarPorId(Menu.getUsuario(), retorno.venda.getId());
-        
+
         initComponents();
         taObs.setText(recebimentos.get(0).getObs());
         this.retorno = retorno;
         txtIdVenda.setText(String.valueOf(retorno.venda.getId()));
         txtCliente.setText(retorno.cliente.getNome());
         txtDataVenda.setText(sdfNormal.format(retorno.venda.getDataVenda()));
-        lblVDesconto.setText(dm.format(vendas.get(0).getDesconto()));
-        lblVlTotalVenda.setText(dm.format(vendas.get(0).getValor()));
+        lblVDesconto.setText(dm.format(retorno.venda.getDesconto()));
+        lblVlTotalVenda.setText(dm.format(retorno.venda.getValor()));
         txtDataVenda.setEditable(false);
         txtIdVenda.setEditable(false);
         txtCliente.setEditable(false);
@@ -69,7 +66,6 @@ public class RelatorioRecebimentoDetalhesRecebimento extends javax.swing.JIntern
         jScrollPane2 = new javax.swing.JScrollPane();
         taObs = new javax.swing.JTextArea();
         lblAbrirRecebimento = new javax.swing.JLabel();
-        btnImprimir = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblReceber = new javax.swing.JTable();
@@ -238,26 +234,12 @@ public class RelatorioRecebimentoDetalhesRecebimento extends javax.swing.JIntern
         lblAbrirRecebimento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAbrirRecebimento.setText("PARCELAS A RECEBER");
 
-        btnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imprimir1.png"))); // NOI18N
-        btnImprimir.setBorder(null);
-        btnImprimir.setBorderPainted(false);
-        btnImprimir.setContentAreaFilled(false);
-        btnImprimir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnImprimir.setRequestFocusEnabled(false);
-        btnImprimir.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imprimir2.png"))); // NOI18N
-        btnImprimir.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imprimir2.png"))); // NOI18N
-        btnImprimir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnImprimirActionPerformed(evt);
-            }
-        });
-
         tblReceber.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Id Rebimento", "N° Parcela", "Data Recebimento", "Valor Parcela", "Modo Pgto"
+                "Id Rebimento", "N° Parcela", "Data Recebimento", "Valor Recebido", "Modo Pgto"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -306,7 +288,7 @@ public class RelatorioRecebimentoDetalhesRecebimento extends javax.swing.JIntern
 
             },
             new String [] {
-                "Id Rebimento", "N° Parcela", "Data Recebimento", "Valor Parcela", "Modo Pgto"
+                "Id Rebimento", "N° Parcela", "Data Recebimento", "Valor Recebido", "Modo Pgto"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -362,10 +344,6 @@ public class RelatorioRecebimentoDetalhesRecebimento extends javax.swing.JIntern
                 .addContainerGap()
                 .addComponent(lblAbrirRecebimento1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(285, 285, 285)
-                .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -379,27 +357,14 @@ public class RelatorioRecebimentoDetalhesRecebimento extends javax.swing.JIntern
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
-        HashMap param = new HashMap();
-        param.put("PARAM", "WHERE r.id_venda = " + txtIdVenda.getText());
-        new Relatorio(
-                "rpt_detalhesRecebimento", //nome do relatório
-                Conexao.conectar(Menu.getUsuario()), //conexão com o sgbd
-                param //parâmetros
-        ).show();
-    }//GEN-LAST:event_btnImprimirActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnImprimir;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
@@ -435,8 +400,6 @@ public class RelatorioRecebimentoDetalhesRecebimento extends javax.swing.JIntern
         this.setMaximizable(false);
         this.setIconifiable(false);
         this.setClosable(true);
-
-        getRootPane().setDefaultButton(btnImprimir);
 
         configurarTabela();
         configurarTabelaRecebido();

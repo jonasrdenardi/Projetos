@@ -5,7 +5,6 @@ import controller.RecebimentoDAO;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.text.DecimalFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,25 +26,22 @@ public class RelatorioVendaDetalhesRecebimento extends javax.swing.JInternalFram
 
     public RelatorioVendaDetalhesRecebimento(Retorno retorno) {
         recebimentos = new RecebimentoDAO().pesquisarPorIdVendaOrderParcela(Menu.getUsuario(), retorno.venda.getId());
-        if (recebimentos.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Venda: " + retorno.venda.getId() + " não possui recebimentos!", "Atenção!", JOptionPane.WARNING_MESSAGE);
-            this.dispose();
-        } else {
-            initComponents();
-            taObs.setText(recebimentos.get(0).getObs());
-            this.retorno = retorno;
-            txtIdVenda.setText(String.valueOf(retorno.venda.getId()));
-            txtCliente.setText(retorno.cliente.getNome());
-            txtDataVenda.setText(sdfNormal.format(retorno.venda.getDataVenda()));
-            lblVDesconto.setText(dm.format(retorno.venda.getDesconto()));
-            lblVlTotalVenda.setText(dm.format(retorno.venda.getValor()));
-            txtDataVenda.setEditable(false);
-            txtIdVenda.setEditable(false);
-            txtCliente.setEditable(false);
-            txtDataVenda.setEditable(false);
-            taObs.setEditable(false);
-            configurarFormulario();
-        }
+
+        initComponents();
+        taObs.setText(recebimentos.get(0).getObs());
+        this.retorno = retorno;
+        txtIdVenda.setText(String.valueOf(retorno.venda.getId()));
+        txtCliente.setText(retorno.cliente.getNome());
+        txtDataVenda.setText(sdfNormal.format(retorno.venda.getDataVenda()));
+        lblVDesconto.setText(dm.format(retorno.venda.getDesconto()));
+        lblVlTotalVenda.setText(dm.format(retorno.venda.getValor()));
+        txtDataVenda.setEditable(false);
+        txtIdVenda.setEditable(false);
+        txtCliente.setEditable(false);
+        txtDataVenda.setEditable(false);
+        taObs.setEditable(false);
+        configurarFormulario();
+
     }
 
     @SuppressWarnings("unchecked")
@@ -259,7 +255,7 @@ public class RelatorioVendaDetalhesRecebimento extends javax.swing.JInternalFram
 
             },
             new String [] {
-                "Id Rebimento", "N° Parcela", "Data Recebimento", "Valor Recebido", "Modo Pgto"
+                "Id Rebimento", "N° Parcela", "Data Recebimento", "Valor Parcela", "Modo Pgto"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -308,7 +304,7 @@ public class RelatorioVendaDetalhesRecebimento extends javax.swing.JInternalFram
 
             },
             new String [] {
-                "Id Rebimento", "N° Parcela", "Data Recebimento", "Valor Recebido", "Modo Pgto"
+                "Id Rebimento", "N° Parcela", "Data Recebimento", "Valor Parcela", "Modo Pgto"
             }
         ) {
             boolean[] canEdit = new boolean [] {

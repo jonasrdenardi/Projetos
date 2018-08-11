@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rpt_detalhesRecebimento" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="602057c6-8dd1-4fef-ac10-9ba1d850fcd9">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="56"/>
+	<property name="ireport.y" value="236"/>
 	<parameter name="PARAM" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -220,7 +220,7 @@ ORDER BY r.data_recebimento;]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Valor Recebido]]></text>
+				<text><![CDATA[Valor Parcela]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="337" y="10" width="125" height="20" uuid="54e7fb61-e4d9-4241-8fd7-aadf57998c41"/>
@@ -294,17 +294,17 @@ ORDER BY r.data_recebimento;]]>
 		<band splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch">
+		<band height="36" splitType="Stretch">
 			<textField pattern="" isBlankWhenNull="false">
-				<reportElement x="455" y="34" width="100" height="20" uuid="739b6e9a-f152-43bf-af85-7b29cc3beb36"/>
+				<reportElement x="454" y="16" width="100" height="20" uuid="739b6e9a-f152-43bf-af85-7b29cc3beb36"/>
 				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageFooter>
 	<lastPageFooter>
-		<band height="50"/>
+		<band height="12"/>
 	</lastPageFooter>
 	<summary>
-		<band height="42" splitType="Stretch"/>
+		<band height="10" splitType="Stretch"/>
 	</summary>
 </jasperReport>
