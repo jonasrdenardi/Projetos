@@ -55,14 +55,22 @@
                                       </Group>
                                       <Group type="102" alignment="1" attributes="0">
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="103" alignment="1" groupAlignment="1" max="-2" attributes="0">
-                                                  <Component id="lblPreco" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="jSeparator4" alignment="1" min="-2" pref="393" max="-2" attributes="0"/>
-                                                  <Component id="txtPreco" alignment="1" min="-2" pref="393" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="lblPreco" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="jSeparator4" alignment="1" min="-2" pref="393" max="-2" attributes="0"/>
+                                              <Component id="txtPreco" alignment="1" min="-2" pref="393" max="-2" attributes="0"/>
+                                              <Component id="btnCadastrar" alignment="0" min="-2" pref="393" max="-2" attributes="0"/>
+                                              <Group type="102" alignment="1" attributes="0">
+                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                      <Component id="lblVencimento1" pref="129" max="32767" attributes="0"/>
+                                                      <Component id="txtPreco2" max="32767" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace max="32767" attributes="0"/>
+                                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                      <Component id="lblVencimento" max="32767" attributes="0"/>
+                                                      <Component id="jdcVencimento" min="-2" pref="129" max="-2" attributes="0"/>
+                                                  </Group>
                                               </Group>
-                                              <Component id="lblVencimento" alignment="1" min="-2" pref="393" max="-2" attributes="0"/>
-                                              <Component id="btnCadastrar" alignment="1" min="-2" pref="393" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -78,11 +86,6 @@
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="jdcVencimento" min="-2" pref="129" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="176" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -126,12 +129,21 @@
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
               <Component id="jSeparator4" min="-2" pref="1" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="lblVencimento" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jdcVencimento" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="lblVencimento" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jdcVencimento" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="lblVencimento1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="txtPreco2" min="-2" pref="20" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace pref="18" max="32767" attributes="0"/>
               <Component id="btnCadastrar" min="-2" pref="41" max="-2" attributes="0"/>
-              <EmptySpace pref="26" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -234,7 +246,7 @@
           <Color blue="a8" green="60" red="65" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Pre&#xe7;o"/>
+        <Property name="text" type="java.lang.String" value="Pre&#xe7;o Venda (UN)"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtDescricao">
@@ -376,7 +388,35 @@
           <Color blue="a8" green="60" red="65" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Pre&#xe7;o Compra"/>
+        <Property name="text" type="java.lang.String" value="Pre&#xe7;o Compra (UN)"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblVencimento1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Constantia" size="15" style="0"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="a8" green="60" red="65" type="rgb"/>
+        </Property>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="Margem Lucro (%)"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtPreco2">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="f0" green="f0" red="f0" type="rgb"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="sansserif" size="15" style="0"/>
+        </Property>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+            <LineBorder/>
+          </Border>
+        </Property>
       </Properties>
     </Component>
   </SubComponents>

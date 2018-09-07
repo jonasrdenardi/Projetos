@@ -70,7 +70,7 @@ public class AlterarCliente extends javax.swing.JInternalFrame {
 
         lblSelecione.setFont(new java.awt.Font("Constantia", 0, 13)); // NOI18N
         lblSelecione.setForeground(new java.awt.Color(101, 96, 168));
-        lblSelecione.setText("Pesquise e clique 2x no Cliente para efetuar a alteração");
+        lblSelecione.setText("Pesquise e clique no Cliente para efetuar a alteração");
 
         txtTelefone.setBackground(new java.awt.Color(240, 240, 240));
         txtTelefone.setFont(new java.awt.Font("sansserif", 0, 15)); // NOI18N
@@ -423,7 +423,7 @@ public class AlterarCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtPesquisaKeyReleased
 
     private void tabResultadosAltMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabResultadosAltMouseClicked
-        if (evt.getClickCount() == 2) {
+        if (evt.getClickCount() == 1) {
 
             int linha = tabResultadosAlt.getSelectedRow();
             String id = tabResultadosAlt.getValueAt(linha, 0).toString();

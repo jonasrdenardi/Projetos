@@ -47,6 +47,8 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
         txtPrecoCompra = new javax.swing.JTextField();
         jSeparator6 = new javax.swing.JSeparator();
         lblPrecoCompra = new javax.swing.JLabel();
+        lblVencimento1 = new javax.swing.JLabel();
+        txtPreco2 = new javax.swing.JTextField();
 
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icone.png"))); // NOI18N
 
@@ -87,7 +89,7 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
         lblPreco.setFont(new java.awt.Font("Constantia", 0, 15)); // NOI18N
         lblPreco.setForeground(new java.awt.Color(101, 96, 168));
         lblPreco.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblPreco.setText("Preço");
+        lblPreco.setText("Preço Venda (UN)");
 
         txtDescricao.setBackground(new java.awt.Color(240, 240, 240));
         txtDescricao.setFont(new java.awt.Font("sansserif", 0, 15)); // NOI18N
@@ -138,7 +140,17 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
         lblPrecoCompra.setFont(new java.awt.Font("Constantia", 0, 15)); // NOI18N
         lblPrecoCompra.setForeground(new java.awt.Color(101, 96, 168));
         lblPrecoCompra.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblPrecoCompra.setText("Preço Compra");
+        lblPrecoCompra.setText("Preço Compra (UN)");
+
+        lblVencimento1.setFont(new java.awt.Font("Constantia", 0, 15)); // NOI18N
+        lblVencimento1.setForeground(new java.awt.Color(101, 96, 168));
+        lblVencimento1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblVencimento1.setText("Margem Lucro (%)");
+
+        txtPreco2.setBackground(new java.awt.Color(240, 240, 240));
+        txtPreco2.setFont(new java.awt.Font("sansserif", 0, 15)); // NOI18N
+        txtPreco2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtPreco2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -171,23 +183,25 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
                                             .addGap(0, 0, Short.MAX_VALUE))
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                             .addGap(0, 0, Short.MAX_VALUE)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                    .addComponent(lblPreco, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addComponent(lblVencimento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(btnCadastrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(lblPreco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(txtPreco, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                        .addComponent(lblVencimento1, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                                                        .addComponent(txtPreco2))
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                        .addComponent(lblVencimento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(jdcVencimento, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(lblId, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
                                 .addComponent(jSeparator1)
                                 .addComponent(txtId)))
                         .addGap(0, 42, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jdcVencimento, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(176, 176, 176))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -227,12 +241,18 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(lblVencimento)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jdcVencimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblVencimento)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jdcVencimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblVencimento1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtPreco2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -306,9 +326,11 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblPrecoCompra;
     private javax.swing.JLabel lblQtd;
     private javax.swing.JLabel lblVencimento;
+    private javax.swing.JLabel lblVencimento1;
     private javax.swing.JTextField txtDescricao;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtPreco;
+    private javax.swing.JTextField txtPreco2;
     private javax.swing.JTextField txtPrecoCompra;
     private javax.swing.JTextField txtQtd;
     // End of variables declaration//GEN-END:variables

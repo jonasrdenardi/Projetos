@@ -78,7 +78,7 @@ public class AlterarProduto extends javax.swing.JInternalFrame {
 
         lblSelecione.setFont(new java.awt.Font("Constantia", 0, 13)); // NOI18N
         lblSelecione.setForeground(new java.awt.Color(101, 96, 168));
-        lblSelecione.setText("Pesquise e clique 2x no produto para efetuar a alteração");
+        lblSelecione.setText("Pesquise e clique no produto para efetuar a alteração");
 
         txtQtd.setBackground(new java.awt.Color(240, 240, 240));
         txtQtd.setFont(new java.awt.Font("sansserif", 0, 15)); // NOI18N
@@ -88,7 +88,7 @@ public class AlterarProduto extends javax.swing.JInternalFrame {
         lblPreco.setFont(new java.awt.Font("Constantia", 0, 15)); // NOI18N
         lblPreco.setForeground(new java.awt.Color(101, 96, 168));
         lblPreco.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblPreco.setText("Preço");
+        lblPreco.setText("Preço Venda (UN)");
 
         lblId.setFont(new java.awt.Font("Constantia", 0, 15)); // NOI18N
         lblId.setForeground(new java.awt.Color(153, 153, 153));
@@ -160,7 +160,7 @@ public class AlterarProduto extends javax.swing.JInternalFrame {
         lblPrecoCompra.setFont(new java.awt.Font("Constantia", 0, 15)); // NOI18N
         lblPrecoCompra.setForeground(new java.awt.Color(101, 96, 168));
         lblPrecoCompra.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblPrecoCompra.setText("Preço Compra");
+        lblPrecoCompra.setText("Preço Compra (UN)");
 
         txtPrecoCompra.setBackground(new java.awt.Color(240, 240, 240));
         txtPrecoCompra.setFont(new java.awt.Font("sansserif", 0, 15)); // NOI18N
@@ -483,7 +483,7 @@ public class AlterarProduto extends javax.swing.JInternalFrame {
 
     private void tabResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabResultadosMouseClicked
 
-        if (evt.getClickCount() == 2) {
+        if (evt.getClickCount() == 1) {
 
             int linha = tabResultados.getSelectedRow();
             String id = tabResultados.getValueAt(linha, 0).toString();

@@ -24,7 +24,6 @@ public class UsuarioDAO {
         try {
             Class.forName(DRIVER);
             Connection con = DriverManager.getConnection(URL, usuario.getNome(), usuario.getSenha());
-            JOptionPane.showMessageDialog(null, "Conexão realizada com sucesso.");
             return con;
         } catch (ClassNotFoundException | SQLException e) {
             JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage(),"Erro", JOptionPane.ERROR_MESSAGE);
