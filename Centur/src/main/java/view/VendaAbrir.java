@@ -564,11 +564,11 @@ public class VendaAbrir extends javax.swing.JInternalFrame {
                         lblVlTotalVenda.setText("0,00");
                         txtQtd.setText("1");
                         jdcData.setDate(new Date());
-                        
+
                         Object[] options = {"Sim", "Não"};
                         int resposta = JOptionPane.showOptionDialog(null, "Deseja ir para Abrir Recebimento?", "Selecione uma opção", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
                         if (resposta == 0) {
-                            RecebimentoAbrir jiRecebimentoAbrir = new RecebimentoAbrir(v, cliente.getNome());
+                            FinanceiroAbrir jiRecebimentoAbrir = new FinanceiroAbrir(v, cliente.getNome());
                             Menu.areaTrabalho.add(jiRecebimentoAbrir);
                             jiRecebimentoAbrir.setVisible(true);
                             jiRecebimentoAbrir.setPosicao();  // Centraliza a Tela Interna
@@ -767,6 +767,10 @@ public class VendaAbrir extends javax.swing.JInternalFrame {
 
             if (valorDescontoFloat == 0) {
                 lblVlTotalVenda.setText(dm.format(totalVenda));
+            } else if (valorDescontoFloat > totalVenda) {
+                JOptionPane.showMessageDialog(null, "Valor de desconto não pode ser maior que o total da venda!");
+                txtDesconto.setText("");
+                setTotalVenda();
             } else {
                 totalVenda -= valorDescontoFloat;
                 lblVlTotalVenda.setText(dm.format(totalVenda));
@@ -779,6 +783,7 @@ public class VendaAbrir extends javax.swing.JInternalFrame {
             if (valorDescontoFloat < 0 || valorDescontoFloat > 100) {
                 JOptionPane.showMessageDialog(null, "Valor de porcentagem não permitida !");
                 txtDesconto.setText("");
+                setTotalVenda();
             } else {
                 descontoFinal = (totalVenda / 100) * valorDescontoFloat;
                 totalVenda -= descontoFinal;

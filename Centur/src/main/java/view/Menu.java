@@ -623,15 +623,15 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiGerenciarUsuariosActionPerformed
 
     private void jmiAlterarRecebimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAlterarRecebimentoActionPerformed
-        abrirFormulario(new RecebimentoAbrirSelectVenda());
+        abrirFormulario(new FinanceiroAbrirSelectVenda());
     }//GEN-LAST:event_jmiAlterarRecebimentoActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        abrirFormulario(new RecebimentoAlterarSelectVenda());
+        abrirFormulario(new FinanceiroAlterarSelectVenda());
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        abrirFormulario(new RecebimentoReceberSelectVenda());
+        abrirFormulario(new FinanceiroReceberSelectVenda());
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jmiFinanceiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiFinanceiroActionPerformed
@@ -667,19 +667,19 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_lblAbrirVendaMouseReleased
 
     private void btnAbrirRecebimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirRecebimentoActionPerformed
-        abrirFormulario(new RecebimentoAbrirSelectVenda());
+        abrirFormulario(new FinanceiroAbrirSelectVenda());
     }//GEN-LAST:event_btnAbrirRecebimentoActionPerformed
 
     private void lblAbrirRecebimentoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAbrirRecebimentoMouseReleased
-        abrirFormulario(new RecebimentoAbrirSelectVenda());
+        abrirFormulario(new FinanceiroAbrirSelectVenda());
     }//GEN-LAST:event_lblAbrirRecebimentoMouseReleased
 
     private void btnReceberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReceberActionPerformed
-        abrirFormulario(new RecebimentoReceberSelectVenda());
+        abrirFormulario(new FinanceiroReceberSelectVenda());
     }//GEN-LAST:event_btnReceberActionPerformed
 
     private void lblReceberMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblReceberMouseReleased
-        abrirFormulario(new RecebimentoReceberSelectVenda());
+        abrirFormulario(new FinanceiroReceberSelectVenda());
     }//GEN-LAST:event_lblReceberMouseReleased
 
     private void jcbmiMenuLateralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbmiMenuLateralActionPerformed
