@@ -54,7 +54,7 @@ ORDER BY r.id desc;]]>
 		<band height="153" splitType="Stretch">
 			<image hAlign="Center">
 				<reportElement x="0" y="0" width="802" height="150" uuid="03ee327f-4102-4fcd-b00f-06662d3eac28"/>
-				<imageExpression><![CDATA["C:\\Century\\Centur\\logotipo.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["C:\\Cronos\\Centur\\logotipo.jpg"]]></imageExpression>
 			</image>
 		</band>
 	</title>

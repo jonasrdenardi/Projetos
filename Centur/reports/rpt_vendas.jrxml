@@ -39,7 +39,7 @@ ORDER BY v.data_venda desc;]]>
 		<band height="155" splitType="Stretch">
 			<image hAlign="Center">
 				<reportElement x="0" y="2" width="555" height="150" uuid="c4cfb254-0deb-4f1c-bd15-5808c2b356e2"/>
-				<imageExpression><![CDATA["C:\\Century\\Centur\\logotipo.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["C:\\Cronos\\Centur\\logotipo.jpg"]]></imageExpression>
 			</image>
 		</band>
 	</title>
